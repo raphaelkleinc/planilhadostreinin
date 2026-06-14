@@ -91,13 +91,18 @@
   }
 
   .cmd-area { background: var(--bg2); border-radius: var(--radius-lg); padding: 1rem; border: 0.5px solid var(--border); }
-  .cmd-lbl { font-size: 12px; color: var(--text2); margin-bottom: 8px; }
-  .cmd-row { display: flex; gap: 8px; }
-  .cmd-input { flex: 1; border: 0.5px solid var(--border2); border-radius: var(--radius); padding: 9px 12px; font-size: 13px; font-family: inherit; background: var(--bg); color: var(--text); }
+  .cmd-lbl { font-size: 12px; color: var(--text2); margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between; }
+  .cmd-row { display: flex; gap: 8px; align-items: flex-end; }
+  .cmd-input { flex: 1; border: 0.5px solid var(--border2); border-radius: var(--radius); padding: 9px 12px; font-size: 13px; font-family: inherit; background: var(--bg); color: var(--text); resize: vertical; min-height: 44px; max-height: 220px; line-height: 1.5; }
   .cmd-input:focus { outline: none; border-color: var(--purple); box-shadow: 0 0 0 2px rgba(83,74,183,.15); }
-  .cmd-btn { background: var(--purple); color: white; border: none; border-radius: var(--radius); padding: 9px 16px; font-size: 13px; cursor: pointer; white-space: nowrap; display: flex; align-items: center; gap: 5px; }
+  .cmd-btn { background: var(--purple); color: white; border: none; border-radius: var(--radius); padding: 9px 16px; font-size: 13px; cursor: pointer; white-space: nowrap; display: flex; align-items: center; gap: 5px; align-self: flex-end; }
   .cmd-btn:hover { background: var(--purple-dark); }
   .cmd-btn:disabled { opacity: .5; cursor: not-allowed; }
+  .upload-btn { background: transparent; border: 0.5px dashed var(--border2); border-radius: var(--radius); padding: 4px 9px; font-size: 11px; color: var(--text2); cursor: pointer; display: flex; align-items: center; gap: 4px; }
+  .upload-btn:hover { border-color: var(--purple); color: var(--purple); }
+  .upload-name { font-size: 11px; color: var(--text2); margin-top: 5px; display: none; }
+  .upload-name.visible { display: block; }
+  #fileInput { display: none; }
   .sugs { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 8px; }
   .sug { font-size: 10px; background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 3px 8px; cursor: pointer; color: var(--text2); }
   .sug:hover { color: var(--text); border-color: var(--border2); }
@@ -199,11 +204,18 @@
   </div>
 
   <div class="cmd-area">
-    <div class="cmd-lbl"><i class="ti ti-robot" aria-hidden="true" style="font-size:13px;vertical-align:-1px;margin-right:4px"></i>planeje ou registre treinos com linguagem natural</div>
+    <div class="cmd-lbl">
+      <span><i class="ti ti-robot" aria-hidden="true" style="font-size:13px;vertical-align:-1px;margin-right:4px"></i>planeje, registre ou importe treinos em batelada</span>
+      <button class="upload-btn" onclick="document.getElementById('fileInput').click()">
+        <i class="ti ti-upload" aria-hidden="true" style="font-size:12px"></i> subir arquivo
+      </button>
+      <input type="file" id="fileInput" accept=".txt,.pdf,.doc,.docx" onchange="handleFile(this)"/>
+    </div>
     <div class="cmd-row">
-      <input class="cmd-input" id="cmdInput" placeholder="ex: registre corrida de 8km pace 5:20 hoje" onkeydown="if(event.key==='Enter')runCmd()"/>
+      <textarea class="cmd-input" id="cmdInput" placeholder="comando simples: adicione corrida leve 5km na quarta&#10;&#10;ou importe vários treinos de uma vez:&#10;dia 15/06 corrida 10km pace 6:00&#10;dia 16/06 musculação 60min&#10;dia 20/06 ciclismo 40km velocidade 28kmh" rows="3"></textarea>
       <button class="cmd-btn" id="cmdBtn" onclick="runCmd()"><i class="ti ti-arrow-right" aria-hidden="true"></i> enviar</button>
     </div>
+    <div class="upload-name" id="uploadName"></div>
     <div class="sugs">
       <span class="sug" onclick="fillCmd(this)">adicione corrida leve 5km na quarta</span>
       <span class="sug" onclick="fillCmd(this)">musculação toda segunda e quinta</span>
@@ -421,6 +433,44 @@ function delPlan(k,i) { if(data[k]){data[k].planejado.splice(i,1); save(); rende
 function delReal(k,i) { if(data[k]){data[k].realizado.splice(i,1); save(); renderCal(); closeModal();} }
 function closeModal(e) { if(!e || e.target===document.getElementById('overlay')) document.getElementById('overlay').classList.remove('open'); }
 function fillCmd(el) { document.getElementById('cmdInput').value = el.textContent.trim(); document.getElementById('cmdInput').focus(); }
+
+async function handleFile(input) {
+  const file = input.files[0];
+  if (!file) return;
+  const nameEl = document.getElementById('uploadName');
+  nameEl.textContent = '📎 ' + file.name;
+  nameEl.classList.add('visible');
+
+  try {
+    let text = '';
+    if (file.name.endsWith('.pdf')) {
+      // PDF: lê como base64 e envia pro Claude interpretar
+      const reader = new FileReader();
+      reader.onload = async (e) => {
+        const base64 = e.target.result.split(',')[1];
+        document.getElementById('cmdInput').value = '[arquivo PDF: ' + file.name + ']\nExtraia todos os treinos listados neste PDF e adicione ao calendário.';
+        window._pendingFile = { type: 'pdf', base64, name: file.name };
+      };
+      reader.readAsDataURL(file);
+    } else {
+      // TXT, DOC, DOCX: lê como texto
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        text = e.target.result;
+        document.getElementById('cmdInput').value = text;
+        window._pendingFile = null;
+      };
+      if (file.name.endsWith('.docx') || file.name.endsWith('.doc')) {
+        reader.readAsText(file, 'UTF-8');
+      } else {
+        reader.readAsText(file, 'UTF-8');
+      }
+    }
+  } catch(e) {
+    setStatus('erro ao ler arquivo: ' + e.message, 'err');
+  }
+  input.value = '';
+}
 function setStatus(m,t) { const el=document.getElementById('status'); el.textContent=m; el.className='status '+(t||''); }
 
 async function runCmd() {
@@ -431,6 +481,10 @@ async function runCmd() {
   const btn = document.getElementById('cmdBtn');
   btn.disabled = true;
   setStatus('processando...', 'loading');
+  
+  // Se veio de arquivo PDF, usa conteúdo base64
+  const pendingFile = window._pendingFile;
+  window._pendingFile = null;
 
   const dim = new Date(viewYear, viewMonth+1, 0).getDate();
   const ameliaDays = [];
@@ -447,6 +501,11 @@ Dados atuais (JSON):
 ${JSON.stringify(data,null,1)}
 
 Comando: "${cmd}"
+
+Pode receber um único comando OU uma lista de treinos em batelada (múltiplas linhas).
+Para listas, interprete cada linha como um treino separado e adicione todos.
+Formatos aceitos nas linhas: "dia DD/MM corrida Xkm pace M:SS", "dia DD/MM musculação Xmin", "dia DD/MM ciclismo Xkm velocidade Ykmh", etc.
+Se o ano não estiver especificado, use o ano do mês visualizado.
 
 Responda SOMENTE com JSON válido, sem markdown, sem texto extra:
 {
@@ -497,6 +556,8 @@ Regras:
     }
     save(); renderCal();
     input.value = '';
+    const nameEl = document.getElementById('uploadName');
+    if (nameEl) { nameEl.textContent = ''; nameEl.classList.remove('visible'); }
     setStatus('✓ ' + (res.acao||'feito!'), 'ok');
     if (Notification.permission === 'granted') new Notification('treino atualizado', { body: res.acao||'' });
   } catch(err) {
