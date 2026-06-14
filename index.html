@@ -271,6 +271,38 @@ function dKey(y,m,d) { return `${y}-${String(m+1).padStart(2,'0')}-${String(d).p
 let data = JSON.parse(localStorage.getItem('treinos_raphael') || '{}');
 function save() { try { localStorage.setItem('treinos_raphael', JSON.stringify(data)); } catch(e) {} }
 
+function save() {
+  try { localStorage.setItem('treinos_raphael', JSON.stringify(data)); } catch(e) {}
+  if (window._fbSet) window._fbSet(data);
+}
+import('https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js').then(({ initializeApp }) => {
+  return Promise.all([
+    import('https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js'),
+  ]).then(([{ getDatabase, ref, onValue, set }]) => {
+    const app = initializeApp({
+      apiKey: "AIzaSyBaHMewuyReIt9U72PEIwA7iipg1ZTBIFE",
+      authDomain: "calendario-amelia-2202c.firebaseapp.com",
+      databaseURL: "https://calendario-amelia-2202c-default-rtdb.firebaseio.com",
+      projectId: "calendario-amelia-2202c",
+      storageBucket: "calendario-amelia-2202c.firebasestorage.app",
+      messagingSenderId: "329381802500",
+      appId: "1:329381802500:web:9e6d1b7c9110478974fb51"
+    });
+    const db = getDatabase(app);
+    const treinosRef = ref(db, 'treinos');
+
+    // Escuta mudanças em tempo real
+    onValue(treinosRef, (snap) => {
+      data = snap.val() || {};
+      localStorage.setItem('treinos_raphael', JSON.stringify(data));
+      renderCal();
+    });
+
+    // Sobrescreve a função save para gravar no Firebase
+    window._fbSet = (newData) => set(treinosRef, newData);
+  });
+}).catch(e => console.warn('Firebase offline, usando localStorage', e));
+
 function renderStats() {
   let kmC=0, kmB=0, minM=0, cnt=0;
   const dim = new Date(viewYear, viewMonth+1, 0).getDate();
