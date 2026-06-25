@@ -396,10 +396,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
               <option value="4">4+ dias</option>
             </select>
           </div>
-          <div class="perfil-field">
-            <label class="perfil-label">Cadência de pedalada habitual</label>
-            <input class="perfil-input" type="text" id="pCadencia" placeholder="ex: 80rpm" style="width:100%"/>
-          </div>
+
         </div>
       </div>
     </div>
@@ -438,6 +435,48 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
         </div>
       </div>
     </div>
+    <div class="perfil-divider"><i class="ti ti-heart-rate-monitor" style="color:#C0392B"></i> zonas de frequência cardíaca</div>
+    <div style="background:var(--bg2);border-radius:var(--radius);padding:12px;border:0.5px solid var(--border);margin-bottom:1rem">
+      <p style="font-size:11px;color:var(--text2);margin-bottom:10px">Preencha com seus valores reais (teste de esforço, medição por relógio GPS, etc). Deixe em branco para usar o cálculo automático pela idade.</p>
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px">
+        <div class="perfil-field">
+          <label class="perfil-label" style="color:#3498DB">Z1 — Recuperação</label>
+          <input class="perfil-input" type="text" id="pZ1" placeholder="ex: &lt;120"/>
+          <span style="font-size:9px;color:var(--text3)">muito leve</span>
+        </div>
+        <div class="perfil-field">
+          <label class="perfil-label" style="color:#27AE60">Z2 — Base aeróbica</label>
+          <input class="perfil-input" type="text" id="pZ2" placeholder="ex: 120–140"/>
+          <span style="font-size:9px;color:var(--text3)">fácil / longa</span>
+        </div>
+        <div class="perfil-field">
+          <label class="perfil-label" style="color:#F39C12">Z3 — Aeróbico</label>
+          <input class="perfil-input" type="text" id="pZ3" placeholder="ex: 140–155"/>
+          <span style="font-size:9px;color:var(--text3)">moderado</span>
+        </div>
+        <div class="perfil-field">
+          <label class="perfil-label" style="color:#E67E22">Z4 — Limiar</label>
+          <input class="perfil-input" type="text" id="pZ4" placeholder="ex: 155–170"/>
+          <span style="font-size:9px;color:var(--text3)">intenso / tempo</span>
+        </div>
+        <div class="perfil-field">
+          <label class="perfil-label" style="color:#C0392B">Z5 — VO2 Máx</label>
+          <input class="perfil-input" type="text" id="pZ5" placeholder="ex: &gt;170"/>
+          <span style="font-size:9px;color:var(--text3)">máximo / sprint</span>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px">
+        <div class="perfil-field">
+          <label class="perfil-label">FC de repouso (bpm)</label>
+          <input class="perfil-input" type="number" id="pFcRepouso" placeholder="ex: 52"/>
+        </div>
+        <div class="perfil-field">
+          <label class="perfil-label">FC máxima (bpm)</label>
+          <input class="perfil-input" type="number" id="pFcMax" placeholder="ex: 185"/>
+        </div>
+      </div>
+    </div>
+
     <div style="margin-top:1rem;display:flex;gap:8px">
       <button class="cmd-btn" onclick="salvarPerfil()"><i class="ti ti-device-floppy"></i> salvar perfil</button>
     </div>
@@ -525,9 +564,17 @@ function perfilTexto(){
   const imc=(perfil.peso&&perfil.altura)?((perfil.peso/((perfil.altura/100)**2)).toFixed(1)):null;
   let txt=`Atleta: ${perfil.idade||'?'} anos, ${perfil.peso||'?'}kg, ${perfil.altura||'?'}cm`;
   if(imc)txt+=`, IMC ${imc}`;
-  if(fc)txt+=`, FC máx estimada ${fc}bpm (zonas: Z1<${Math.round(fc*.6)}, Z2=${Math.round(fc*.6)}-${Math.round(fc*.7)}, Z3=${Math.round(fc*.7)}-${Math.round(fc*.8)}, Z4=${Math.round(fc*.8)}-${Math.round(fc*.9)}, Z5>${Math.round(fc*.9)})`;
+  const fcMax = perfil.fcMax ? parseInt(perfil.fcMax) : fc;
+  const fcRep = perfil.fcRepouso ? parseInt(perfil.fcRepouso) : null;
+  if(fcMax) txt+=`, FC máx: ${fcMax}bpm${fcRep?', FC repouso: '+fcRep+'bpm':''}`;
+  if(perfil.z1||perfil.z2||perfil.z3||perfil.z4||perfil.z5){
+    txt+=`. Zonas FC (definidas pelo usuário): Z1=${perfil.z1||'?'}, Z2=${perfil.z2||'?'}, Z3=${perfil.z3||'?'}, Z4=${perfil.z4||'?'}, Z5=${perfil.z5||'?'}`;
+  } else if(fcMax) {
+    const z1=Math.round(fcMax*.6),z2=Math.round(fcMax*.7),z3=Math.round(fcMax*.8),z4=Math.round(fcMax*.9);
+    txt+=`. Zonas FC (calculadas): Z1<${z1}, Z2=${z1}-${z2}, Z3=${z2}-${z3}, Z4=${z3}-${z4}, Z5>${z4}`;
+  }
   if(perfil.nivelRun){txt+=`. CORRIDA: nível ${perfil.nivelRun}`;if(perfil.paceAtual)txt+=`, pace atual ${perfil.paceAtual}/km`;if(perfil.objetivoRun)txt+=`, objetivo: ${perfil.objetivoRun}`;if(perfil.diasRun)txt+=`, ${perfil.diasRun}x/semana`;if(perfil.temposRun)txt+=`, tempos: ${perfil.temposRun}`;if(perfil.lesoesRun)txt+=`, restrições: ${perfil.lesoesRun}`;}
-  if(perfil.nivelBike){txt+=`. CICLISMO SPEED: distância habitual ${perfil.nivelBike}`;if(perfil.velAtual)txt+=`, velocidade média ${perfil.velAtual}`;if(perfil.objetivoBike)txt+=`, objetivo: ${perfil.objetivoBike}`;if(perfil.terrenoBike)txt+=`, terreno: ${perfil.terrenoBike}`;if(perfil.diasBike)txt+=`, ${perfil.diasBike}x/semana`;if(perfil.cadencia)txt+=`, cadência ${perfil.cadencia}`;}
+  if(perfil.nivelBike){txt+=`. CICLISMO SPEED: distância habitual ${perfil.nivelBike}`;if(perfil.velAtual)txt+=`, velocidade média ${perfil.velAtual}`;if(perfil.objetivoBike)txt+=`, objetivo: ${perfil.objetivoBike}`;if(perfil.terrenoBike)txt+=`, terreno: ${perfil.terrenoBike}`;if(perfil.diasBike)txt+=`, ${perfil.diasBike}x/semana`;}
   if(perfil.nivelGym){txt+=`. ACADEMIA: ${perfil.nivelGym}`;if(perfil.objetivoGym)txt+=`, objetivo: ${perfil.objetivoGym}`;if(perfil.diasGym)txt+=`, ${perfil.diasGym}x/semana`;if(perfil.lesoesGym)txt+=`, restrições: ${perfil.lesoesGym}`;}
   return txt;
 }
@@ -550,9 +597,11 @@ function loadPerfilUI(){
   sv('pTemposRun',perfil.temposRun);sv('pLesoesRun',perfil.lesoesRun);
   sv('pNivelBike',perfil.nivelBike);sv('pObjetivoBike',perfil.objetivoBike);
   sv('pVelAtual',perfil.velAtual);sv('pTerrenoBike',perfil.terrenoBike);
-  sv('pDiasBike',perfil.diasBike);sv('pCadencia',perfil.cadencia);
+  sv('pDiasBike',perfil.diasBike);
   sv('pNivelGym',perfil.nivelGym);sv('pDiasGym',perfil.diasGym);
   sv('pObjetivoGym',perfil.objetivoGym);sv('pLesoesGym',perfil.lesoesGym);
+  sv('pZ1',perfil.z1);sv('pZ2',perfil.z2);sv('pZ3',perfil.z3);sv('pZ4',perfil.z4);sv('pZ5',perfil.z5);
+  sv('pFcRepouso',perfil.fcRepouso);sv('pFcMax',perfil.fcMax);
 }
 
 function salvarPerfil(){
@@ -562,8 +611,9 @@ function salvarPerfil(){
     nivelRun:gv('pNivelRun'),objetivoRun:gv('pObjetivoRun'),paceAtual:gv('pPaceAtual'),
     diasRun:gv('pDiasRun'),temposRun:gv('pTemposRun'),lesoesRun:gv('pLesoesRun'),
     nivelBike:gv('pNivelBike'),objetivoBike:gv('pObjetivoBike'),velAtual:gv('pVelAtual'),
-    terrenoBike:gv('pTerrenoBike'),diasBike:gv('pDiasBike'),cadencia:gv('pCadencia'),
+    terrenoBike:gv('pTerrenoBike'),diasBike:gv('pDiasBike'),
     nivelGym:gv('pNivelGym'),diasGym:gv('pDiasGym'),objetivoGym:gv('pObjetivoGym'),lesoesGym:gv('pLesoesGym'),
+    z1:gv('pZ1'),z2:gv('pZ2'),z3:gv('pZ3'),z4:gv('pZ4'),z5:gv('pZ5'),fcRepouso:gv('pFcRepouso'),fcMax:gv('pFcMax'),
   };
   savePerfil();updateResumos();
   const el=document.getElementById('perfilStatus');el.textContent='✓ Perfil salvo!';el.className='perfil-status ok';
