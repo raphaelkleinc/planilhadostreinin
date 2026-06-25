@@ -60,6 +60,7 @@
   .day-num{font-size:11px;color:var(--text2);font-weight:500;margin-bottom:3px;display:flex;align-items:center;gap:3px}
   .day-cell.today .day-num{color:var(--purple);font-weight:700}
   .amelia-dot{width:5px;height:5px;border-radius:50%;background:#D4537E;display:inline-block}
+  .day-cell.overridden{outline:2px dashed #f59e0b;outline-offset:-2px}
   .tag{font-size:9px;padding:2px 4px;border-radius:3px;margin-bottom:2px;line-height:1.3;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .corrida-p{background:#E6F1FB;color:#0C447C}.ciclismo-p{background:#EAF3DE;color:#27500A}
   .musculacao-p{background:#EEEDFE;color:#3C3489}.descanso-p{background:#F1EFE8;color:#444441}
@@ -294,11 +295,13 @@ const API_URL = 'https://planilhadostreinin.vercel.app/api/claude';
 const REFERENCE_MONDAY = new Date(2026,5,9); REFERENCE_MONDAY.setHours(0,0,0,0);
 
 function getWeekMonday(date){const d=new Date(date);const day=d.getDay();d.setDate(d.getDate()+(day===0?-6:1-day));d.setHours(0,0,0,0);return d;}
-function isAmeliaDay(date){const wm=getWeekMonday(date);const dw=Math.round((wm-REFERENCE_MONDAY)/(7*24*3600*1000));const isA=dw%2===0;const dow=date.getDay();if(isA){return!(dow===3||dow===4);}else{return dow===3||dow===4;}}
+function isAmeliaDefault(date){const wm=getWeekMonday(date);const dw=Math.round((wm-REFERENCE_MONDAY)/(7*24*3600*1000));const isA=dw%2===0;const dow=date.getDay();if(isA){return!(dow===3||dow===4);}else{return dow===3||dow===4;}}
+function isAmeliaDay(date){const k=dKey(date.getFullYear(),date.getMonth(),date.getDate());if(guardaOverrides[k]!==undefined)return guardaOverrides[k]==='r';return isAmeliaDefault(date);}
 function dKey(y,m,d){return`${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`}
 
 let data = JSON.parse(localStorage.getItem('treinos_raphael')||'{}');
 let fichas = JSON.parse(localStorage.getItem('fichas_raphael')||'[]');
+let guardaOverrides = JSON.parse(localStorage.getItem('guarda_overrides')||'{}');
 
 function save(){try{localStorage.setItem('treinos_raphael',JSON.stringify(data));}catch(e){}if(window._fbSet)window._fbSet(data);}
 function saveFichas(){try{localStorage.setItem('fichas_raphael',JSON.stringify(fichas));}catch(e){}if(window._fbSetFichas)window._fbSetFichas(fichas);}
@@ -310,8 +313,11 @@ import('https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js').then(({init
     const db=getDatabase(app);
     onValue(ref(db,'treinos'),(snap)=>{data=snap.val()||{};localStorage.setItem('treinos_raphael',JSON.stringify(data));renderCal();});
     onValue(ref(db,'fichas'),(snap)=>{fichas=snap.val()||[];localStorage.setItem('fichas_raphael',JSON.stringify(fichas));renderFichas();});
+    onValue(ref(db,'guardaOverrides'),(snap)=>{guardaOverrides=snap.val()||{};localStorage.setItem('guarda_overrides',JSON.stringify(guardaOverrides));renderCal();});
     window._fbSet=(d)=>set(ref(db,'treinos'),d);
     window._fbSetFichas=(f)=>set(ref(db,'fichas'),f);
+    window._fbSetOverride=(k,v)=>set(ref(db,'guardaOverrides/'+k),v);
+    window._fbRemoveOverride=(k)=>set(ref(db,'guardaOverrides/'+k),null);
   });
 }).catch(e=>console.warn('Firebase offline',e));
 
@@ -350,7 +356,8 @@ function renderCal(){
     const amelia=isAmeliaDay(dt);
     const isToday=dt.getTime()===TODAY.getTime();
     const c=document.createElement('div');
-    c.className='day-cell'+(isToday?' today':'')+(amelia?' amelia':'');
+    const isOverridden=guardaOverrides[dKey(viewYear,viewMonth,d)]!==undefined;
+    c.className='day-cell'+(isToday?' today':'')+(amelia?' amelia':'')+(isOverridden?' overridden':'');
     const k=dKey(viewYear,viewMonth,d);
     const dd=data[k]||{};
     const pl=dd.planejado||[];const re=dd.realizado||[];
@@ -367,14 +374,47 @@ function changeMonth(dir){viewMonth+=dir;if(viewMonth>11){viewMonth=0;viewYear++
 
 function openModal(k,d,dt,amelia){
   const dd=data[k]||{};const pl=dd.planejado||[];const re=dd.realizado||[];
-  if(!pl.length&&!re.length)return;
+  // abre mesmo sem treinos, para permitir editar guarda
   document.getElementById('modalTitle').textContent=`${d} de ${MESES[viewMonth]} · ${DIAS_PT[dt.getDay()]}`;
   let html='';
   if(amelia)html+=`<div class="amelia-badge"><i class="ti ti-heart" style="font-size:12px"></i> dia com Amélia</div>`;
   if(pl.length){html+='<div class="modal-sec">planejado</div>';pl.forEach((t,i)=>{html+=`<div class="modal-item"><span>${t.label}</span><button class="del-btn" onclick="delPlan('${k}',${i})">×</button></div>`;});}
   if(re.length){html+='<div class="modal-sec">realizado</div>';re.forEach((r,i)=>{let info='';if(r.tipo==='corrida')info=`${r.distancia||'?'}km · pace ${r.pace||'?'}`;if(r.tipo==='ciclismo')info=`${r.distancia||'?'}km · ${r.velocidade||'?'}km/h`;if(r.tipo==='musculacao')info=`${r.tempo||'?'} min`;html+=`<div class="modal-item"><span><i class="ti ti-check" style="font-size:12px;color:#3B6D11;margin-right:4px"></i>${r.tipo}</span><span class="modal-info">${info}</span><button class="del-btn" onclick="delReal('${k}',${i})">×</button></div>`;});}
+  // Toggle guarda
+  const ameliaNow = isAmeliaDay(dt);
+  const overrideKey = k;
+  const isOverridden = guardaOverrides[k] !== undefined;
+  html += `<div class="modal-sec">guarda da amélia</div>
+  <div style="display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap">
+    <button onclick="setGuardaOverride('${overrideKey}','r')" style="flex:1;padding:7px;border-radius:var(--radius);border:1.5px solid ${ameliaNow?'#D4537E':'var(--border)'};background:${ameliaNow?'var(--pink-bg)':'transparent'};color:${ameliaNow?'var(--pink-text)':'var(--text2)'};cursor:pointer;font-size:12px;font-family:inherit">
+      👧 com Amélia
+    </button>
+    <button onclick="setGuardaOverride('${overrideKey}','y')" style="flex:1;padding:7px;border-radius:var(--radius);border:1.5px solid ${!ameliaNow?'#534AB7':'var(--border)'};background:${!ameliaNow?'#EEEDFE':'transparent'};color:${!ameliaNow?'#3C3489':'var(--text2)'};cursor:pointer;font-size:12px;font-family:inherit">
+      👤 sem Amélia
+    </button>
+  </div>
+  ${isOverridden?`<button onclick="resetGuarda('${overrideKey}')" style="width:100%;margin-bottom:8px;padding:5px;border-radius:var(--radius);border:0.5px dashed var(--border2);background:transparent;color:var(--text3);cursor:pointer;font-size:11px;font-family:inherit">↺ voltar ao padrão automático</button>`:''}`;
   document.getElementById('modalContent').innerHTML=html;
   document.getElementById('overlay').classList.add('open');
+}
+function setGuardaOverride(k,val){
+  guardaOverrides[k]=val;
+  localStorage.setItem('guarda_overrides',JSON.stringify(guardaOverrides));
+  if(window._fbSetOverride)window._fbSetOverride(k,val);
+  renderCal();
+  // reabrir modal com dados atualizados
+  const parts=k.split('-');
+  const dt=new Date(+parts[0],+parts[1]-1,+parts[2]);
+  openModal(k,+parts[2],dt,isAmeliaDay(dt));
+}
+function resetGuarda(k){
+  delete guardaOverrides[k];
+  localStorage.setItem('guarda_overrides',JSON.stringify(guardaOverrides));
+  if(window._fbRemoveOverride)window._fbRemoveOverride(k);
+  renderCal();
+  const parts=k.split('-');
+  const dt=new Date(+parts[0],+parts[1]-1,+parts[2]);
+  openModal(k,+parts[2],dt,isAmeliaDay(dt));
 }
 function delPlan(k,i){if(data[k]){data[k].planejado.splice(i,1);save();renderCal();closeModal();}}
 function delReal(k,i){if(data[k]){data[k].realizado.splice(i,1);save();renderCal();closeModal();}}
@@ -445,21 +485,29 @@ Histórico recente (últimas 2 semanas): ${hist.length?hist.join('\n'):'sem hist
 Crie entre 2 a 6 fichas de treino (cards) de academia conforme a divisão mais adequada ao perfil.
 Considere o histórico para não repetir grupos musculares recentes.
 
-Responda SOMENTE com JSON válido sem markdown:
-{"fichas":[{"titulo":"Treino A – Peito e Tríceps","badge":"A","exercicios":[{"nome":"Supino Reto","series":4,"reps":"8-12","obs":"descanso 90s, cadência 2-1-2"},{"nome":"Crucifixo Inclinado","series":3,"reps":"10-12","obs":"amplitude máxima"}]}]}
+Responda SOMENTE com JSON. Sem markdown, sem texto antes ou depois, sem comentários, sem caracteres especiais fora das strings.
+Formato exato:
+{"fichas":[{"titulo":"Treino A - Peito e Triceps","badge":"A","exercicios":[{"nome":"Supino Reto","series":4,"reps":"8-12","obs":"descanso 90s"},{"nome":"Crucifixo Inclinado","series":3,"reps":"10-12","obs":"amplitude maxima"}]}]}
 
-Regras:
-- badge: letra maiúscula A, B, C, D... ou nome curto como "Push", "Pull", "Legs"
-- series: número inteiro
-- reps: string como "8-12" ou "10" ou "até falhar"
-- obs: dica técnica curta (descanso, cadência, execução)
-- mínimo 5, máximo 10 exercícios por ficha
-- exercícios variados e coerentes com o objetivo`;
+Regras criticas:
+- Use APENAS aspas duplas no JSON
+- Nao use acentos, cedilha ou caracteres especiais nas chaves do JSON (apenas nos valores string)
+- badge: letra maiuscula A, B, C ou palavra curta sem acento
+- series: numero inteiro (ex: 3)
+- reps: string simples (ex: "8-12" ou "10" ou "ate falhar")
+- obs: dica curta sem aspas internas
+- minimo 5, maximo 8 exercicios por ficha
+- exercicios variadoss e coerentes com o objetivo`;
 
   try{
     const resp=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:[{role:'user',content:prompt}]})});
     const d=await resp.json();if(d.error)throw new Error(d.error.message);
-    const txt=d.content.map(c=>c.text||'').join('').trim().replace(/```json|```/g,'').trim();
+    let txt=d.content.map(c=>c.text||'').join('').trim();
+    // limpar markdown e texto fora do JSON
+    txt=txt.replace(/```json|```/g,'').trim();
+    const jsonStart=txt.indexOf('{');const jsonEnd=txt.lastIndexOf('}');
+    if(jsonStart===-1||jsonEnd===-1)throw new Error('JSON nao encontrado na resposta');
+    txt=txt.substring(jsonStart,jsonEnd+1);
     const res=JSON.parse(txt);
     fichas=[...fichas,...res.fichas.map(f=>({...f,id:Date.now()+Math.random(),cargas:{}}))];
     saveFichas();renderFichas();
