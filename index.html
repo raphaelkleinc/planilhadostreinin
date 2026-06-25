@@ -6,195 +6,190 @@
 <title>meus treinos</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.x/dist/tabler-icons.min.css"/>
 <style>
-  :root {
-    --bg:#ffffff;--bg2:#f5f5f3;--bg3:#eeece8;--text:#1a1a1a;--text2:#666660;--text3:#999990;
-    --border:rgba(0,0,0,0.12);--border2:rgba(0,0,0,0.22);--radius:8px;--radius-lg:12px;
-    --purple:#534AB7;--purple-dark:#3C3489;--pink-bg:#FBEAF0;--pink-text:#72243E;--pink-border:#ED93B1;
-  }
-  @media(prefers-color-scheme:dark){
-    :root{--bg:#1a1a1a;--bg2:#242424;--bg3:#2e2e2e;--text:#f0f0f0;--text2:#aaaaaa;--text3:#666660;
-    --border:rgba(255,255,255,0.12);--border2:rgba(255,255,255,0.22);--pink-bg:#3a1a28;--pink-text:#F4C0D1;--pink-border:#993556;}
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg3);color:var(--text);min-height:100vh;padding:1rem}
-  .app{max-width:800px;margin:0 auto}
+:root{--bg:#ffffff;--bg2:#f5f5f3;--bg3:#eeece8;--text:#1a1a1a;--text2:#666660;--text3:#999990;--border:rgba(0,0,0,0.12);--border2:rgba(0,0,0,0.22);--radius:8px;--radius-lg:12px;--purple:#534AB7;--purple-dark:#3C3489;--pink-bg:#FBEAF0;--pink-text:#72243E;--pink-border:#ED93B1;--run:#1A6EB5;--run-bg:#E6F1FB;--bike:#2D7A2D;--bike-bg:#E8F5E8;--gym:#7C3FA0;--gym-bg:#F3EAFA;}
+@media(prefers-color-scheme:dark){:root{--bg:#1a1a1a;--bg2:#242424;--bg3:#2e2e2e;--text:#f0f0f0;--text2:#aaaaaa;--text3:#666660;--border:rgba(255,255,255,0.12);--border2:rgba(255,255,255,0.22);--pink-bg:#3a1a28;--pink-text:#F4C0D1;--pink-border:#993556;--run-bg:#0c2a44;--bike-bg:#1a2e0a;--gym-bg:#2a1a3a;}}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg3);color:var(--text);min-height:100vh;padding:1rem}
+.app{max-width:820px;margin:0 auto}
+.tabs{display:flex;gap:3px;margin-bottom:1rem;background:var(--bg2);border-radius:var(--radius-lg);padding:4px;border:0.5px solid var(--border)}
+.tab{flex:1;padding:7px 4px;text-align:center;border-radius:var(--radius);cursor:pointer;font-size:12px;color:var(--text2);border:none;background:transparent;display:flex;align-items:center;justify-content:center;gap:4px;white-space:nowrap}
+.tab.active{background:var(--bg);color:var(--text);font-weight:500;box-shadow:0 1px 3px rgba(0,0,0,0.1)}
+.tab-panel{display:none}.tab-panel.active{display:block}
 
-  /* TABS */
-  .tabs{display:flex;gap:4px;margin-bottom:1rem;background:var(--bg2);border-radius:var(--radius-lg);padding:4px;border:0.5px solid var(--border)}
-  .tab{flex:1;padding:8px;text-align:center;border-radius:var(--radius);cursor:pointer;font-size:13px;color:var(--text2);border:none;background:transparent;display:flex;align-items:center;justify-content:center;gap:5px}
-  .tab.active{background:var(--bg);color:var(--text);font-weight:500;box-shadow:0 1px 3px rgba(0,0,0,0.1)}
-  .tab-panel{display:none}
-  .tab-panel.active{display:block}
+/* HEADER CAL */
+.header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;flex-wrap:wrap;gap:8px}
+.nav-row{display:flex;align-items:center;gap:6px}
+.nav-btn{background:var(--bg);border:0.5px solid var(--border2);border-radius:var(--radius);padding:5px 10px;cursor:pointer;font-size:13px;color:var(--text)}
+.nav-btn:hover{background:var(--bg2)}
+.month-lbl{font-size:14px;font-weight:500;min-width:130px;text-align:center}
+.pdf-btn{background:transparent;border:0.5px solid var(--border2);border-radius:var(--radius);padding:6px 11px;cursor:pointer;font-size:13px;color:var(--text);display:flex;align-items:center;gap:5px}
+.pdf-btn:hover{background:var(--bg2)}
+.legend{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:1rem;align-items:center}
+.leg{display:flex;align-items:center;gap:4px;font-size:11px;color:var(--text2)}
+.leg-dot{width:9px;height:9px;border-radius:50%}
+.leg-sq{width:9px;height:9px;border-radius:2px}
+.stats-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:1rem}
+.stat-card{background:var(--bg);border-radius:var(--radius);padding:10px 12px;border:0.5px solid var(--border)}
+.stat-lbl{font-size:11px;color:var(--text2);margin-bottom:3px}
+.stat-val{font-size:22px;font-weight:500}
+.stat-sub{font-size:10px;color:var(--text3)}
+.cal-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px;margin-bottom:1rem}
+.day-hdr{text-align:center;font-size:10px;color:var(--text3);padding:3px 0;font-weight:500;text-transform:uppercase;letter-spacing:.05em}
+.day-cell{min-height:80px;background:var(--bg);border:0.5px solid var(--border);border-radius:var(--radius);padding:5px;cursor:pointer;transition:border-color .12s;overflow:hidden}
+.day-cell:hover{border-color:var(--border2)}
+.day-cell.other{opacity:.3;cursor:default}
+.day-cell.today{border-color:var(--purple);border-width:1.5px}
+.day-cell.amelia{background:var(--pink-bg)}
+.day-cell.overridden{outline:2px dashed #f59e0b;outline-offset:-2px}
+.day-num{font-size:11px;color:var(--text2);font-weight:500;margin-bottom:3px;display:flex;align-items:center;gap:3px}
+.day-cell.today .day-num{color:var(--purple);font-weight:700}
+.amelia-dot{width:5px;height:5px;border-radius:50%;background:#D4537E;display:inline-block}
+.tag{font-size:9px;padding:2px 4px;border-radius:3px;margin-bottom:2px;line-height:1.3;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.corrida-p{background:#E6F1FB;color:#0C447C}.ciclismo-p{background:#EAF3DE;color:#27500A}
+.musculacao-p{background:#EEEDFE;color:#3C3489}.descanso-p{background:#F1EFE8;color:#444441}
+.corrida-r{background:#B5D4F4;color:#042C53}.ciclismo-r{background:#C0DD97;color:#173404}.musculacao-r{background:#CECBF6;color:#26215C}
+@media(prefers-color-scheme:dark){
+.corrida-p{background:#0c2a44;color:#85B7EB}.ciclismo-p{background:#1a2e0a;color:#97C459}
+.musculacao-p{background:#1e1a44;color:#AFA9EC}.descanso-p{background:#2c2c2a;color:#B4B2A9}
+.corrida-r{background:#0C447C;color:#B5D4F4}.ciclismo-r{background:#27500A;color:#C0DD97}.musculacao-r{background:#3C3489;color:#CECBF6}}
 
-  /* HEADER */
-  .header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;flex-wrap:wrap;gap:8px}
-  .header-title{font-size:18px;font-weight:500;display:flex;align-items:center;gap:8px}
-  .nav-row{display:flex;align-items:center;gap:6px}
-  .nav-btn{background:var(--bg);border:0.5px solid var(--border2);border-radius:var(--radius);padding:5px 10px;cursor:pointer;font-size:13px;color:var(--text)}
-  .nav-btn:hover{background:var(--bg2)}
-  .month-lbl{font-size:14px;font-weight:500;min-width:130px;text-align:center}
-  .pdf-btn{background:transparent;border:0.5px solid var(--border2);border-radius:var(--radius);padding:6px 11px;cursor:pointer;font-size:13px;color:var(--text);display:flex;align-items:center;gap:5px}
-  .pdf-btn:hover{background:var(--bg2)}
+/* CMD */
+.cmd-area{background:var(--bg2);border-radius:var(--radius-lg);padding:1rem;border:0.5px solid var(--border)}
+.cmd-lbl{font-size:12px;color:var(--text2);margin-bottom:8px;display:flex;align-items:center;justify-content:space-between}
+.cmd-row{display:flex;gap:8px;align-items:flex-end}
+.cmd-input{flex:1;border:0.5px solid var(--border2);border-radius:var(--radius);padding:9px 12px;font-size:13px;font-family:inherit;background:var(--bg);color:var(--text);resize:vertical;min-height:44px;max-height:220px;line-height:1.5}
+.cmd-input:focus{outline:none;border-color:var(--purple);box-shadow:0 0 0 2px rgba(83,74,183,.15)}
+.cmd-btn{background:var(--purple);color:white;border:none;border-radius:var(--radius);padding:9px 16px;font-size:13px;cursor:pointer;white-space:nowrap;display:flex;align-items:center;gap:5px;align-self:flex-end}
+.cmd-btn:hover{background:var(--purple-dark)}.cmd-btn:disabled{opacity:.5;cursor:not-allowed}
+.upload-btn{background:transparent;border:0.5px dashed var(--border2);border-radius:var(--radius);padding:4px 9px;font-size:11px;color:var(--text2);cursor:pointer;display:flex;align-items:center;gap:4px}
+.upload-btn:hover{border-color:var(--purple);color:var(--purple)}
+.upload-name{font-size:11px;color:var(--text2);margin-top:5px;display:none}
+.upload-name.visible{display:block}
+#fileInput{display:none}
+.sugs{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}
+.sug{font-size:10px;background:var(--bg);border:0.5px solid var(--border);border-radius:var(--radius);padding:3px 8px;cursor:pointer;color:var(--text2)}
+.sug:hover{color:var(--text);border-color:var(--border2)}
+.status{margin-top:7px;font-size:12px;min-height:18px;color:var(--text2)}
+.status.ok{color:#3B6D11}.status.err{color:#A32D2D}.status.loading{color:var(--purple)}
 
-  /* LEGEND */
-  .legend{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:1rem;align-items:center}
-  .leg{display:flex;align-items:center;gap:4px;font-size:11px;color:var(--text2)}
-  .leg-dot{width:9px;height:9px;border-radius:50%}
-  .leg-sq{width:9px;height:9px;border-radius:2px}
+/* COACH TABS */
+.coach-header{border-radius:var(--radius-lg);padding:1rem;border:0.5px solid var(--border);margin-bottom:1rem}
+.coach-header.run{background:var(--run-bg);border-color:var(--run)}
+.coach-header.bike{background:var(--bike-bg);border-color:var(--bike)}
+.coach-header.gym{background:var(--gym-bg);border-color:var(--gym)}
+.coach-title{font-size:15px;font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:7px}
+.coach-title.run{color:var(--run)}.coach-title.bike{color:var(--bike)}.coach-title.gym{color:var(--gym)}
+.coach-perfil-resumo{font-size:12px;color:var(--text2);margin-bottom:10px;padding:7px 10px;background:var(--bg);border-radius:var(--radius);border:0.5px solid var(--border)}
+.coach-objetivo{width:100%;border:0.5px solid var(--border2);border-radius:var(--radius);padding:9px 12px;font-size:13px;font-family:inherit;background:var(--bg);color:var(--text);resize:vertical;min-height:60px;line-height:1.5}
+.coach-objetivo:focus{outline:none;border-color:var(--purple)}
+.coach-actions{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+.btn-run{background:var(--run)!important}.btn-bike{background:var(--bike)!important}.btn-gym{background:var(--gym)!important}
+.btn-danger{background:transparent!important;color:#A32D2D!important;border:0.5px solid #A32D2D!important}
+.btn-secondary{background:transparent!important;color:var(--text)!important;border:0.5px solid var(--border2)!important}
+.coach-status{font-size:12px;color:var(--text2);margin-top:6px;min-height:16px}
+.coach-status.ok{color:#3B6D11}.coach-status.err{color:#A32D2D}.coach-status.loading{color:var(--purple)}
 
-  /* STATS */
-  .stats-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:1rem}
-  .stat-card{background:var(--bg);border-radius:var(--radius);padding:10px 12px;border:0.5px solid var(--border)}
-  .stat-lbl{font-size:11px;color:var(--text2);margin-bottom:3px}
-  .stat-val{font-size:22px;font-weight:500}
-  .stat-sub{font-size:10px;color:var(--text3)}
+/* CARDS */
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-bottom:1rem}
+.coach-card{background:var(--bg);border:0.5px solid var(--border);border-radius:var(--radius-lg);overflow:hidden}
+.card-header{padding:12px 14px 8px;border-bottom:0.5px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.card-title{font-size:14px;font-weight:600;display:flex;align-items:center;gap:6px}
+.card-badge{font-size:10px;padding:2px 7px;border-radius:10px;font-weight:600;display:flex;align-items:center;gap:4px}
+.badge-run{background:var(--run-bg);color:var(--run)}.badge-bike{background:var(--bike-bg);color:var(--bike)}.badge-gym{background:var(--gym-bg);color:var(--gym)}
+.card-close{background:none;border:none;cursor:pointer;color:var(--text3);font-size:18px;line-height:1;padding:0 2px}
+.card-close:hover{color:#A32D2D}
+.card-body{padding:10px 14px}
+.card-item{padding:7px 0;border-bottom:0.5px solid var(--border);display:flex;flex-direction:column;gap:3px}
+.card-item:last-child{border-bottom:none}
+.card-item-nome{font-size:13px;font-weight:500}
+.card-item-info{font-size:11px;color:var(--text2)}
+.card-item-obs{font-size:10px;color:var(--text3);font-style:italic}
+.card-carga{display:flex;gap:6px;margin-top:4px;flex-wrap:wrap}
+.carga-input{border:0.5px solid var(--border2);border-radius:5px;padding:3px 7px;font-size:11px;font-family:inherit;background:var(--bg2);color:var(--text);width:75px}
+.carga-input:focus{outline:none;border-color:var(--purple)}
+.carga-lbl{font-size:10px;color:var(--text3);align-self:center}
+.card-footer{padding:10px 14px;border-top:0.5px solid var(--border);display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.add-dia-btn{font-size:11px;padding:5px 10px;border-radius:var(--radius);border:0.5px solid var(--border2);background:transparent;cursor:pointer;color:var(--text2);display:flex;align-items:center;gap:4px}
+.add-dia-btn:hover{background:var(--purple);color:white;border-color:var(--purple)}
+.empty-cards{color:var(--text3);font-size:13px;padding:20px 0}
 
-  /* CALENDAR */
-  .cal-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px;margin-bottom:1rem}
-  .day-hdr{text-align:center;font-size:10px;color:var(--text3);padding:3px 0;font-weight:500;text-transform:uppercase;letter-spacing:.05em}
-  .day-cell{min-height:80px;background:var(--bg);border:0.5px solid var(--border);border-radius:var(--radius);padding:5px;cursor:pointer;transition:border-color .12s;overflow:hidden}
-  .day-cell:hover{border-color:var(--border2)}
-  .day-cell.other{opacity:.3;cursor:default}
-  .day-cell.today{border-color:var(--purple);border-width:1.5px}
-  .day-cell.amelia{background:var(--pink-bg)}
-  .day-num{font-size:11px;color:var(--text2);font-weight:500;margin-bottom:3px;display:flex;align-items:center;gap:3px}
-  .day-cell.today .day-num{color:var(--purple);font-weight:700}
-  .amelia-dot{width:5px;height:5px;border-radius:50%;background:#D4537E;display:inline-block}
-  .day-cell.overridden{outline:2px dashed #f59e0b;outline-offset:-2px}
-  .tag{font-size:9px;padding:2px 4px;border-radius:3px;margin-bottom:2px;line-height:1.3;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .corrida-p{background:#E6F1FB;color:#0C447C}.ciclismo-p{background:#EAF3DE;color:#27500A}
-  .musculacao-p{background:#EEEDFE;color:#3C3489}.descanso-p{background:#F1EFE8;color:#444441}
-  .corrida-r{background:#B5D4F4;color:#042C53}.ciclismo-r{background:#C0DD97;color:#173404}.musculacao-r{background:#CECBF6;color:#26215C}
-  @media(prefers-color-scheme:dark){
-    .corrida-p{background:#0c2a44;color:#85B7EB}.ciclismo-p{background:#1a2e0a;color:#97C459}
-    .musculacao-p{background:#1e1a44;color:#AFA9EC}.descanso-p{background:#2c2c2a;color:#B4B2A9}
-    .corrida-r{background:#0C447C;color:#B5D4F4}.ciclismo-r{background:#27500A;color:#C0DD97}.musculacao-r{background:#3C3489;color:#CECBF6}
-  }
+/* PERFIL */
+.perfil-section{background:var(--bg);border-radius:var(--radius-lg);padding:1.25rem;border:0.5px solid var(--border);margin-bottom:1rem}
+.perfil-title{font-size:15px;font-weight:600;margin-bottom:1rem;display:flex;align-items:center;gap:7px;color:var(--purple)}
+.perfil-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:1rem}
+.perfil-field{display:flex;flex-direction:column;gap:4px}
+.perfil-label{font-size:11px;color:var(--text2);font-weight:500}
+.perfil-input{border:0.5px solid var(--border2);border-radius:var(--radius);padding:8px 10px;font-size:13px;font-family:inherit;background:var(--bg2);color:var(--text)}
+.perfil-input:focus{outline:none;border-color:var(--purple)}
+.perfil-select{border:0.5px solid var(--border2);border-radius:var(--radius);padding:8px 10px;font-size:13px;font-family:inherit;background:var(--bg2);color:var(--text);cursor:pointer}
+.perfil-select:focus{outline:none;border-color:var(--purple)}
+.perfil-divider{font-size:12px;font-weight:600;color:var(--text2);margin:12px 0 8px;padding-bottom:4px;border-bottom:0.5px solid var(--border)}
+.perfil-modalidades{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.modalidade-card{border-radius:var(--radius);padding:10px;border:0.5px solid var(--border)}
+.modalidade-card.run{border-color:var(--run);background:var(--run-bg)}
+.modalidade-card.bike{border-color:var(--bike);background:var(--bike-bg)}
+.modalidade-card.gym{border-color:var(--gym);background:var(--gym-bg)}
+.modalidade-title{font-size:12px;font-weight:600;margin-bottom:6px;display:flex;align-items:center;gap:5px}
+.modalidade-title.run{color:var(--run)}.modalidade-title.bike{color:var(--bike)}.modalidade-title.gym{color:var(--gym)}
+.perfil-status{font-size:12px;margin-top:8px;min-height:16px}
+.perfil-status.ok{color:#3B6D11}.perfil-status.err{color:#A32D2D}
+.perfil-resumo-box{background:var(--bg2);border-radius:var(--radius);padding:10px 12px;font-size:12px;color:var(--text2);margin-top:10px;line-height:1.6;border:0.5px solid var(--border)}
 
-  /* CMD AREA */
-  .cmd-area{background:var(--bg2);border-radius:var(--radius-lg);padding:1rem;border:0.5px solid var(--border)}
-  .cmd-lbl{font-size:12px;color:var(--text2);margin-bottom:8px;display:flex;align-items:center;justify-content:space-between}
-  .cmd-row{display:flex;gap:8px;align-items:flex-end}
-  .cmd-input{flex:1;border:0.5px solid var(--border2);border-radius:var(--radius);padding:9px 12px;font-size:13px;font-family:inherit;background:var(--bg);color:var(--text);resize:vertical;min-height:44px;max-height:220px;line-height:1.5}
-  .cmd-input:focus{outline:none;border-color:var(--purple);box-shadow:0 0 0 2px rgba(83,74,183,.15)}
-  .cmd-btn{background:var(--purple);color:white;border:none;border-radius:var(--radius);padding:9px 16px;font-size:13px;cursor:pointer;white-space:nowrap;display:flex;align-items:center;gap:5px;align-self:flex-end}
-  .cmd-btn:hover{background:var(--purple-dark)}
-  .cmd-btn:disabled{opacity:.5;cursor:not-allowed}
-  .upload-btn{background:transparent;border:0.5px dashed var(--border2);border-radius:var(--radius);padding:4px 9px;font-size:11px;color:var(--text2);cursor:pointer;display:flex;align-items:center;gap:4px}
-  .upload-btn:hover{border-color:var(--purple);color:var(--purple)}
-  .upload-name{font-size:11px;color:var(--text2);margin-top:5px;display:none}
-  .upload-name.visible{display:block}
-  #fileInput{display:none}
-  .sugs{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}
-  .sug{font-size:10px;background:var(--bg);border:0.5px solid var(--border);border-radius:var(--radius);padding:3px 8px;cursor:pointer;color:var(--text2)}
-  .sug:hover{color:var(--text);border-color:var(--border2)}
-  .status{margin-top:7px;font-size:12px;min-height:18px;color:var(--text2)}
-  .status.ok{color:#3B6D11}.status.err{color:#A32D2D}.status.loading{color:var(--purple)}
+/* MODAL */
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:100;align-items:center;justify-content:center;padding:1rem}
+.overlay.open{display:flex}
+.modal{background:var(--bg);border-radius:var(--radius-lg);padding:1.25rem;width:100%;max-width:380px;border:0.5px solid var(--border);max-height:90vh;overflow-y:auto}
+.modal-title{font-size:15px;font-weight:500;margin-bottom:12px}
+.modal-sec{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin:10px 0 5px}
+.modal-item{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:0.5px solid var(--border);font-size:13px}
+.modal-item:last-of-type{border-bottom:none}
+.modal-info{font-size:11px;color:var(--text2)}
+.del-btn{background:none;border:none;cursor:pointer;color:var(--text3);font-size:16px;padding:2px 6px;line-height:1}
+.del-btn:hover{color:#A32D2D}
+.modal-close{margin-top:12px;width:100%;background:transparent;border:0.5px solid var(--border2);border-radius:var(--radius);padding:8px;cursor:pointer;font-size:13px;color:var(--text)}
+.modal-close:hover{background:var(--bg2)}
+.amelia-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;background:var(--pink-bg);color:var(--pink-text);border:0.5px solid var(--pink-border);border-radius:var(--radius);padding:3px 8px;margin-bottom:10px}
+.day-picker{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin:10px 0}
+.dp-cell{padding:6px 4px;text-align:center;font-size:12px;border-radius:var(--radius);cursor:pointer;border:0.5px solid var(--border)}
+.dp-cell:hover{background:var(--purple);color:white;border-color:var(--purple)}
+.dp-cell.empty{opacity:.3;cursor:default}
 
-  /* FICHAS TAB */
-  .fichas-header{background:var(--bg2);border-radius:var(--radius-lg);padding:1rem;border:0.5px solid var(--border);margin-bottom:1rem}
-  .fichas-header-title{font-size:13px;font-weight:500;margin-bottom:8px;display:flex;align-items:center;gap:6px}
-  .fichas-perfil{width:100%;border:0.5px solid var(--border2);border-radius:var(--radius);padding:9px 12px;font-size:13px;font-family:inherit;background:var(--bg);color:var(--text);resize:vertical;min-height:70px;line-height:1.5}
-  .fichas-perfil:focus{outline:none;border-color:var(--purple)}
-  .fichas-actions{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
-  .fichas-status{font-size:12px;color:var(--text2);margin-top:6px;min-height:16px}
-  .fichas-status.ok{color:#3B6D11}.fichas-status.err{color:#A32D2D}.fichas-status.loading{color:var(--purple)}
-
-  .fichas-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-bottom:1rem}
-  .ficha-card{background:var(--bg);border:0.5px solid var(--border);border-radius:var(--radius-lg);overflow:hidden}
-  .ficha-card-header{padding:12px 14px 8px;border-bottom:0.5px solid var(--border);display:flex;justify-content:space-between;align-items:center}
-  .ficha-card-title{font-size:14px;font-weight:600;display:flex;align-items:center;gap:6px}
-  .ficha-card-badge{font-size:10px;padding:2px 7px;border-radius:10px;font-weight:600}
-  .badge-a{background:#E6F1FB;color:#0C447C}.badge-b{background:#EAF3DE;color:#27500A}
-  .badge-c{background:#EEEDFE;color:#3C3489}.badge-d{background:#FEF3E6;color:#7A3B06}
-  .badge-e{background:#FEE6E6;color:#7A0606}.badge-f{background:#E6FEF3;color:#065A2F}
-  .ficha-exercicios{padding:10px 14px}
-  .ficha-ex{padding:7px 0;border-bottom:0.5px solid var(--border);display:flex;flex-direction:column;gap:3px}
-  .ficha-ex:last-child{border-bottom:none}
-  .ficha-ex-nome{font-size:13px;font-weight:500}
-  .ficha-ex-info{font-size:11px;color:var(--text2)}
-  .ficha-ex-obs{font-size:10px;color:var(--text3);font-style:italic}
-  .ficha-ex-carga{display:flex;gap:6px;margin-top:4px}
-  .carga-input{border:0.5px solid var(--border2);border-radius:5px;padding:3px 7px;font-size:11px;font-family:inherit;background:var(--bg2);color:var(--text);width:70px}
-  .carga-input:focus{outline:none;border-color:var(--purple)}
-  .carga-lbl{font-size:10px;color:var(--text3);align-self:center}
-  .ficha-card-footer{padding:10px 14px;border-top:0.5px solid var(--border);display:flex;gap:6px;flex-wrap:wrap}
-  .add-dia-btn{font-size:11px;padding:5px 10px;border-radius:var(--radius);border:0.5px solid var(--border2);background:transparent;cursor:pointer;color:var(--text2);display:flex;align-items:center;gap:4px}
-  .add-dia-btn:hover{background:var(--purple);color:white;border-color:var(--purple)}
-  .del-ficha-btn{font-size:11px;padding:5px 8px;border-radius:var(--radius);border:0.5px solid var(--border2);background:transparent;cursor:pointer;color:var(--text3);margin-left:auto}
-  .del-ficha-btn:hover{color:#A32D2D;border-color:#A32D2D}
-
-  /* MODAL */
-  .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:100;align-items:center;justify-content:center;padding:1rem}
-  .overlay.open{display:flex}
-  .modal{background:var(--bg);border-radius:var(--radius-lg);padding:1.25rem;width:100%;max-width:380px;border:0.5px solid var(--border);max-height:90vh;overflow-y:auto}
-  .modal-title{font-size:15px;font-weight:500;margin-bottom:12px}
-  .modal-sec{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin:10px 0 5px}
-  .modal-item{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:0.5px solid var(--border);font-size:13px}
-  .modal-item:last-of-type{border-bottom:none}
-  .modal-info{font-size:11px;color:var(--text2)}
-  .del-btn{background:none;border:none;cursor:pointer;color:var(--text3);font-size:16px;padding:2px 6px;line-height:1}
-  .del-btn:hover{color:#A32D2D}
-  .modal-close{margin-top:12px;width:100%;background:transparent;border:0.5px solid var(--border2);border-radius:var(--radius);padding:8px;cursor:pointer;font-size:13px;color:var(--text)}
-  .modal-close:hover{background:var(--bg2)}
-  .amelia-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;background:var(--pink-bg);color:var(--pink-text);border:0.5px solid var(--pink-border);border-radius:var(--radius);padding:3px 8px;margin-bottom:10px}
-
-  /* DAY PICKER MODAL */
-  .day-picker{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin:10px 0}
-  .dp-cell{padding:6px 4px;text-align:center;font-size:12px;border-radius:var(--radius);cursor:pointer;border:0.5px solid var(--border)}
-  .dp-cell:hover{background:var(--purple);color:white;border-color:var(--purple)}
-  .dp-cell.empty{opacity:.3;cursor:default}
-
-  /* PDF */
-  .pdf-btn{background:transparent;border:0.5px solid var(--border2);border-radius:var(--radius);padding:6px 11px;cursor:pointer;font-size:13px;color:var(--text);display:flex;align-items:center;gap:5px}
-  .pdf-btn:hover{background:var(--bg2)}
-  @media print{
-    *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
-    body{background:#fff;padding:0}
-    .app{max-width:100%}
-    .tabs,.header,.legend,.stats-row,.cal-grid,.cmd-area,.overlay,.tab-panel.fichas-panel{display:none!important}
-    #pdfContent{display:block!important}
-  }
-  #pdfContent{display:none;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#1a1a1a}
-  .pdf-header{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid #1a1a1a;padding-bottom:8px;margin-bottom:20px}
-  .pdf-title{font-size:22px;font-weight:700}
-  .pdf-sub{font-size:12px;color:#666;margin-top:2px}
-  .pdf-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:24px}
-  .pdf-stat{border:1px solid #ddd;border-radius:6px;padding:10px 12px}
-  .pdf-stat-lbl{font-size:10px;color:#888;margin-bottom:3px;text-transform:uppercase;letter-spacing:.05em}
-  .pdf-stat-val{font-size:20px;font-weight:700}
-  .pdf-stat-unit{font-size:10px;color:#888}
-  .pdf-week{margin-bottom:18px}
-  .pdf-week-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#888;border-bottom:1px solid #eee;padding-bottom:4px;margin-bottom:8px}
-  .pdf-day{display:flex;align-items:flex-start;gap:12px;padding:5px 0;border-bottom:0.5px solid #f0f0f0;font-size:12px}
-  .pdf-day:last-child{border-bottom:none}
-  .pdf-day-date{min-width:90px;color:#888;font-size:11px;padding-top:1px}
-  .pdf-day-date strong{color:#1a1a1a;font-size:12px}
-  .pdf-day-content{flex:1;display:flex;flex-wrap:wrap;gap:5px}
-  .pdf-tag{font-size:10px;padding:2px 6px;border-radius:3px}
-  .pdf-tag.p{background:#f0f0f0;color:#444}
-  .pdf-tag.r{background:#e8f5ee;color:#1f5c3a;font-weight:600}
-  .pdf-empty{color:#ccc;font-size:11px;font-style:italic}
-  .pdf-week-summary{margin-top:6px;display:flex;gap:12px;font-size:11px;color:#555;padding:5px 8px;background:#f8f8f8;border-radius:4px}
-  .pdf-week-summary span{font-weight:600;color:#1a1a1a}
-
-  @media(max-width:500px){
-    .stats-row{grid-template-columns:repeat(2,minmax(0,1fr))}
-    .stat-val{font-size:18px}
-    .day-cell{min-height:60px}
-    .tag{font-size:8px}
-  }
+/* PDF */
+@media print{*{-webkit-print-color-adjust:exact;print-color-adjust:exact}body{background:#fff;padding:0}.app{max-width:100%}.tabs,.header,.legend,.stats-row,.cal-grid,.cmd-area,.overlay,.tab-panel:not(#tab-cal){display:none!important}#pdfContent{display:block!important}}
+#pdfContent{display:none;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#1a1a1a}
+.pdf-header{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid #1a1a1a;padding-bottom:8px;margin-bottom:20px}
+.pdf-title{font-size:22px;font-weight:700}.pdf-sub{font-size:12px;color:#666;margin-top:2px}
+.pdf-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:24px}
+.pdf-stat{border:1px solid #ddd;border-radius:6px;padding:10px 12px}
+.pdf-stat-lbl{font-size:10px;color:#888;margin-bottom:3px;text-transform:uppercase;letter-spacing:.05em}
+.pdf-stat-val{font-size:20px;font-weight:700}.pdf-stat-unit{font-size:10px;color:#888}
+.pdf-week{margin-bottom:18px}
+.pdf-week-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#888;border-bottom:1px solid #eee;padding-bottom:4px;margin-bottom:8px}
+.pdf-day{display:flex;align-items:flex-start;gap:12px;padding:5px 0;border-bottom:0.5px solid #f0f0f0;font-size:12px}
+.pdf-day:last-child{border-bottom:none}
+.pdf-day-date{min-width:90px;color:#888;font-size:11px;padding-top:1px}
+.pdf-day-date strong{color:#1a1a1a;font-size:12px}
+.pdf-day-content{flex:1;display:flex;flex-wrap:wrap;gap:5px}
+.pdf-tag{font-size:10px;padding:2px 6px;border-radius:3px}
+.pdf-tag.p{background:#f0f0f0;color:#444}.pdf-tag.r{background:#e8f5ee;color:#1f5c3a;font-weight:600}
+.pdf-empty{color:#ccc;font-size:11px;font-style:italic}
+.pdf-week-summary{margin-top:6px;display:flex;gap:12px;font-size:11px;color:#555;padding:5px 8px;background:#f8f8f8;border-radius:4px}
+.pdf-week-summary span{font-weight:600;color:#1a1a1a}
+@media(max-width:500px){.stats-row{grid-template-columns:repeat(2,minmax(0,1fr))}.stat-val{font-size:18px}.day-cell{min-height:60px}.tag{font-size:8px}.perfil-grid{grid-template-columns:1fr 1fr}.perfil-modalidades{grid-template-columns:1fr}.tabs .tab span{display:none}}
 </style>
 </head>
 <body>
 <div class="app">
 
 <div class="tabs">
-  <button class="tab active" onclick="switchTab('cal')"><i class="ti ti-calendar"></i> calendário</button>
-  <button class="tab" onclick="switchTab('fichas')"><i class="ti ti-barbell"></i> fichas</button>
+  <button class="tab active" onclick="switchTab('cal')"><i class="ti ti-calendar"></i><span> calendário</span></button>
+  <button class="tab" onclick="switchTab('run')"><i class="ti ti-run" style="color:var(--run)"></i><span> corrida</span></button>
+  <button class="tab" onclick="switchTab('bike')"><i class="ti ti-bike" style="color:var(--bike)"></i><span> ciclismo</span></button>
+  <button class="tab" onclick="switchTab('gym')"><i class="ti ti-barbell" style="color:var(--gym)"></i><span> academia</span></button>
+  <button class="tab" onclick="switchTab('perfil')"><i class="ti ti-user"></i><span> perfil</span></button>
 </div>
 
-<!-- ABA CALENDÁRIO -->
+<!-- CALENDÁRIO -->
 <div class="tab-panel active" id="tab-cal">
   <div class="header">
     <h1 style="font-size:18px;font-weight:500;display:flex;align-items:center;gap:8px"><i class="ti ti-calendar" style="font-size:20px;color:var(--purple)"></i> meus treinos</h1>
@@ -205,79 +200,153 @@
       <button class="pdf-btn" onclick="exportPDF()"><i class="ti ti-file-type-pdf"></i> PDF</button>
     </div>
   </div>
-
   <div class="legend">
-    <div class="leg"><div class="leg-sq" style="background:var(--pink-bg);border:1px solid var(--pink-border)"></div>dia com Amélia</div>
+    <div class="leg"><div class="leg-sq" style="background:var(--pink-bg);border:1px solid var(--pink-border)"></div>com Amélia</div>
     <div class="leg"><div class="leg-dot" style="background:#378ADD"></div>corrida</div>
     <div class="leg"><div class="leg-dot" style="background:#639922"></div>ciclismo</div>
     <div class="leg"><div class="leg-dot" style="background:#7F77DD"></div>musculação</div>
     <div class="leg"><div class="leg-dot" style="background:#888780"></div>descanso</div>
     <div class="leg"><i class="ti ti-check" style="font-size:11px;color:#3B6D11"></i>realizado</div>
   </div>
-
   <div class="stats-row">
     <div class="stat-card"><div class="stat-lbl"><i class="ti ti-run" style="font-size:12px"></i> corrida</div><div class="stat-val" id="sKmC">0</div><div class="stat-sub">km no mês</div></div>
     <div class="stat-card"><div class="stat-lbl"><i class="ti ti-bike" style="font-size:12px"></i> ciclismo</div><div class="stat-val" id="sKmB">0</div><div class="stat-sub">km no mês</div></div>
     <div class="stat-card"><div class="stat-lbl"><i class="ti ti-barbell" style="font-size:12px"></i> musculação</div><div class="stat-val" id="sMin">0</div><div class="stat-sub">min no mês</div></div>
-    <div class="stat-card"><div class="stat-lbl"><i class="ti ti-chart-bar" style="font-size:12px"></i> treinos feitos</div><div class="stat-val" id="sCnt">0</div><div class="stat-sub">este mês</div></div>
+    <div class="stat-card"><div class="stat-lbl"><i class="ti ti-chart-bar" style="font-size:12px"></i> feitos</div><div class="stat-val" id="sCnt">0</div><div class="stat-sub">este mês</div></div>
   </div>
-
   <div class="cal-grid" id="calGrid">
     <div class="day-hdr">Dom</div><div class="day-hdr">Seg</div><div class="day-hdr">Ter</div>
     <div class="day-hdr">Qua</div><div class="day-hdr">Qui</div><div class="day-hdr">Sex</div><div class="day-hdr">Sáb</div>
   </div>
-
   <div class="cmd-area">
     <div class="cmd-lbl">
-      <span><i class="ti ti-robot" style="font-size:13px;vertical-align:-1px;margin-right:4px"></i>planeje, registre ou importe treinos em batelada</span>
-      <button class="upload-btn" onclick="document.getElementById('fileInput').click()"><i class="ti ti-upload" style="font-size:12px"></i> subir arquivo</button>
+      <span><i class="ti ti-robot" style="font-size:13px;vertical-align:-1px;margin-right:4px"></i>planeje, registre ou importe treinos</span>
+      <button class="upload-btn" onclick="document.getElementById('fileInput').click()"><i class="ti ti-upload" style="font-size:12px"></i> arquivo</button>
       <input type="file" id="fileInput" accept=".txt,.pdf,.doc,.docx" onchange="handleFile(this)"/>
     </div>
     <div class="cmd-row">
-      <textarea class="cmd-input" id="cmdInput" placeholder="comando simples: adicione corrida leve 5km na quarta&#10;&#10;ou vários de uma vez:&#10;dia 15/06 corrida 10km pace 6:00&#10;dia 16/06 musculação 60min&#10;dia 20/06 ciclismo 40km velocidade 28kmh" rows="3"></textarea>
+      <textarea class="cmd-input" id="cmdInput" placeholder="adicione corrida leve 5km na quarta&#10;&#10;ou em batelada:&#10;dia 15/06 corrida 10km pace 6:00&#10;dia 16/06 musculação 60min" rows="3"></textarea>
       <button class="cmd-btn" id="cmdBtn" onclick="runCmd()"><i class="ti ti-arrow-right"></i> enviar</button>
     </div>
     <div class="upload-name" id="uploadName"></div>
     <div class="sugs">
       <span class="sug" onclick="fillCmd(this)">adicione corrida leve 5km na quarta</span>
       <span class="sug" onclick="fillCmd(this)">musculação toda segunda e quinta</span>
-      <span class="sug" onclick="fillCmd(this)">registre ciclismo 40km velocidade média 28kmh hoje</span>
+      <span class="sug" onclick="fillCmd(this)">registre ciclismo 40km velocidade 28kmh hoje</span>
       <span class="sug" onclick="fillCmd(this)">registre academia 60 minutos ontem</span>
-      <span class="sug" onclick="fillCmd(this)">descanso nos domingos com a Amélia</span>
     </div>
     <div class="status" id="status"></div>
   </div>
 </div>
 
-<!-- ABA FICHAS -->
-<div class="tab-panel" id="tab-fichas">
-  <div class="fichas-header">
-    <div class="fichas-header-title"><i class="ti ti-robot" style="color:var(--purple)"></i> objetivo e perfil de treino</div>
-    <textarea class="fichas-perfil" id="fichasPerfil" placeholder="ex: hipertrofia, treino 3x por semana, nível intermediário, foco em peito e costas, sem lesões"></textarea>
-    <div class="fichas-actions">
-      <button class="cmd-btn" id="gerarBtn" onclick="gerarFichas()"><i class="ti ti-sparkles"></i> gerar fichas</button>
-      <button class="cmd-btn" style="background:transparent;color:var(--text);border:0.5px solid var(--border2)" onclick="addFichaManual()"><i class="ti ti-plus"></i> criar manualmente</button>
-      <button class="cmd-btn" style="background:transparent;color:#A32D2D;border:0.5px solid #A32D2D" onclick="limparFichas()"><i class="ti ti-trash"></i> limpar tudo</button>
+<!-- CORRIDA -->
+<div class="tab-panel" id="tab-run">
+  <div class="coach-header run">
+    <div class="coach-title run"><i class="ti ti-run"></i> coach de corrida</div>
+    <div class="coach-perfil-resumo" id="resumoRun">⚠️ Preencha seu perfil primeiro para receber treinos personalizados</div>
+    <textarea class="coach-objetivo" id="objRun" placeholder="ex: quero melhorar meu pace nos 10km, treino 3x por semana, tenho 45 min por sessão. Semana passada fiz 8km totais."></textarea>
+    <div class="coach-actions">
+      <button class="cmd-btn btn-run" id="gerarRunBtn" onclick="gerarCards('run')"><i class="ti ti-sparkles"></i> gerar plano</button>
+      <button class="cmd-btn btn-danger" onclick="limparCards('run')"><i class="ti ti-trash"></i> limpar</button>
     </div>
-    <div class="fichas-status" id="fichasStatus"></div>
+    <div class="coach-status" id="statusRun"></div>
   </div>
-  <div class="fichas-grid" id="fichasGrid"></div>
+  <div class="cards-grid" id="cardsRun"></div>
+</div>
+
+<!-- CICLISMO -->
+<div class="tab-panel" id="tab-bike">
+  <div class="coach-header bike">
+    <div class="coach-title bike"><i class="ti ti-bike"></i> coach de ciclismo</div>
+    <div class="coach-perfil-resumo" id="resumoBike">⚠️ Preencha seu perfil primeiro para receber treinos personalizados</div>
+    <textarea class="coach-objetivo" id="objBike" placeholder="ex: quero pedalar 100km, saio 2x por semana, tenho bike speed. Última saída foi 35km a 25km/h."></textarea>
+    <div class="coach-actions">
+      <button class="cmd-btn btn-bike" id="gerarBikeBtn" onclick="gerarCards('bike')"><i class="ti ti-sparkles"></i> gerar plano</button>
+      <button class="cmd-btn btn-danger" onclick="limparCards('bike')"><i class="ti ti-trash"></i> limpar</button>
+    </div>
+    <div class="coach-status" id="statusBike"></div>
+  </div>
+  <div class="cards-grid" id="cardsBike"></div>
+</div>
+
+<!-- ACADEMIA -->
+<div class="tab-panel" id="tab-gym">
+  <div class="coach-header gym">
+    <div class="coach-title gym"><i class="ti ti-barbell"></i> coach de academia</div>
+    <div class="coach-perfil-resumo" id="resumoGym">⚠️ Preencha seu perfil primeiro para receber treinos personalizados</div>
+    <textarea class="coach-objetivo" id="objGym" placeholder="ex: hipertrofia, treino 3x por semana, foco em peito e costas, intermediário. Semana passada fiz treino A e B."></textarea>
+    <div class="coach-actions">
+      <button class="cmd-btn btn-gym" id="gerarGymBtn" onclick="gerarCards('gym')"><i class="ti ti-sparkles"></i> gerar plano</button>
+      <button class="cmd-btn btn-danger" onclick="limparCards('gym')"><i class="ti ti-trash"></i> limpar</button>
+    </div>
+    <div class="coach-status" id="statusGym"></div>
+  </div>
+  <div class="cards-grid" id="cardsGym"></div>
+</div>
+
+<!-- PERFIL -->
+<div class="tab-panel" id="tab-perfil">
+  <div class="perfil-section">
+    <div class="perfil-title"><i class="ti ti-user-circle"></i> meu perfil de atleta</div>
+    <div class="perfil-grid">
+      <div class="perfil-field"><label class="perfil-label">Idade</label><input class="perfil-input" type="number" id="pIdade" placeholder="ex: 32"/></div>
+      <div class="perfil-field"><label class="perfil-label">Peso (kg)</label><input class="perfil-input" type="number" id="pPeso" placeholder="ex: 78"/></div>
+      <div class="perfil-field"><label class="perfil-label">Altura (cm)</label><input class="perfil-input" type="number" id="pAltura" placeholder="ex: 175"/></div>
+    </div>
+    <div class="perfil-divider">nível por modalidade</div>
+    <div class="perfil-modalidades">
+      <div class="modalidade-card run">
+        <div class="modalidade-title run"><i class="ti ti-run"></i> corrida</div>
+        <select class="perfil-select" id="pNivelRun" style="width:100%">
+          <option value="">selecione...</option>
+          <option value="iniciante">Iniciante (até 5km)</option>
+          <option value="intermediario">Intermediário (5–15km)</option>
+          <option value="avancado">Avançado (meias/maratonas)</option>
+        </select>
+        <input class="perfil-input" type="text" id="pPaceAtual" placeholder="pace atual ex: 6:30" style="width:100%;margin-top:6px"/>
+      </div>
+      <div class="modalidade-card bike">
+        <div class="modalidade-title bike"><i class="ti ti-bike"></i> ciclismo</div>
+        <select class="perfil-select" id="pNivelBike" style="width:100%">
+          <option value="">selecione...</option>
+          <option value="iniciante">Iniciante (passeio)</option>
+          <option value="intermediario">Intermediário (speed/MTB)</option>
+          <option value="avancado">Avançado (endurance/triatlo)</option>
+        </select>
+        <input class="perfil-input" type="text" id="pVelAtual" placeholder="velocidade média ex: 25km/h" style="width:100%;margin-top:6px"/>
+      </div>
+      <div class="modalidade-card gym">
+        <div class="modalidade-title gym"><i class="ti ti-barbell"></i> academia</div>
+        <select class="perfil-select" id="pNivelGym" style="width:100%">
+          <option value="">selecione...</option>
+          <option value="iniciante">Iniciante (menos de 6 meses)</option>
+          <option value="intermediario">Intermediário (6m–3 anos)</option>
+          <option value="avancado">Avançado (mais de 3 anos)</option>
+        </select>
+        <input class="perfil-input" type="text" id="pObjetivoGym" placeholder="objetivo ex: hipertrofia" style="width:100%;margin-top:6px"/>
+      </div>
+    </div>
+    <div style="margin-top:1rem;display:flex;gap:8px">
+      <button class="cmd-btn" onclick="salvarPerfil()"><i class="ti ti-device-floppy"></i> salvar perfil</button>
+    </div>
+    <div class="perfil-status" id="perfilStatus"></div>
+    <div class="perfil-resumo-box" id="perfilResumo" style="display:none"></div>
+  </div>
 </div>
 
 </div><!-- .app -->
-
 <div id="pdfContent"></div>
 
-<!-- MODAL DIA -->
+<!-- MODAL TREINO -->
 <div class="overlay" id="overlay" onclick="closeModal(event)">
   <div class="modal">
-    <div class="modal-title" id="modalTitle">dia</div>
+    <div class="modal-title" id="modalTitle"></div>
     <div id="modalContent"></div>
     <button class="modal-close" onclick="closeModal()">fechar</button>
   </div>
 </div>
 
-<!-- MODAL ADD DIA FICHA -->
+<!-- MODAL DIA -->
 <div class="overlay" id="overlayDia" onclick="closeDiaModal(event)">
   <div class="modal">
     <div class="modal-title">adicionar ao dia</div>
@@ -288,46 +357,104 @@
 </div>
 
 <script>
-const TODAY = new Date(); TODAY.setHours(0,0,0,0);
-let viewYear = TODAY.getFullYear(), viewMonth = TODAY.getMonth();
-const MESES = ['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
-const DIAS_PT = ['domingo','segunda','terça','quarta','quinta','sexta','sábado'];
-const API_URL = 'https://planilhadostreinin.vercel.app/api/claude';
-const REFERENCE_MONDAY = new Date(2026,5,9); REFERENCE_MONDAY.setHours(0,0,0,0);
+const TODAY=new Date();TODAY.setHours(0,0,0,0);
+let viewYear=TODAY.getFullYear(),viewMonth=TODAY.getMonth();
+const MESES=['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
+const DIAS_PT=['domingo','segunda','terça','quarta','quinta','sexta','sábado'];
+const API_URL='https://planilhadostreinin.vercel.app/api/claude';
+const REFERENCE_MONDAY=new Date(2026,5,9);REFERENCE_MONDAY.setHours(0,0,0,0);
 
 function getWeekMonday(date){const d=new Date(date);const day=d.getDay();d.setDate(d.getDate()+(day===0?-6:1-day));d.setHours(0,0,0,0);return d;}
-function isAmeliaDefault(date){const wm=getWeekMonday(date);const dw=Math.round((wm-REFERENCE_MONDAY)/(7*24*3600*1000));const isA=dw%2===0;const dow=date.getDay();if(isA){return!(dow===3||dow===4);}else{return dow===3||dow===4;}}
+function isAmeliaDefault(date){const wm=getWeekMonday(date);const dw=Math.round((wm-REFERENCE_MONDAY)/(7*24*3600*1000));const isA=dw%2===0;const dow=date.getDay();return isA?!(dow===3||dow===4):(dow===3||dow===4);}
 function isAmeliaDay(date){const k=dKey(date.getFullYear(),date.getMonth(),date.getDate());if(guardaOverrides[k]!==undefined)return guardaOverrides[k]==='r';return isAmeliaDefault(date);}
 function dKey(y,m,d){return`${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`}
 
-let data = JSON.parse(localStorage.getItem('treinos_raphael')||'{}');
-let fichas = JSON.parse(localStorage.getItem('fichas_raphael')||'[]');
-let guardaOverrides = JSON.parse(localStorage.getItem('guarda_overrides')||'{}');
+let data=JSON.parse(localStorage.getItem('treinos_raphael')||'{}');
+let cards={run:[],bike:[],gym:[]};
+let guardaOverrides=JSON.parse(localStorage.getItem('guarda_overrides')||'{}');
+let perfil=JSON.parse(localStorage.getItem('atleta_perfil')||'{}');
 
 function save(){try{localStorage.setItem('treinos_raphael',JSON.stringify(data));}catch(e){}if(window._fbSet)window._fbSet(data);}
-function saveFichas(){try{localStorage.setItem('fichas_raphael',JSON.stringify(fichas));}catch(e){}if(window._fbSetFichas)window._fbSetFichas(fichas);}
+function saveCards(){try{localStorage.setItem('coach_cards',JSON.stringify(cards));}catch(e){}if(window._fbSetCards)window._fbSetCards(cards);}
+function savePerfil(){try{localStorage.setItem('atleta_perfil',JSON.stringify(perfil));}catch(e){}if(window._fbSetPerfil)window._fbSetPerfil(perfil);}
 
 // Firebase
 import('https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js').then(({initializeApp})=>{
   return Promise.all([import('https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js')]).then(([{getDatabase,ref,onValue,set}])=>{
     const app=initializeApp({apiKey:"AIzaSyBaHMewuyReIt9U72PEIwA7iipg1ZTBIFE",authDomain:"calendario-amelia-2202c.firebaseapp.com",databaseURL:"https://calendario-amelia-2202c-default-rtdb.firebaseio.com",projectId:"calendario-amelia-2202c",storageBucket:"calendario-amelia-2202c.firebasestorage.app",messagingSenderId:"329381802500",appId:"1:329381802500:web:9e6d1b7c9110478974fb51"});
     const db=getDatabase(app);
-    onValue(ref(db,'treinos'),(snap)=>{data=snap.val()||{};localStorage.setItem('treinos_raphael',JSON.stringify(data));renderCal();});
-    onValue(ref(db,'fichas'),(snap)=>{fichas=snap.val()||[];localStorage.setItem('fichas_raphael',JSON.stringify(fichas));renderFichas();});
-    onValue(ref(db,'guardaOverrides'),(snap)=>{guardaOverrides=snap.val()||{};localStorage.setItem('guarda_overrides',JSON.stringify(guardaOverrides));renderCal();});
+    onValue(ref(db,'treinos'),(s)=>{data=s.val()||{};localStorage.setItem('treinos_raphael',JSON.stringify(data));renderCal();});
+    onValue(ref(db,'coachCards'),(s)=>{cards=s.val()||{run:[],bike:[],gym:[]};if(!cards.run)cards.run=[];if(!cards.bike)cards.bike=[];if(!cards.gym)cards.gym=[];localStorage.setItem('coach_cards',JSON.stringify(cards));renderAllCards();});
+    onValue(ref(db,'guardaOverrides'),(s)=>{guardaOverrides=s.val()||{};localStorage.setItem('guarda_overrides',JSON.stringify(guardaOverrides));renderCal();});
+    onValue(ref(db,'atletaPerfil'),(s)=>{if(s.val()){perfil=s.val();localStorage.setItem('atleta_perfil',JSON.stringify(perfil));loadPerfilUI();updateResumos();}});
     window._fbSet=(d)=>set(ref(db,'treinos'),d);
-    window._fbSetFichas=(f)=>set(ref(db,'fichas'),f);
+    window._fbSetCards=(c)=>set(ref(db,'coachCards'),c);
     window._fbSetOverride=(k,v)=>set(ref(db,'guardaOverrides/'+k),v);
     window._fbRemoveOverride=(k)=>set(ref(db,'guardaOverrides/'+k),null);
+    window._fbSetPerfil=(p)=>set(ref(db,'atletaPerfil'),p);
   });
 }).catch(e=>console.warn('Firebase offline',e));
 
 // TABS
+const TAB_IDS={cal:'tab-cal',run:'tab-run',bike:'tab-bike',gym:'tab-gym',perfil:'tab-perfil'};
 function switchTab(tab){
-  document.querySelectorAll('.tab').forEach((t,i)=>{t.classList.toggle('active',i===(tab==='cal'?0:1));});
-  document.getElementById('tab-cal').classList.toggle('active',tab==='cal');
-  document.getElementById('tab-fichas').classList.toggle('active',tab==='fichas');
-  if(tab==='fichas') renderFichas();
+  document.querySelectorAll('.tab').forEach((t,i)=>{t.classList.toggle('active',['cal','run','bike','gym','perfil'][i]===tab);});
+  Object.entries(TAB_IDS).forEach(([k,v])=>{document.getElementById(v).classList.toggle('active',k===tab);});
+  if(tab==='run')renderCards('run');
+  if(tab==='bike')renderCards('bike');
+  if(tab==='gym')renderCards('gym');
+  if(tab==='perfil'){loadPerfilUI();updateResumos();}
+}
+
+// PERFIL
+function perfilTexto(){
+  if(!perfil.idade&&!perfil.peso)return null;
+  const fc=perfil.idade?220-parseInt(perfil.idade):null;
+  const imc=(perfil.peso&&perfil.altura)?((perfil.peso/((perfil.altura/100)**2)).toFixed(1)):null;
+  let txt=`Atleta: ${perfil.idade||'?'} anos, ${perfil.peso||'?'}kg, ${perfil.altura||'?'}cm`;
+  if(imc)txt+=`, IMC ${imc}`;
+  if(fc)txt+=`, FC máx estimada ${fc}bpm`;
+  if(perfil.nivelRun)txt+=`. Corrida: ${perfil.nivelRun}${perfil.paceAtual?', pace atual '+perfil.paceAtual:''}`;
+  if(perfil.nivelBike)txt+=`. Ciclismo: ${perfil.nivelBike}${perfil.velAtual?', velocidade média '+perfil.velAtual:''}`;
+  if(perfil.nivelGym)txt+=`. Academia: ${perfil.nivelGym}${perfil.objetivoGym?', objetivo: '+perfil.objetivoGym:''}`;
+  return txt;
+}
+
+function updateResumos(){
+  const txt=perfilTexto();
+  const msg=txt||'⚠️ Preencha seu perfil para receber treinos personalizados';
+  ['Run','Bike','Gym'].forEach(m=>{const el=document.getElementById('resumo'+m);if(el)el.textContent=msg;});
+  const box=document.getElementById('perfilResumo');
+  if(box){box.style.display=txt?'block':'none';if(txt)box.textContent='✓ Perfil ativo: '+txt;}
+}
+
+function loadPerfilUI(){
+  if(perfil.idade)document.getElementById('pIdade').value=perfil.idade;
+  if(perfil.peso)document.getElementById('pPeso').value=perfil.peso;
+  if(perfil.altura)document.getElementById('pAltura').value=perfil.altura;
+  if(perfil.nivelRun)document.getElementById('pNivelRun').value=perfil.nivelRun;
+  if(perfil.paceAtual)document.getElementById('pPaceAtual').value=perfil.paceAtual;
+  if(perfil.nivelBike)document.getElementById('pNivelBike').value=perfil.nivelBike;
+  if(perfil.velAtual)document.getElementById('pVelAtual').value=perfil.velAtual;
+  if(perfil.nivelGym)document.getElementById('pNivelGym').value=perfil.nivelGym;
+  if(perfil.objetivoGym)document.getElementById('pObjetivoGym').value=perfil.objetivoGym;
+}
+
+function salvarPerfil(){
+  perfil={
+    idade:document.getElementById('pIdade').value,
+    peso:document.getElementById('pPeso').value,
+    altura:document.getElementById('pAltura').value,
+    nivelRun:document.getElementById('pNivelRun').value,
+    paceAtual:document.getElementById('pPaceAtual').value,
+    nivelBike:document.getElementById('pNivelBike').value,
+    velAtual:document.getElementById('pVelAtual').value,
+    nivelGym:document.getElementById('pNivelGym').value,
+    objetivoGym:document.getElementById('pObjetivoGym').value,
+  };
+  savePerfil();updateResumos();
+  const el=document.getElementById('perfilStatus');el.textContent='✓ Perfil salvo!';el.className='perfil-status ok';
+  setTimeout(()=>{el.textContent='';},3000);
 }
 
 // STATS
@@ -354,14 +481,11 @@ function renderCal(){
   for(let i=0;i<first;i++){const c=document.createElement('div');c.className='day-cell other';c.innerHTML=`<div class="day-num">${prevDim-first+1+i}</div>`;grid.appendChild(c);}
   for(let d=1;d<=dim;d++){
     const dt=new Date(viewYear,viewMonth,d);
-    const amelia=isAmeliaDay(dt);
-    const isToday=dt.getTime()===TODAY.getTime();
-    const c=document.createElement('div');
+    const amelia=isAmeliaDay(dt);const isToday=dt.getTime()===TODAY.getTime();
     const isOverridden=guardaOverrides[dKey(viewYear,viewMonth,d)]!==undefined;
+    const c=document.createElement('div');
     c.className='day-cell'+(isToday?' today':'')+(amelia?' amelia':'')+(isOverridden?' overridden':'');
-    const k=dKey(viewYear,viewMonth,d);
-    const dd=data[k]||{};
-    const pl=dd.planejado||[];const re=dd.realizado||[];
+    const k=dKey(viewYear,viewMonth,d);const dd=data[k]||{};const pl=dd.planejado||[];const re=dd.realizado||[];
     let html=`<div class="day-num">${d}${amelia?'<span class="amelia-dot"></span>':''}</div>`;
     pl.forEach(t=>{const done=re.find(r=>r.tipo===t.tipo);html+=`<span class="tag ${t.tipo}-p">${done?'<i class="ti ti-check" style="font-size:8px"></i> ':''}<i class="ti ${icons[t.tipo]||'ti-activity'}" style="font-size:8px"></i> ${t.label}</span>`;});
     re.forEach(r=>{if(!pl.find(p=>p.tipo===r.tipo)){let ex='';if(r.tipo==='corrida')ex=`${r.distancia||''}km`;if(r.tipo==='ciclismo')ex=`${r.distancia||''}km`;if(r.tipo==='musculacao')ex=`${r.tempo||''}min`;html+=`<span class="tag ${r.tipo}-r"><i class="ti ti-check" style="font-size:8px"></i> ${ex}</span>`;}});
@@ -370,53 +494,27 @@ function renderCal(){
   const rem=42-first-dim;for(let d=1;d<=rem;d++){const c=document.createElement('div');c.className='day-cell other';c.innerHTML=`<div class="day-num">${d}</div>`;grid.appendChild(c);}
   renderStats();
 }
-
 function changeMonth(dir){viewMonth+=dir;if(viewMonth>11){viewMonth=0;viewYear++;}if(viewMonth<0){viewMonth=11;viewYear--;}renderCal();}
 
 function openModal(k,d,dt,amelia){
   const dd=data[k]||{};const pl=dd.planejado||[];const re=dd.realizado||[];
-  // abre mesmo sem treinos, para permitir editar guarda
   document.getElementById('modalTitle').textContent=`${d} de ${MESES[viewMonth]} · ${DIAS_PT[dt.getDay()]}`;
   let html='';
   if(amelia)html+=`<div class="amelia-badge"><i class="ti ti-heart" style="font-size:12px"></i> dia com Amélia</div>`;
   if(pl.length){html+='<div class="modal-sec">planejado</div>';pl.forEach((t,i)=>{html+=`<div class="modal-item"><span>${t.label}</span><button class="del-btn" onclick="delPlan('${k}',${i})">×</button></div>`;});}
   if(re.length){html+='<div class="modal-sec">realizado</div>';re.forEach((r,i)=>{let info='';if(r.tipo==='corrida')info=`${r.distancia||'?'}km · pace ${r.pace||'?'}`;if(r.tipo==='ciclismo')info=`${r.distancia||'?'}km · ${r.velocidade||'?'}km/h`;if(r.tipo==='musculacao')info=`${r.tempo||'?'} min`;html+=`<div class="modal-item"><span><i class="ti ti-check" style="font-size:12px;color:#3B6D11;margin-right:4px"></i>${r.tipo}</span><span class="modal-info">${info}</span><button class="del-btn" onclick="delReal('${k}',${i})">×</button></div>`;});}
-  // Toggle guarda
-  const ameliaNow = isAmeliaDay(dt);
-  const overrideKey = k;
-  const isOverridden = guardaOverrides[k] !== undefined;
-  html += `<div class="modal-sec">guarda da amélia</div>
-  <div style="display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap">
-    <button onclick="setGuardaOverride('${overrideKey}','r')" style="flex:1;padding:7px;border-radius:var(--radius);border:1.5px solid ${ameliaNow?'#D4537E':'var(--border)'};background:${ameliaNow?'var(--pink-bg)':'transparent'};color:${ameliaNow?'var(--pink-text)':'var(--text2)'};cursor:pointer;font-size:12px;font-family:inherit">
-      👧 com Amélia
-    </button>
-    <button onclick="setGuardaOverride('${overrideKey}','y')" style="flex:1;padding:7px;border-radius:var(--radius);border:1.5px solid ${!ameliaNow?'#534AB7':'var(--border)'};background:${!ameliaNow?'#EEEDFE':'transparent'};color:${!ameliaNow?'#3C3489':'var(--text2)'};cursor:pointer;font-size:12px;font-family:inherit">
-      👤 sem Amélia
-    </button>
+  const ameliaNow=isAmeliaDay(dt);const isOverridden=guardaOverrides[k]!==undefined;
+  html+=`<div class="modal-sec">guarda da amélia</div>
+  <div style="display:flex;gap:8px;margin-bottom:8px">
+    <button onclick="setGuardaOverride('${k}','r',${d})" style="flex:1;padding:7px;border-radius:var(--radius);border:1.5px solid ${ameliaNow?'#D4537E':'var(--border)'};background:${ameliaNow?'var(--pink-bg)':'transparent'};color:${ameliaNow?'var(--pink-text)':'var(--text2)'};cursor:pointer;font-size:12px;font-family:inherit">👧 com Amélia</button>
+    <button onclick="setGuardaOverride('${k}','y',${d})" style="flex:1;padding:7px;border-radius:var(--radius);border:1.5px solid ${!ameliaNow?'#534AB7':'var(--border)'};background:${!ameliaNow?'#EEEDFE':'transparent'};color:${!ameliaNow?'#3C3489':'var(--text2)'};cursor:pointer;font-size:12px;font-family:inherit">👤 sem Amélia</button>
   </div>
-  ${isOverridden?`<button onclick="resetGuarda('${overrideKey}')" style="width:100%;margin-bottom:8px;padding:5px;border-radius:var(--radius);border:0.5px dashed var(--border2);background:transparent;color:var(--text3);cursor:pointer;font-size:11px;font-family:inherit">↺ voltar ao padrão automático</button>`:''}`;
+  ${isOverridden?`<button onclick="resetGuarda('${k}',${d})" style="width:100%;margin-bottom:8px;padding:5px;border-radius:var(--radius);border:0.5px dashed var(--border2);background:transparent;color:var(--text3);cursor:pointer;font-size:11px;font-family:inherit">↺ voltar ao padrão automático</button>`:''}`;
   document.getElementById('modalContent').innerHTML=html;
   document.getElementById('overlay').classList.add('open');
 }
-function setGuardaOverride(k,val){
-  guardaOverrides[k]=val;
-  localStorage.setItem('guarda_overrides',JSON.stringify(guardaOverrides));
-  if(window._fbSetOverride)window._fbSetOverride(k,val);
-  renderCal();
-  // reabrir modal com dados atualizados
-  const parts=k.split('-');
-  const dt=new Date(+parts[0],+parts[1]-1,+parts[2]);
-  openModal(k,+parts[2],dt,isAmeliaDay(dt));
-}
-function resetGuarda(k){
-  delete guardaOverrides[k];
-  localStorage.setItem('guarda_overrides',JSON.stringify(guardaOverrides));
-  if(window._fbRemoveOverride)window._fbRemoveOverride(k);
-  renderCal();
-  const parts=k.split('-');
-  const dt=new Date(+parts[0],+parts[1]-1,+parts[2]);
-  openModal(k,+parts[2],dt,isAmeliaDay(dt));
-}
+function setGuardaOverride(k,val,d){guardaOverrides[k]=val;localStorage.setItem('guarda_overrides',JSON.stringify(guardaOverrides));if(window._fbSetOverride)window._fbSetOverride(k,val);renderCal();const parts=k.split('-');const dt=new Date(+parts[0],+parts[1]-1,+parts[2]);openModal(k,d,dt,isAmeliaDay(dt));}
+function resetGuarda(k,d){delete guardaOverrides[k];localStorage.setItem('guarda_overrides',JSON.stringify(guardaOverrides));if(window._fbRemoveOverride)window._fbRemoveOverride(k);renderCal();const parts=k.split('-');const dt=new Date(+parts[0],+parts[1]-1,+parts[2]);openModal(k,d,dt,isAmeliaDay(dt));}
 function delPlan(k,i){if(data[k]){data[k].planejado.splice(i,1);save();renderCal();closeModal();}}
 function delReal(k,i){if(data[k]){data[k].realizado.splice(i,1);save();renderCal();closeModal();}}
 function closeModal(e){if(!e||e.target===document.getElementById('overlay'))document.getElementById('overlay').classList.remove('open');}
@@ -424,15 +522,7 @@ function closeModal(e){if(!e||e.target===document.getElementById('overlay'))docu
 // CMD
 function fillCmd(el){document.getElementById('cmdInput').value=el.textContent.trim();document.getElementById('cmdInput').focus();}
 function setStatus(m,t){const el=document.getElementById('status');el.textContent=m;el.className='status '+(t||'');}
-
-async function handleFile(input){
-  const file=input.files[0];if(!file)return;
-  const nameEl=document.getElementById('uploadName');nameEl.textContent='📎 '+file.name;nameEl.classList.add('visible');
-  const reader=new FileReader();
-  reader.onload=(e)=>{document.getElementById('cmdInput').value=e.target.result;};
-  reader.readAsText(file,'UTF-8');
-  input.value='';
-}
+async function handleFile(input){const file=input.files[0];if(!file)return;const nameEl=document.getElementById('uploadName');nameEl.textContent='📎 '+file.name;nameEl.classList.add('visible');const reader=new FileReader();reader.onload=(e)=>{document.getElementById('cmdInput').value=e.target.result;};reader.readAsText(file,'UTF-8');input.value='';}
 
 async function runCmd(){
   const input=document.getElementById('cmdInput');const cmd=input.value.trim();if(!cmd)return;
@@ -440,19 +530,18 @@ async function runCmd(){
   const dim=new Date(viewYear,viewMonth+1,0).getDate();
   const ameliaDays=[];for(let d=1;d<=dim;d++){if(isAmeliaDay(new Date(viewYear,viewMonth,d)))ameliaDays.push(d);}
   const now=new Date();
-  const prompt=`Você é um assistente de calendário de treinos. Hoje é ${now.getDate()} de ${MESES[now.getMonth()]} de ${now.getFullYear()} (${DIAS_PT[now.getDay()]}).
-Mês visualizado: ${MESES[viewMonth]} de ${viewYear} (${dim} dias). Dias com Amélia: ${ameliaDays.join(', ')}.
-Dados atuais: ${JSON.stringify(data,null,1)}
+  const prompt=`Assistente de calendário de treinos. Hoje: ${now.getDate()} de ${MESES[now.getMonth()]} de ${now.getFullYear()} (${DIAS_PT[now.getDay()]}). Mês: ${MESES[viewMonth]} ${viewYear} (${dim} dias). Dias com Amélia: ${ameliaDays.join(', ')}.
+Dados: ${JSON.stringify(data,null,1)}
 Comando: "${cmd}"
-Pode receber um único comando OU lista de treinos em batelada (múltiplas linhas). Para listas, interprete cada linha como um treino separado.
-Formatos: "dia DD/MM corrida Xkm pace M:SS", "dia DD/MM musculação Xmin", "dia DD/MM ciclismo Xkm velocidade Ykmh". Se ano não especificado, use ${viewYear}.
-Responda SOMENTE com JSON válido sem markdown:
-{"acao":"descrição curta","upsert":{"YYYY-MM-DD":{"planejado":[{"tipo":"corrida|ciclismo|musculacao|descanso","label":"max 14 chars"}],"realizado":[{"tipo":"corrida|ciclismo|musculacao","distancia":0,"pace":"0:00","velocidade":0,"tempo":0}]}},"remover":["YYYY-MM-DD"]}
-Regras: upsert faz merge. realizado: corrida(distancia,pace "5:30"), ciclismo(distancia,velocidade), musculacao(tempo min). remover limpa dia inteiro. Use datas ${viewYear}-${String(viewMonth+1).padStart(2,'0')}-DD. dias: dom=0,seg=1,ter=2,qua=3,qui=4,sex=5,sáb=6`;
+Aceita comando único OU lista em batelada. Formatos: "dia DD/MM corrida Xkm pace M:SS", "dia DD/MM musculação Xmin", "dia DD/MM ciclismo Xkm velocidade Ykmh". Ano padrão: ${viewYear}.
+JSON SOMENTE, sem markdown:
+{"acao":"desc","upsert":{"YYYY-MM-DD":{"planejado":[{"tipo":"corrida|ciclismo|musculacao|descanso","label":"max14"}],"realizado":[{"tipo":"corrida|ciclismo|musculacao","distancia":0,"pace":"0:00","velocidade":0,"tempo":0}]}},"remover":[]}
+Regras: merge no upsert. datas ${viewYear}-${String(viewMonth+1).padStart(2,'0')}-DD.`;
   try{
     const resp=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:[{role:'user',content:prompt}]})});
     const d=await resp.json();if(d.error)throw new Error(d.error.message);
-    const txt=d.content.map(c=>c.text||'').join('').trim().replace(/```json|```/g,'').trim();
+    let txt=d.content.map(c=>c.text||'').join('').trim().replace(/```json|```/g,'').trim();
+    const js=txt.indexOf('{');const je=txt.lastIndexOf('}');txt=txt.substring(js,je+1);
     const res=JSON.parse(txt);
     if(res.remover)res.remover.forEach(k=>delete data[k]);
     if(res.upsert){Object.entries(res.upsert).forEach(([k,v])=>{if(!data[k])data[k]={planejado:[],realizado:[]};if(!data[k].planejado)data[k].planejado=[];if(!data[k].realizado)data[k].realizado=[];if(v.planejado)v.planejado.forEach(t=>{if(!data[k].planejado.find(e=>e.tipo===t.tipo))data[k].planejado.push(t);});if(v.realizado)v.realizado.forEach(r=>{const ex=data[k].realizado.find(e=>e.tipo===r.tipo);if(ex)Object.assign(ex,r);else data[k].realizado.push(r);});});}
@@ -460,147 +549,160 @@ Regras: upsert faz merge. realizado: corrida(distancia,pace "5:30"), ciclismo(di
     const nameEl=document.getElementById('uploadName');if(nameEl){nameEl.textContent='';nameEl.classList.remove('visible');}
     setStatus('✓ '+(res.acao||'feito!'),'ok');
     if(Notification.permission==='granted')new Notification('treino atualizado',{body:res.acao||''});
-  }catch(err){setStatus('erro: '+err.message,'err');console.error(err);}
-  finally{btn.disabled=false;}
+  }catch(err){setStatus('erro: '+err.message,'err');}
+  finally{document.getElementById('cmdBtn').disabled=false;}
 }
 
-// ============ FICHAS ============
-const BADGE_COLORS=['badge-a','badge-b','badge-c','badge-d','badge-e','badge-f'];
+// COACH CARDS
+const MODAL_CONFIG={
+  run:{nome:'corrida',cor:'var(--run)',icon:'ti-run',badgeClass:'badge-run'},
+  bike:{nome:'ciclismo',cor:'var(--bike)',icon:'ti-bike',badgeClass:'badge-bike'},
+  gym:{nome:'academia',cor:'var(--gym)',icon:'ti-barbell',badgeClass:'badge-gym'},
+};
 
-function setFichasStatus(m,t){const el=document.getElementById('fichasStatus');el.textContent=m;el.className='fichas-status '+(t||'');}
+function setCoachStatus(mod,m,t){const el=document.getElementById('status'+mod.charAt(0).toUpperCase()+mod.slice(1));if(el){el.textContent=m;el.className='coach-status '+(t||'');}}
 
-async function gerarFichas(){
-  const perfil=document.getElementById('fichasPerfil').value.trim();
-  if(!perfil){setFichasStatus('descreva seu objetivo primeiro','err');return;}
-  const btn=document.getElementById('gerarBtn');btn.disabled=true;setFichasStatus('gerando fichas...','loading');
+async function gerarCards(mod){
+  const objId={run:'objRun',bike:'objBike',gym:'objGym'}[mod];
+  const objetivo=document.getElementById(objId).value.trim();
+  const btnId={run:'gerarRunBtn',bike:'gerarBikeBtn',gym:'gerarGymBtn'}[mod];
+  const btn=document.getElementById(btnId);btn.disabled=true;
+  setCoachStatus(mod,'gerando plano...','loading');
 
-  // histórico da semana passada
+  const pt=perfilTexto()||'perfil não preenchido';
   const hist=[];const hoje=new Date();
-  for(let i=1;i<=14;i++){const d=new Date(hoje);d.setDate(hoje.getDate()-i);const k=dKey(d.getFullYear(),d.getMonth(),d.getDate());if(data[k]){hist.push(`${k}: ${JSON.stringify(data[k].realizado||[])}`);}}
+  for(let i=1;i<=14;i++){const d=new Date(hoje);d.setDate(hoje.getDate()-i);const k=dKey(d.getFullYear(),d.getMonth(),d.getDate());if(data[k]){const r=data[k].realizado||[];const filtered=r.filter(x=>mod==='run'?x.tipo==='corrida':mod==='bike'?x.tipo==='ciclismo':x.tipo==='musculacao');if(filtered.length)hist.push(`${k}: ${JSON.stringify(filtered)}`);}}
 
-  const prompt=`Você é um personal trainer especialista em musculação e periodização. Monte fichas de treino completas.
+  const prompts={
+    run:`Você é um coach especialista em corrida. Monte um plano semanal de treinos.
+Perfil do atleta: ${pt}
+Objetivo: "${objetivo||'sem objetivo especificado'}"
+Histórico recente (corridas últimas 2 semanas): ${hist.length?hist.join('\n'):'nenhum registro'}
 
-Perfil e objetivo do aluno: "${perfil}"
-Histórico recente (últimas 2 semanas): ${hist.length?hist.join('\n'):'sem histórico ainda'}
+Crie 3 a 5 cards de treino de corrida para a semana. Considere progressão, recuperação e o histórico.
+Cada card deve ter um tipo de sessão (ex: Rodagem Leve, Intervalado, Longão, Fartlek, Recuperação).
 
-Crie entre 2 a 6 fichas de treino (cards) de academia conforme a divisão mais adequada ao perfil.
-Considere o histórico para não repetir grupos musculares recentes.
+JSON SOMENTE, sem markdown, sem texto extra:
+{"cards":[{"titulo":"Rodagem Leve","badge":"Fácil","itens":[{"nome":"Aquecimento","info":"10 min caminhada rápida","obs":"FC zona 1"},{"nome":"Corrida contínua","info":"5km em pace fácil","obs":"pace sugerido: 7:00/km, FC zona 2"},{"nome":"Desaquecimento","info":"5 min caminhada","obs":"alongar panturrilha"}]}]}
+Regras: badge curto (Fácil/Moderado/Intenso/Longo/Recovery). info com distância ou duração. obs com pace alvo, zona de FC ou dica técnica. 3 a 6 itens por card. Use aspas duplas, sem acentos nas chaves.`,
 
-Responda SOMENTE com JSON. Sem markdown, sem texto antes ou depois, sem comentários, sem caracteres especiais fora das strings.
-Formato exato:
-{"fichas":[{"titulo":"Treino A - Peito e Triceps","badge":"A","exercicios":[{"nome":"Supino Reto","series":4,"reps":"8-12","obs":"descanso 90s"},{"nome":"Crucifixo Inclinado","series":3,"reps":"10-12","obs":"amplitude maxima"}]}]}
+    bike:`Você é um coach especialista em ciclismo. Monte um plano semanal.
+Perfil: ${pt}
+Objetivo: "${objetivo||'sem objetivo'}"
+Histórico recente (ciclismo últimas 2 semanas): ${hist.length?hist.join('\n'):'nenhum'}
 
-Regras criticas:
-- Use APENAS aspas duplas no JSON
-- Nao use acentos, cedilha ou caracteres especiais nas chaves do JSON (apenas nos valores string)
-- badge: letra maiuscula A, B, C ou palavra curta sem acento
-- series: numero inteiro (ex: 3)
-- reps: string simples (ex: "8-12" ou "10" ou "ate falhar")
-- obs: dica curta sem aspas internas
-- minimo 5, maximo 8 exercicios por ficha
-- exercicios variadoss e coerentes com o objetivo`;
+Crie 3 a 5 cards de treino de ciclismo (endurance, intervalado, subida, recovery, etc).
+
+JSON SOMENTE:
+{"cards":[{"titulo":"Base Aeróbica","badge":"Z2","itens":[{"nome":"Aquecimento","info":"15 min ritmo leve","obs":"cadência 80-90rpm, FC zona 1"},{"nome":"Pedalada base","info":"40km ritmo constante","obs":"FC zona 2, velocidade média 25km/h"},{"nome":"Volta à calma","info":"10 min suave","obs":"pedalar leve, respiração controlada"}]}]}
+Regras: badge curto (Z2/Intervalado/Endurance/Subida/Recovery). info com distância ou tempo. obs com cadência, velocidade alvo, zona de FC. 3 a 6 itens. Sem acentos nas chaves JSON.`,
+
+    gym:`Você é um personal trainer. Monte fichas de academia completas.
+Perfil: ${pt}
+Objetivo: "${objetivo||'sem objetivo'}"
+Histórico recente (academia últimas 2 semanas): ${hist.length?hist.join('\n'):'nenhum'}
+
+Crie 2 a 4 fichas de musculação. Considere divisão adequada ao nível e não repita grupos musculares recentes.
+
+JSON SOMENTE:
+{"cards":[{"titulo":"Treino A - Peito e Triceps","badge":"A","itens":[{"nome":"Supino Reto","info":"4x 8-12 reps","obs":"descanso 90s, cadencia 2-1-2"},{"nome":"Crucifixo Inclinado","info":"3x 10-12 reps","obs":"amplitude maxima, cotovelo leve"}]}]}
+Regras: badge letra (A/B/C/D) ou Push/Pull/Legs. info com series e reps. obs com dica tecnica. 5 a 8 itens. Sem acentos nas chaves JSON, apenas nos valores.`
+  };
 
   try{
-    const resp=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:[{role:'user',content:prompt}]})});
+    const resp=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:[{role:'user',content:prompts[mod]}]})});
     const d=await resp.json();if(d.error)throw new Error(d.error.message);
-    let txt=d.content.map(c=>c.text||'').join('').trim();
-    // limpar markdown e texto fora do JSON
-    txt=txt.replace(/```json|```/g,'').trim();
-    const jsonStart=txt.indexOf('{');const jsonEnd=txt.lastIndexOf('}');
-    if(jsonStart===-1||jsonEnd===-1)throw new Error('JSON nao encontrado na resposta');
-    txt=txt.substring(jsonStart,jsonEnd+1);
+    let txt=d.content.map(c=>c.text||'').join('').trim().replace(/```json|```/g,'').trim();
+    const js=txt.indexOf('{');const je=txt.lastIndexOf('}');txt=txt.substring(js,je+1);
     const res=JSON.parse(txt);
-    fichas=res.fichas.map(f=>({...f,id:Date.now()+Math.random(),cargas:{}}));
-    saveFichas();renderFichas();
-    setFichasStatus('✓ '+res.fichas.length+' fichas geradas!','ok');
-  }catch(err){setFichasStatus('erro: '+err.message,'err');console.error(err);}
+    cards[mod]=res.cards.map(c=>({...c,id:Date.now()+Math.random(),cargas:{}}));
+    saveCards();renderCards(mod);
+    setCoachStatus(mod,'✓ '+res.cards.length+' treinos gerados!','ok');
+  }catch(err){setCoachStatus(mod,'erro: '+err.message,'err');console.error(err);}
   finally{btn.disabled=false;}
 }
 
-function limparFichas(){
-  if(!fichas.length)return;
-  if(!confirm('Remover todas as fichas?'))return;
-  fichas=[];saveFichas();renderFichas();
-}
-function addFichaManual(){
-  const ficha={id:Date.now(),titulo:'Nova Ficha',badge:'A',exercicios:[{nome:'Exercício 1',series:3,reps:'10-12',obs:''}],cargas:{}};
-  fichas.push(ficha);saveFichas();renderFichas();
+function limparCards(mod){
+  if(!cards[mod]||!cards[mod].length)return;
+  if(!confirm('Remover todos os cards de '+MODAL_CONFIG[mod].nome+'?'))return;
+  cards[mod]=[];saveCards();renderCards(mod);
 }
 
-function deleteFicha(id){
-  fichas=fichas.filter(f=>f.id!==id);saveFichas();renderFichas();
+function deleteCard(mod,id){cards[mod]=cards[mod].filter(c=>c.id!==id);saveCards();renderCards(mod);}
+
+function saveCarga(mod,cardId,itemIdx,campo,valor){
+  const c=cards[mod].find(c=>c.id===cardId);if(!c)return;
+  if(!c.cargas)c.cargas={};if(!c.cargas[itemIdx])c.cargas[itemIdx]={};
+  c.cargas[itemIdx][campo]=valor;saveCards();
 }
 
-function saveCarga(fichaId,exIdx,campo,valor){
-  const f=fichas.find(f=>f.id===fichaId);if(!f)return;
-  if(!f.cargas)f.cargas={};if(!f.cargas[exIdx])f.cargas[exIdx]={};
-  f.cargas[exIdx][campo]=valor;
-  saveFichas();
-}
-
-let fichaParaAdicionar=null;
-function openDiaModal(fichaId){
-  fichaParaAdicionar=fichaId;
+let cardParaAdicionar=null;let modParaAdicionar=null;
+function openDiaModal(mod,cardId){
+  cardParaAdicionar=cardId;modParaAdicionar=mod;
   const dim=new Date(viewYear,viewMonth+1,0).getDate();
   const first=new Date(viewYear,viewMonth,1).getDay();
   const picker=document.getElementById('dayPicker');picker.innerHTML='';
-  // headers
   ['D','S','T','Q','Q','S','S'].forEach(h=>{const el=document.createElement('div');el.style.cssText='text-align:center;font-size:9px;color:var(--text3);padding:2px';el.textContent=h;picker.appendChild(el);});
   for(let i=0;i<first;i++){const el=document.createElement('div');el.className='dp-cell empty';picker.appendChild(el);}
-  for(let d=1;d<=dim;d++){const el=document.createElement('div');el.className='dp-cell';el.textContent=d;el.onclick=()=>addFichaAoDia(d);picker.appendChild(el);}
+  for(let d=1;d<=dim;d++){const el=document.createElement('div');el.className='dp-cell';el.textContent=d;el.onclick=()=>addCardAoDia(d);picker.appendChild(el);}
   document.getElementById('overlayDia').classList.add('open');
 }
 
-function addFichaAoDia(day){
-  const ficha=fichas.find(f=>f.id===fichaParaAdicionar);if(!ficha)return;
+function addCardAoDia(day){
+  const card=cards[modParaAdicionar].find(c=>c.id===cardParaAdicionar);if(!card)return;
   const k=dKey(viewYear,viewMonth,day);
   if(!data[k])data[k]={planejado:[],realizado:[]};
   if(!data[k].planejado)data[k].planejado=[];
-  if(!data[k].planejado.find(p=>p.tipo==='musculacao')){
-    data[k].planejado.push({tipo:'musculacao',label:ficha.titulo.substring(0,14)});
+  const tipo=modParaAdicionar==='run'?'corrida':modParaAdicionar==='bike'?'ciclismo':'musculacao';
+  if(!data[k].planejado.find(p=>p.tipo===tipo)){
+    data[k].planejado.push({tipo,label:card.titulo.substring(0,14)});
   }
   save();renderCal();closeDiaModal();
-  setFichasStatus(`✓ "${ficha.titulo}" adicionado ao dia ${day}/${viewMonth+1}`,'ok');
+  setCoachStatus(modParaAdicionar,`✓ "${card.titulo}" adicionado ao dia ${day}/${viewMonth+1}`,'ok');
 }
-
 function closeDiaModal(e){if(!e||e.target===document.getElementById('overlayDia'))document.getElementById('overlayDia').classList.remove('open');}
 
-function renderFichas(){
-  const grid=document.getElementById('fichasGrid');grid.innerHTML='';
-  if(!fichas.length){
-    grid.innerHTML='<div style="color:var(--text3);font-size:13px;padding:20px 0">nenhuma ficha ainda — descreva seu objetivo e clique em "gerar fichas"</div>';
-    return;
-  }
-  fichas.forEach((ficha,fi)=>{
-    const badgeClass=BADGE_COLORS[fi%BADGE_COLORS.length];
-    let exHtml=ficha.exercicios.map((ex,ei)=>{
-      const carga=ficha.cargas&&ficha.cargas[ei]||{};
-      return`<div class="ficha-ex">
-        <div class="ficha-ex-nome">${ex.nome}</div>
-        <div class="ficha-ex-info">${ex.series} séries × ${ex.reps} reps</div>
-        ${ex.obs?`<div class="ficha-ex-obs">${ex.obs}</div>`:''}
-        <div class="ficha-ex-carga">
-          <input class="carga-input" type="number" placeholder="kg" value="${carga.peso||''}" onchange="saveCarga(${ficha.id},${ei},'peso',this.value)" title="peso usado"/>
+function renderCards(mod){
+  const cfg=MODAL_CONFIG[mod];
+  const grid=document.getElementById('cards'+mod.charAt(0).toUpperCase()+mod.slice(1));
+  if(!grid)return;
+  const list=cards[mod]||[];
+  if(!list.length){grid.innerHTML=`<div class="empty-cards">nenhum plano gerado ainda — descreva seu objetivo e clique em "gerar plano"</div>`;return;}
+  grid.innerHTML='';
+  list.forEach(card=>{
+    const el=document.createElement('div');el.className='coach-card';
+    const itensHtml=card.itens.map((it,ii)=>{
+      const carga=card.cargas&&card.cargas[ii]||{};
+      const showCarga=mod==='gym';
+      return`<div class="card-item">
+        <div class="card-item-nome">${it.nome}</div>
+        <div class="card-item-info">${it.info}</div>
+        ${it.obs?`<div class="card-item-obs">${it.obs}</div>`:''}
+        ${showCarga?`<div class="card-carga">
+          <input class="carga-input" type="number" placeholder="kg" value="${carga.peso||''}" onchange="saveCarga('${mod}',${card.id},${ii},'peso',this.value)" title="peso usado"/>
           <span class="carga-lbl">kg</span>
-          <input class="carga-input" type="text" placeholder="reps" value="${carga.repsFeitas||''}" onchange="saveCarga(${ficha.id},${ei},'repsFeitas',this.value)" title="reps feitas"/>
+          <input class="carga-input" type="text" placeholder="reps" value="${carga.repsFeitas||''}" onchange="saveCarga('${mod}',${card.id},${ii},'repsFeitas',this.value)" title="reps feitas"/>
           <span class="carga-lbl">feitas</span>
-        </div>
+        </div>`:''}
       </div>`;
     }).join('');
-    const card=document.createElement('div');card.className='ficha-card';
-    card.innerHTML=`
-      <div class="ficha-card-header">
-        <div class="ficha-card-title"><i class="ti ti-barbell" style="color:var(--purple)"></i>${ficha.titulo}</div>
-        <div style="display:flex;align-items:center;gap:6px"><span class="ficha-card-badge ${badgeClass}">${ficha.badge}</span><button onclick="deleteFicha(${ficha.id})" title="fechar" style="background:none;border:none;cursor:pointer;color:var(--text3);font-size:16px;line-height:1;padding:0 2px" onmouseover="this.style.color='#A32D2D'" onmouseout="this.style.color='var(--text3)'">×</button></div>
+    el.innerHTML=`
+      <div class="card-header">
+        <div class="card-title" style="color:${cfg.cor}"><i class="ti ${cfg.icon}"></i>${card.titulo}</div>
+        <div style="display:flex;align-items:center;gap:6px">
+          <span class="card-badge ${cfg.badgeClass}">${card.badge}</span>
+          <button class="card-close" onclick="deleteCard('${mod}',${card.id})" title="remover">×</button>
+        </div>
       </div>
-      <div class="ficha-exercicios">${exHtml}</div>
-      <div class="ficha-card-footer">
-        <button class="add-dia-btn" onclick="openDiaModal(${ficha.id})"><i class="ti ti-calendar-plus"></i> adicionar ao dia</button>
-        <button class="del-ficha-btn" onclick="deleteFicha(${ficha.id})" title="remover ficha"><i class="ti ti-x"></i> remover</button>
+      <div class="card-body">${itensHtml}</div>
+      <div class="card-footer">
+        <button class="add-dia-btn" onclick="openDiaModal('${mod}',${card.id})"><i class="ti ti-calendar-plus"></i> adicionar ao dia</button>
       </div>`;
-    grid.appendChild(card);
+    grid.appendChild(el);
   });
 }
+
+function renderAllCards(){renderCards('run');renderCards('bike');renderCards('gym');}
 
 // PDF
 function exportPDF(){
@@ -613,35 +715,29 @@ function exportPDF(){
   for(let i=0;i<first;i++)week.push(null);
   for(let d=1;d<=dim;d++){week.push(d);if(week.length===7){weeks.push(week);week=[];}}
   if(week.length){while(week.length<7)week.push(null);weeks.push(week);}
-  const DIAS_ABREV=['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
-  const tipoLabel={corrida:'Corrida',ciclismo:'Ciclismo',musculacao:'Academia',descanso:'Descanso'};
-  let weeksHtml='';
+  const DA=['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
+  const tl={corrida:'Corrida',ciclismo:'Ciclismo',musculacao:'Academia',descanso:'Descanso'};
+  let wh='';
   weeks.forEach((wk,wi)=>{
     const vd=wk.filter(Boolean);if(!vd.length)return;
-    let wKmC=0,wKmB=0,wMin=0,wCnt=0,daysHtml='';
-    wk.forEach((d,i)=>{
-      if(!d)return;
-      const k=dKey(viewYear,viewMonth,d);const dd=data[k]||{};const pl=dd.planejado||[];const re=dd.realizado||[];
-      const dt=new Date(viewYear,viewMonth,d);
-      re.forEach(r=>{wCnt++;if(r.tipo==='corrida')wKmC+=parseFloat(r.distancia)||0;if(r.tipo==='ciclismo')wKmB+=parseFloat(r.distancia)||0;if(r.tipo==='musculacao')wMin+=parseFloat(r.tempo)||0;});
-      let tagsHtml='';
-      if(!pl.length&&!re.length){tagsHtml='<span class="pdf-empty">—</span>';}
-      else{pl.forEach(t=>{const done=re.find(r=>r.tipo===t.tipo);let extra='';if(done){if(done.tipo==='corrida')extra=` ${done.distancia||''}km·pace ${done.pace||''}`;if(done.tipo==='ciclismo')extra=` ${done.distancia||''}km·${done.velocidade||''}km/h`;if(done.tipo==='musculacao')extra=` ${done.tempo||''}min`;}tagsHtml+=`<span class="pdf-tag ${done?'r':'p'}">${done?'✓ ':''}${tipoLabel[t.tipo]||t.tipo}${extra}</span>`;});re.forEach(r=>{if(!pl.find(p=>p.tipo===r.tipo)){let extra='';if(r.tipo==='corrida')extra=` ${r.distancia||''}km·pace ${r.pace||''}`;if(r.tipo==='ciclismo')extra=` ${r.distancia||''}km·${r.velocidade||''}km/h`;if(r.tipo==='musculacao')extra=` ${r.tempo||''}min`;tagsHtml+=`<span class="pdf-tag r">✓ ${tipoLabel[r.tipo]||r.tipo}${extra}</span>`;}});}
-      daysHtml+=`<div class="pdf-day"><div class="pdf-day-date"><strong>${d}</strong> ${DIAS_ABREV[dt.getDay()]}</div><div class="pdf-day-content">${tagsHtml}</div></div>`;
+    let wC=0,wB=0,wM=0,wCnt=0,dh='';
+    wk.forEach(d=>{
+      if(!d)return;const k=dKey(viewYear,viewMonth,d);const dd=data[k]||{};const pl=dd.planejado||[];const re=dd.realizado||[];const dt=new Date(viewYear,viewMonth,d);
+      re.forEach(r=>{wCnt++;if(r.tipo==='corrida')wC+=parseFloat(r.distancia)||0;if(r.tipo==='ciclismo')wB+=parseFloat(r.distancia)||0;if(r.tipo==='musculacao')wM+=parseFloat(r.tempo)||0;});
+      let th='';
+      if(!pl.length&&!re.length){th='<span class="pdf-empty">—</span>';}
+      else{pl.forEach(t=>{const done=re.find(r=>r.tipo===t.tipo);let ex='';if(done){if(done.tipo==='corrida')ex=` ${done.distancia||''}km·pace${done.pace||''}`;if(done.tipo==='ciclismo')ex=` ${done.distancia||''}km·${done.velocidade||''}km/h`;if(done.tipo==='musculacao')ex=` ${done.tempo||''}min`;}th+=`<span class="pdf-tag ${done?'r':'p'}">${done?'✓ ':''}${tl[t.tipo]||t.tipo}${ex}</span>`;});re.forEach(r=>{if(!pl.find(p=>p.tipo===r.tipo)){let ex='';if(r.tipo==='corrida')ex=` ${r.distancia||''}km`;if(r.tipo==='ciclismo')ex=` ${r.distancia||''}km`;if(r.tipo==='musculacao')ex=` ${r.tempo||''}min`;th+=`<span class="pdf-tag r">✓ ${tl[r.tipo]||r.tipo}${ex}</span>`;}});}
+      dh+=`<div class="pdf-day"><div class="pdf-day-date"><strong>${d}</strong> ${DA[dt.getDay()]}</div><div class="pdf-day-content">${th}</div></div>`;
     });
-    let sumParts=[];
-    if(wKmC>0)sumParts.push(`Corrida: <span>${wKmC.toFixed(1)}km</span>`);
-    if(wKmB>0)sumParts.push(`Ciclismo: <span>${wKmB.toFixed(1)}km</span>`);
-    if(wMin>0)sumParts.push(`Academia: <span>${Math.round(wMin)}min</span>`);
-    if(wCnt>0)sumParts.push(`Treinos: <span>${wCnt}</span>`);
-    weeksHtml+=`<div class="pdf-week"><div class="pdf-week-title">semana ${wi+1} · ${vd[0]} a ${vd[vd.length-1]} de ${mesNome.toLowerCase()}</div>${daysHtml}${sumParts.length?`<div class="pdf-week-summary">${sumParts.join(' · ')}</div>`:''}</div>`;
+    let sp=[];if(wC>0)sp.push(`Corrida: <span>${wC.toFixed(1)}km</span>`);if(wB>0)sp.push(`Ciclismo: <span>${wB.toFixed(1)}km</span>`);if(wM>0)sp.push(`Academia: <span>${Math.round(wM)}min</span>`);if(wCnt>0)sp.push(`Treinos: <span>${wCnt}</span>`);
+    wh+=`<div class="pdf-week"><div class="pdf-week-title">semana ${wi+1} · ${vd[0]} a ${vd[vd.length-1]} de ${mesNome.toLowerCase()}</div>${dh}${sp.length?`<div class="pdf-week-summary">${sp.join(' · ')}</div>`:''}</div>`;
   });
-  document.getElementById('pdfContent').innerHTML=`<div class="pdf-header"><div><div class="pdf-title">meus treinos · ${mesNome} ${viewYear}</div><div class="pdf-sub">gerado em ${new Date().toLocaleDateString('pt-BR')}</div></div></div><div class="pdf-summary"><div class="pdf-stat"><div class="pdf-stat-lbl">corrida</div><div class="pdf-stat-val">${kmC.toFixed(1)}</div><div class="pdf-stat-unit">km no mês</div></div><div class="pdf-stat"><div class="pdf-stat-lbl">ciclismo</div><div class="pdf-stat-val">${kmB.toFixed(1)}</div><div class="pdf-stat-unit">km no mês</div></div><div class="pdf-stat"><div class="pdf-stat-lbl">academia</div><div class="pdf-stat-val">${Math.round(minM)}</div><div class="pdf-stat-unit">min no mês</div></div><div class="pdf-stat"><div class="pdf-stat-lbl">treinos feitos</div><div class="pdf-stat-val">${cnt}</div><div class="pdf-stat-unit">este mês</div></div></div>${weeksHtml}`;
+  document.getElementById('pdfContent').innerHTML=`<div class="pdf-header"><div><div class="pdf-title">meus treinos · ${mesNome} ${viewYear}</div><div class="pdf-sub">gerado em ${new Date().toLocaleDateString('pt-BR')}</div></div></div><div class="pdf-summary"><div class="pdf-stat"><div class="pdf-stat-lbl">corrida</div><div class="pdf-stat-val">${kmC.toFixed(1)}</div><div class="pdf-stat-unit">km</div></div><div class="pdf-stat"><div class="pdf-stat-lbl">ciclismo</div><div class="pdf-stat-val">${kmB.toFixed(1)}</div><div class="pdf-stat-unit">km</div></div><div class="pdf-stat"><div class="pdf-stat-lbl">academia</div><div class="pdf-stat-val">${Math.round(minM)}</div><div class="pdf-stat-unit">min</div></div><div class="pdf-stat"><div class="pdf-stat-lbl">treinos</div><div class="pdf-stat-val">${cnt}</div><div class="pdf-stat-unit">feitos</div></div></div>${wh}`;
   setTimeout(()=>window.print(),100);
 }
 
 if(Notification.permission==='default')Notification.requestPermission();
-renderCal();
+loadPerfilUI();updateResumos();renderCal();
 </script>
 </body>
 </html>
