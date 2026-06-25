@@ -293,37 +293,149 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
       <div class="perfil-field"><label class="perfil-label">Peso (kg)</label><input class="perfil-input" type="number" id="pPeso" placeholder="ex: 78"/></div>
       <div class="perfil-field"><label class="perfil-label">Altura (cm)</label><input class="perfil-input" type="number" id="pAltura" placeholder="ex: 175"/></div>
     </div>
-    <div class="perfil-divider">nível por modalidade</div>
-    <div class="perfil-modalidades">
+
+    <div class="perfil-divider"><i class="ti ti-run" style="color:var(--run)"></i> corrida</div>
+    <div class="perfil-modalidades" style="grid-template-columns:1fr">
       <div class="modalidade-card run">
-        <div class="modalidade-title run"><i class="ti ti-run"></i> corrida</div>
-        <select class="perfil-select" id="pNivelRun" style="width:100%">
-          <option value="">selecione...</option>
-          <option value="iniciante">Iniciante (até 5km)</option>
-          <option value="intermediario">Intermediário (5–15km)</option>
-          <option value="avancado">Avançado (meias/maratonas)</option>
-        </select>
-        <input class="perfil-input" type="text" id="pPaceAtual" placeholder="pace atual ex: 6:30" style="width:100%;margin-top:6px"/>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
+          <div class="perfil-field">
+            <label class="perfil-label">Nível atual</label>
+            <select class="perfil-select" id="pNivelRun" style="width:100%">
+              <option value="">selecione...</option>
+              <option value="iniciante">Iniciante — até 5km</option>
+              <option value="intermediario-5k">Intermediário — 5–10km</option>
+              <option value="intermediario-10k">Intermediário — 10–21km</option>
+              <option value="avancado-meia">Avançado — Meia maratona</option>
+              <option value="avancado-maratona">Avançado — Maratona</option>
+              <option value="ultra">Ultra — acima de 42km</option>
+            </select>
+          </div>
+          <div class="perfil-field">
+            <label class="perfil-label">Objetivo de prova</label>
+            <select class="perfil-select" id="pObjetivoRun" style="width:100%">
+              <option value="">sem prova específica</option>
+              <option value="5k">Prova 5km</option>
+              <option value="10k">Prova 10km</option>
+              <option value="meia">Meia maratona (21km)</option>
+              <option value="maratona">Maratona (42km)</option>
+              <option value="ultra">Ultra maratona</option>
+            </select>
+          </div>
+          <div class="perfil-field">
+            <label class="perfil-label">Pace atual (min/km)</label>
+            <input class="perfil-input" type="text" id="pPaceAtual" placeholder="ex: 6:30" style="width:100%"/>
+          </div>
+          <div class="perfil-field">
+            <label class="perfil-label">Dias/semana disponíveis</label>
+            <select class="perfil-select" id="pDiasRun" style="width:100%">
+              <option value="">selecione...</option>
+              <option value="2">2 dias</option>
+              <option value="3">3 dias</option>
+              <option value="4">4 dias</option>
+              <option value="5">5 dias</option>
+            </select>
+          </div>
+          <div class="perfil-field" style="grid-column:1/-1">
+            <label class="perfil-label">Melhores tempos em prova (opcional)</label>
+            <input class="perfil-input" type="text" id="pTemposRun" placeholder="ex: 5k 28min, 10k 58min, meia 2h10" style="width:100%"/>
+          </div>
+          <div class="perfil-field" style="grid-column:1/-1">
+            <label class="perfil-label">Lesões ou restrições</label>
+            <input class="perfil-input" type="text" id="pLesoesRun" placeholder="ex: joelho direito, nenhuma" style="width:100%"/>
+          </div>
+        </div>
       </div>
+    </div>
+
+    <div class="perfil-divider"><i class="ti ti-bike" style="color:var(--bike)"></i> ciclismo speed</div>
+    <div class="perfil-modalidades" style="grid-template-columns:1fr">
       <div class="modalidade-card bike">
-        <div class="modalidade-title bike"><i class="ti ti-bike"></i> ciclismo</div>
-        <select class="perfil-select" id="pNivelBike" style="width:100%">
-          <option value="">selecione...</option>
-          <option value="iniciante">Iniciante (passeio)</option>
-          <option value="intermediario">Intermediário (speed/MTB)</option>
-          <option value="avancado">Avançado (endurance/triatlo)</option>
-        </select>
-        <input class="perfil-input" type="text" id="pVelAtual" placeholder="velocidade média ex: 25km/h" style="width:100%;margin-top:6px"/>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
+          <div class="perfil-field">
+            <label class="perfil-label">Distância habitual de saída</label>
+            <select class="perfil-select" id="pNivelBike" style="width:100%">
+              <option value="">selecione...</option>
+              <option value="ate40">Até 40km (iniciante)</option>
+              <option value="40a80">40–80km (intermediário)</option>
+              <option value="80a120">80–120km (Gran Fondo)</option>
+              <option value="120a160">120–160km (Century)</option>
+              <option value="160mais">160km+ (Brevê / Endurance)</option>
+            </select>
+          </div>
+          <div class="perfil-field">
+            <label class="perfil-label">Objetivo no ciclismo</label>
+            <select class="perfil-select" id="pObjetivoBike" style="width:100%">
+              <option value="">condicionamento geral</option>
+              <option value="velocidade">Melhorar velocidade média</option>
+              <option value="granfondo">Completar Gran Fondo (120km+)</option>
+              <option value="century">Century Ride (160km)</option>
+              <option value="breve">Brevê (200km+)</option>
+              <option value="resistencia">Endurance / longa distância</option>
+            </select>
+          </div>
+          <div class="perfil-field">
+            <label class="perfil-label">Velocidade média atual</label>
+            <input class="perfil-input" type="text" id="pVelAtual" placeholder="ex: 27km/h" style="width:100%"/>
+          </div>
+          <div class="perfil-field">
+            <label class="perfil-label">Terreno preferido</label>
+            <select class="perfil-select" id="pTerrenoBike" style="width:100%">
+              <option value="">selecione...</option>
+              <option value="plano">Plano (asfalto liso)</option>
+              <option value="ondulado">Ondulado (subidas leves)</option>
+              <option value="montanhoso">Montanhoso (subidas longas)</option>
+            </select>
+          </div>
+          <div class="perfil-field">
+            <label class="perfil-label">Dias/semana disponíveis</label>
+            <select class="perfil-select" id="pDiasBike" style="width:100%">
+              <option value="">selecione...</option>
+              <option value="1">1 dia</option>
+              <option value="2">2 dias</option>
+              <option value="3">3 dias</option>
+              <option value="4">4+ dias</option>
+            </select>
+          </div>
+          <div class="perfil-field">
+            <label class="perfil-label">Cadência de pedalada habitual</label>
+            <input class="perfil-input" type="text" id="pCadencia" placeholder="ex: 80rpm" style="width:100%"/>
+          </div>
+        </div>
       </div>
+    </div>
+
+    <div class="perfil-divider"><i class="ti ti-barbell" style="color:var(--gym)"></i> academia</div>
+    <div class="perfil-modalidades" style="grid-template-columns:1fr">
       <div class="modalidade-card gym">
-        <div class="modalidade-title gym"><i class="ti ti-barbell"></i> academia</div>
-        <select class="perfil-select" id="pNivelGym" style="width:100%">
-          <option value="">selecione...</option>
-          <option value="iniciante">Iniciante (menos de 6 meses)</option>
-          <option value="intermediario">Intermediário (6m–3 anos)</option>
-          <option value="avancado">Avançado (mais de 3 anos)</option>
-        </select>
-        <input class="perfil-input" type="text" id="pObjetivoGym" placeholder="objetivo ex: hipertrofia" style="width:100%;margin-top:6px"/>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div class="perfil-field">
+            <label class="perfil-label">Tempo de treino</label>
+            <select class="perfil-select" id="pNivelGym" style="width:100%">
+              <option value="">selecione...</option>
+              <option value="iniciante">Iniciante — menos de 6 meses</option>
+              <option value="intermediario">Intermediário — 6 meses a 3 anos</option>
+              <option value="avancado">Avançado — mais de 3 anos</option>
+            </select>
+          </div>
+          <div class="perfil-field">
+            <label class="perfil-label">Dias/semana disponíveis</label>
+            <select class="perfil-select" id="pDiasGym" style="width:100%">
+              <option value="">selecione...</option>
+              <option value="2">2 dias</option>
+              <option value="3">3 dias</option>
+              <option value="4">4 dias</option>
+              <option value="5">5 dias</option>
+            </select>
+          </div>
+          <div class="perfil-field" style="grid-column:1/-1">
+            <label class="perfil-label">Objetivo principal</label>
+            <input class="perfil-input" type="text" id="pObjetivoGym" placeholder="ex: hipertrofia, perda de peso, força, condicionamento" style="width:100%"/>
+          </div>
+          <div class="perfil-field" style="grid-column:1/-1">
+            <label class="perfil-label">Restrições ou lesões</label>
+            <input class="perfil-input" type="text" id="pLesoesGym" placeholder="ex: ombro direito, hérnia, nenhuma" style="width:100%"/>
+          </div>
+        </div>
       </div>
     </div>
     <div style="margin-top:1rem;display:flex;gap:8px">
@@ -413,10 +525,10 @@ function perfilTexto(){
   const imc=(perfil.peso&&perfil.altura)?((perfil.peso/((perfil.altura/100)**2)).toFixed(1)):null;
   let txt=`Atleta: ${perfil.idade||'?'} anos, ${perfil.peso||'?'}kg, ${perfil.altura||'?'}cm`;
   if(imc)txt+=`, IMC ${imc}`;
-  if(fc)txt+=`, FC máx estimada ${fc}bpm`;
-  if(perfil.nivelRun)txt+=`. Corrida: ${perfil.nivelRun}${perfil.paceAtual?', pace atual '+perfil.paceAtual:''}`;
-  if(perfil.nivelBike)txt+=`. Ciclismo: ${perfil.nivelBike}${perfil.velAtual?', velocidade média '+perfil.velAtual:''}`;
-  if(perfil.nivelGym)txt+=`. Academia: ${perfil.nivelGym}${perfil.objetivoGym?', objetivo: '+perfil.objetivoGym:''}`;
+  if(fc)txt+=`, FC máx estimada ${fc}bpm (zonas: Z1<${Math.round(fc*.6)}, Z2=${Math.round(fc*.6)}-${Math.round(fc*.7)}, Z3=${Math.round(fc*.7)}-${Math.round(fc*.8)}, Z4=${Math.round(fc*.8)}-${Math.round(fc*.9)}, Z5>${Math.round(fc*.9)})`;
+  if(perfil.nivelRun){txt+=`. CORRIDA: nível ${perfil.nivelRun}`;if(perfil.paceAtual)txt+=`, pace atual ${perfil.paceAtual}/km`;if(perfil.objetivoRun)txt+=`, objetivo: ${perfil.objetivoRun}`;if(perfil.diasRun)txt+=`, ${perfil.diasRun}x/semana`;if(perfil.temposRun)txt+=`, tempos: ${perfil.temposRun}`;if(perfil.lesoesRun)txt+=`, restrições: ${perfil.lesoesRun}`;}
+  if(perfil.nivelBike){txt+=`. CICLISMO SPEED: distância habitual ${perfil.nivelBike}`;if(perfil.velAtual)txt+=`, velocidade média ${perfil.velAtual}`;if(perfil.objetivoBike)txt+=`, objetivo: ${perfil.objetivoBike}`;if(perfil.terrenoBike)txt+=`, terreno: ${perfil.terrenoBike}`;if(perfil.diasBike)txt+=`, ${perfil.diasBike}x/semana`;if(perfil.cadencia)txt+=`, cadência ${perfil.cadencia}`;}
+  if(perfil.nivelGym){txt+=`. ACADEMIA: ${perfil.nivelGym}`;if(perfil.objetivoGym)txt+=`, objetivo: ${perfil.objetivoGym}`;if(perfil.diasGym)txt+=`, ${perfil.diasGym}x/semana`;if(perfil.lesoesGym)txt+=`, restrições: ${perfil.lesoesGym}`;}
   return txt;
 }
 
@@ -432,25 +544,26 @@ function loadPerfilUI(){
   if(perfil.idade)document.getElementById('pIdade').value=perfil.idade;
   if(perfil.peso)document.getElementById('pPeso').value=perfil.peso;
   if(perfil.altura)document.getElementById('pAltura').value=perfil.altura;
-  if(perfil.nivelRun)document.getElementById('pNivelRun').value=perfil.nivelRun;
-  if(perfil.paceAtual)document.getElementById('pPaceAtual').value=perfil.paceAtual;
-  if(perfil.nivelBike)document.getElementById('pNivelBike').value=perfil.nivelBike;
-  if(perfil.velAtual)document.getElementById('pVelAtual').value=perfil.velAtual;
-  if(perfil.nivelGym)document.getElementById('pNivelGym').value=perfil.nivelGym;
-  if(perfil.objetivoGym)document.getElementById('pObjetivoGym').value=perfil.objetivoGym;
+  const sv=(id,val)=>{const el=document.getElementById(id);if(el&&val)el.value=val;};
+  sv('pNivelRun',perfil.nivelRun);sv('pObjetivoRun',perfil.objetivoRun);
+  sv('pPaceAtual',perfil.paceAtual);sv('pDiasRun',perfil.diasRun);
+  sv('pTemposRun',perfil.temposRun);sv('pLesoesRun',perfil.lesoesRun);
+  sv('pNivelBike',perfil.nivelBike);sv('pObjetivoBike',perfil.objetivoBike);
+  sv('pVelAtual',perfil.velAtual);sv('pTerrenoBike',perfil.terrenoBike);
+  sv('pDiasBike',perfil.diasBike);sv('pCadencia',perfil.cadencia);
+  sv('pNivelGym',perfil.nivelGym);sv('pDiasGym',perfil.diasGym);
+  sv('pObjetivoGym',perfil.objetivoGym);sv('pLesoesGym',perfil.lesoesGym);
 }
 
 function salvarPerfil(){
+  const gv=id=>document.getElementById(id)?.value||'';
   perfil={
-    idade:document.getElementById('pIdade').value,
-    peso:document.getElementById('pPeso').value,
-    altura:document.getElementById('pAltura').value,
-    nivelRun:document.getElementById('pNivelRun').value,
-    paceAtual:document.getElementById('pPaceAtual').value,
-    nivelBike:document.getElementById('pNivelBike').value,
-    velAtual:document.getElementById('pVelAtual').value,
-    nivelGym:document.getElementById('pNivelGym').value,
-    objetivoGym:document.getElementById('pObjetivoGym').value,
+    idade:gv('pIdade'),peso:gv('pPeso'),altura:gv('pAltura'),
+    nivelRun:gv('pNivelRun'),objetivoRun:gv('pObjetivoRun'),paceAtual:gv('pPaceAtual'),
+    diasRun:gv('pDiasRun'),temposRun:gv('pTemposRun'),lesoesRun:gv('pLesoesRun'),
+    nivelBike:gv('pNivelBike'),objetivoBike:gv('pObjetivoBike'),velAtual:gv('pVelAtual'),
+    terrenoBike:gv('pTerrenoBike'),diasBike:gv('pDiasBike'),cadencia:gv('pCadencia'),
+    nivelGym:gv('pNivelGym'),diasGym:gv('pDiasGym'),objetivoGym:gv('pObjetivoGym'),lesoesGym:gv('pLesoesGym'),
   };
   savePerfil();updateResumos();
   const el=document.getElementById('perfilStatus');el.textContent='✓ Perfil salvo!';el.className='perfil-status ok';
