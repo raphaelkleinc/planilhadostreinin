@@ -257,6 +257,7 @@
     <div class="fichas-actions">
       <button class="cmd-btn" id="gerarBtn" onclick="gerarFichas()"><i class="ti ti-sparkles"></i> gerar fichas</button>
       <button class="cmd-btn" style="background:transparent;color:var(--text);border:0.5px solid var(--border2)" onclick="addFichaManual()"><i class="ti ti-plus"></i> criar manualmente</button>
+      <button class="cmd-btn" style="background:transparent;color:#A32D2D;border:0.5px solid #A32D2D" onclick="limparFichas()"><i class="ti ti-trash"></i> limpar tudo</button>
     </div>
     <div class="fichas-status" id="fichasStatus"></div>
   </div>
@@ -509,13 +510,18 @@ Regras criticas:
     if(jsonStart===-1||jsonEnd===-1)throw new Error('JSON nao encontrado na resposta');
     txt=txt.substring(jsonStart,jsonEnd+1);
     const res=JSON.parse(txt);
-    fichas=[...fichas,...res.fichas.map(f=>({...f,id:Date.now()+Math.random(),cargas:{}}))];
+    fichas=res.fichas.map(f=>({...f,id:Date.now()+Math.random(),cargas:{}}));
     saveFichas();renderFichas();
     setFichasStatus('✓ '+res.fichas.length+' fichas geradas!','ok');
   }catch(err){setFichasStatus('erro: '+err.message,'err');console.error(err);}
   finally{btn.disabled=false;}
 }
 
+function limparFichas(){
+  if(!fichas.length)return;
+  if(!confirm('Remover todas as fichas?'))return;
+  fichas=[];saveFichas();renderFichas();
+}
 function addFichaManual(){
   const ficha={id:Date.now(),titulo:'Nova Ficha',badge:'A',exercicios:[{nome:'Exercício 1',series:3,reps:'10-12',obs:''}],cargas:{}};
   fichas.push(ficha);saveFichas();renderFichas();
@@ -585,12 +591,12 @@ function renderFichas(){
     card.innerHTML=`
       <div class="ficha-card-header">
         <div class="ficha-card-title"><i class="ti ti-barbell" style="color:var(--purple)"></i>${ficha.titulo}</div>
-        <span class="ficha-card-badge ${badgeClass}">${ficha.badge}</span>
+        <div style="display:flex;align-items:center;gap:6px"><span class="ficha-card-badge ${badgeClass}">${ficha.badge}</span><button onclick="deleteFicha(${ficha.id})" title="fechar" style="background:none;border:none;cursor:pointer;color:var(--text3);font-size:16px;line-height:1;padding:0 2px" onmouseover="this.style.color='#A32D2D'" onmouseout="this.style.color='var(--text3)'">×</button></div>
       </div>
       <div class="ficha-exercicios">${exHtml}</div>
       <div class="ficha-card-footer">
         <button class="add-dia-btn" onclick="openDiaModal(${ficha.id})"><i class="ti ti-calendar-plus"></i> adicionar ao dia</button>
-        <button class="del-ficha-btn" onclick="deleteFicha(${ficha.id})"><i class="ti ti-trash"></i></button>
+        <button class="del-ficha-btn" onclick="deleteFicha(${ficha.id})" title="remover ficha"><i class="ti ti-x"></i> remover</button>
       </div>`;
     grid.appendChild(card);
   });
