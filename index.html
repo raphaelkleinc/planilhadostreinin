@@ -670,9 +670,24 @@ function setStatus(m,t){var el=document.getElementById('status');el.textContent=
 function handleFile(input){var file=input.files[0];if(!file)return;var nameEl=document.getElementById('uploadName');nameEl.textContent='Arquivo: '+file.name;nameEl.classList.add('visible');var reader=new FileReader();reader.onload=function(e){document.getElementById('cmdInput').value=e.target.result;};reader.readAsText(file,'UTF-8');input.value='';}
 
 function parseJSON(txt){
-  txt=txt.replace(/^[\s\S]*?(\{)/,'$1');
-  var last=txt.lastIndexOf('}');
-  txt=txt.substring(0,last+1);
+  // extrair so o bloco JSON
+  var start=txt.indexOf('{');
+  var end=txt.lastIndexOf('}');
+  if(start===-1||end===-1)throw new Error('JSON nao encontrado');
+  txt=txt.substring(start,end+1);
+  // remover caracteres de controle exceto espaco
+  txt=txt.replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g,'');
+  // normalizar quebras de linha dentro de strings para espaco
+  txt=txt.replace(/([":,\[{])\s*\n\s*/g,'$1 ');
+  txt=txt.replace(/\n/g,' ');
+  // tentar parse direto
+  try{ return JSON.parse(txt); } catch(e){}
+  // fallback: escapar aspas problematicas dentro de valores
+  // substituir aspas simples usadas como aspas duplas em chaves
+  txt=txt.replace(/'([a-zA-Z_]+)'\s*:/g,'"$1":');
+  try{ return JSON.parse(txt); } catch(e){}
+  // fallback final: remover trailing commas
+  txt=txt.replace(/,\s*([}\]])/g,'$1');
   return JSON.parse(txt);
 }
 
