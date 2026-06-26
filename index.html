@@ -225,7 +225,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 <div class="tab-panel" id="tab-run">
   <div class="coach-header run">
     <div class="coach-title run"><i class="ti ti-run"></i> coach de corrida</div>
-    <div class="coach-perfil-resumo" id="resumoRun">Preencha seu perfil para receber treinos personalizados</div>
+<div id="resumoRun" style="display:none"></div>
     <textarea class="coach-objetivo" id="objRun" placeholder="ex: quero melhorar meu pace nos 10km, treino 3x por semana, tenho 45 min por sessao."></textarea>
     <div class="coach-actions">
       <button class="cmd-btn btn-run" id="gerarRunBtn" onclick="gerarCards('run')"><i class="ti ti-sparkles"></i> gerar plano</button>
@@ -239,7 +239,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 <div class="tab-panel" id="tab-bike">
   <div class="coach-header bike">
     <div class="coach-title bike"><i class="ti ti-bike"></i> coach de ciclismo speed</div>
-    <div class="coach-perfil-resumo" id="resumoBike">Preencha seu perfil para receber treinos personalizados</div>
+<div id="resumoBike" style="display:none"></div>
     <textarea class="coach-objetivo" id="objBike" placeholder="ex: quero pedalar 100km, saio 2x por semana. Ultima saida foi 35km a 25km/h."></textarea>
     <div class="coach-actions">
       <button class="cmd-btn btn-bike" id="gerarBikeBtn" onclick="gerarCards('bike')"><i class="ti ti-sparkles"></i> gerar plano</button>
@@ -253,7 +253,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 <div class="tab-panel" id="tab-gym">
   <div class="coach-header gym">
     <div class="coach-title gym"><i class="ti ti-barbell"></i> coach de academia</div>
-    <div class="coach-perfil-resumo" id="resumoGym">Preencha seu perfil para receber treinos personalizados</div>
+<div id="resumoGym" style="display:none"></div>
     <textarea class="coach-objetivo" id="objGym" placeholder="ex: hipertrofia, treino 3x por semana, foco em peito e costas, iniciante."></textarea>
     <div class="coach-actions">
       <button class="cmd-btn btn-gym" id="gerarGymBtn" onclick="gerarCards('gym')"><i class="ti ti-sparkles"></i> gerar plano</button>
@@ -454,7 +454,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
       <button class="cmd-btn" onclick="salvarPerfil()"><i class="ti ti-device-floppy"></i> salvar perfil</button>
     </div>
     <div class="perfil-status" id="perfilStatus"></div>
-    <div class="perfil-resumo-box" id="perfilResumo" style="display:none"></div>
+<div id="perfilResumo" style="display:none"></div>
   </div>
 </div>
 </div>
@@ -548,10 +548,7 @@ function perfilTexto(){
 }
 
 function updateResumos(){
-  var txt=perfilTexto()||'Preencha seu perfil para receber treinos personalizados';
-  ['Run','Bike','Gym'].forEach(function(m){var el=document.getElementById('resumo'+m);if(el)el.textContent=txt;});
-  var box=document.getElementById('perfilResumo');
-  if(box){box.style.display=txt&&txt.indexOf('Preencha')<0?'block':'none';if(txt&&txt.indexOf('Preencha')<0)box.textContent='Perfil ativo: '+txt;}
+  // perfil usado internamente pelo Claude, nao exibido na tela
 }
 
 function loadPerfilUI(){
