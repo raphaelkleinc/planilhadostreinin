@@ -15,8 +15,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .tab{flex:1;padding:7px 4px;text-align:center;border-radius:var(--radius);cursor:pointer;font-size:12px;color:var(--text2);border:none;background:transparent;display:flex;align-items:center;justify-content:center;gap:4px;white-space:nowrap}
 .tab.active{background:var(--bg);color:var(--text);font-weight:500;box-shadow:0 1px 3px rgba(0,0,0,0.1)}
 .tab-panel{display:none}.tab-panel.active{display:block}
-
-/* HEADER CAL */
 .header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;flex-wrap:wrap;gap:8px}
 .nav-row{display:flex;align-items:center;gap:6px}
 .nav-btn{background:var(--bg);border:0.5px solid var(--border2);border-radius:var(--radius);padding:5px 10px;cursor:pointer;font-size:13px;color:var(--text)}
@@ -52,8 +50,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .corrida-p{background:#0c2a44;color:#85B7EB}.ciclismo-p{background:#1a2e0a;color:#97C459}
 .musculacao-p{background:#1e1a44;color:#AFA9EC}.descanso-p{background:#2c2c2a;color:#B4B2A9}
 .corrida-r{background:#0C447C;color:#B5D4F4}.ciclismo-r{background:#27500A;color:#C0DD97}.musculacao-r{background:#3C3489;color:#CECBF6}}
-
-/* CMD */
 .cmd-area{background:var(--bg2);border-radius:var(--radius-lg);padding:1rem;border:0.5px solid var(--border)}
 .cmd-lbl{font-size:12px;color:var(--text2);margin-bottom:8px;display:flex;align-items:center;justify-content:space-between}
 .cmd-row{display:flex;gap:8px;align-items:flex-end}
@@ -71,8 +67,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .sug:hover{color:var(--text);border-color:var(--border2)}
 .status{margin-top:7px;font-size:12px;min-height:18px;color:var(--text2)}
 .status.ok{color:#3B6D11}.status.err{color:#A32D2D}.status.loading{color:var(--purple)}
-
-/* COACH TABS */
 .coach-header{border-radius:var(--radius-lg);padding:1rem;border:0.5px solid var(--border);margin-bottom:1rem}
 .coach-header.run{background:var(--run-bg);border-color:var(--run)}
 .coach-header.bike{background:var(--bike-bg);border-color:var(--bike)}
@@ -85,16 +79,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .coach-actions{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
 .btn-run{background:var(--run)!important}.btn-bike{background:var(--bike)!important}.btn-gym{background:var(--gym)!important}
 .btn-danger{background:transparent!important;color:#A32D2D!important;border:0.5px solid #A32D2D!important}
-.btn-secondary{background:transparent!important;color:var(--text)!important;border:0.5px solid var(--border2)!important}
 .coach-status{font-size:12px;color:var(--text2);margin-top:6px;min-height:16px}
 .coach-status.ok{color:#3B6D11}.coach-status.err{color:#A32D2D}.coach-status.loading{color:var(--purple)}
-
-/* CARDS */
 .cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-bottom:1rem}
 .coach-card{background:var(--bg);border:0.5px solid var(--border);border-radius:var(--radius-lg);overflow:hidden}
 .card-header{padding:12px 14px 8px;border-bottom:0.5px solid var(--border);display:flex;justify-content:space-between;align-items:center}
 .card-title{font-size:14px;font-weight:600;display:flex;align-items:center;gap:6px}
-.card-badge{font-size:10px;padding:2px 7px;border-radius:10px;font-weight:600;display:flex;align-items:center;gap:4px}
+.card-badge{font-size:10px;padding:2px 7px;border-radius:10px;font-weight:600}
 .badge-run{background:var(--run-bg);color:var(--run)}.badge-bike{background:var(--bike-bg);color:var(--bike)}.badge-gym{background:var(--gym-bg);color:var(--gym)}
 .card-close{background:none;border:none;cursor:pointer;color:var(--text3);font-size:18px;line-height:1;padding:0 2px}
 .card-close:hover{color:#A32D2D}
@@ -107,16 +98,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .card-carga{display:flex;gap:6px;margin-top:4px;flex-wrap:wrap}
 .carga-input{border:0.5px solid var(--border2);border-radius:5px;padding:3px 7px;font-size:11px;font-family:inherit;background:var(--bg2);color:var(--text);width:75px}
 .carga-input:focus{outline:none;border-color:var(--purple)}
-.carga-lbl{font-size:10px;color:var(--text3);align-self:center}
 .card-footer{padding:10px 14px;border-top:0.5px solid var(--border);display:flex;gap:6px;flex-wrap:wrap;align-items:center}
 .add-dia-btn{font-size:11px;padding:5px 10px;border-radius:var(--radius);border:0.5px solid var(--border2);background:transparent;cursor:pointer;color:var(--text2);display:flex;align-items:center;gap:4px}
 .add-dia-btn:hover{background:var(--purple);color:white;border-color:var(--purple)}
 .empty-cards{color:var(--text3);font-size:13px;padding:20px 0}
-
-/* PERFIL */
 .perfil-section{background:var(--bg);border-radius:var(--radius-lg);padding:1.25rem;border:0.5px solid var(--border);margin-bottom:1rem}
 .perfil-title{font-size:15px;font-weight:600;margin-bottom:1rem;display:flex;align-items:center;gap:7px;color:var(--purple)}
-.perfil-grid{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:1rem}@media(min-width:500px){.perfil-grid{grid-template-columns:repeat(3,1fr)}}
+.perfil-grid{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:1rem}
+@media(min-width:500px){.perfil-grid{grid-template-columns:repeat(3,1fr)}}
 .perfil-field{display:flex;flex-direction:column;gap:4px}
 .perfil-label{font-size:11px;color:var(--text2);font-weight:500}
 .perfil-input{border:0.5px solid var(--border2);border-radius:var(--radius);padding:8px 10px;font-size:13px;font-family:inherit;background:var(--bg2);color:var(--text)}
@@ -124,7 +113,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .perfil-select{border:0.5px solid var(--border2);border-radius:var(--radius);padding:8px 10px;font-size:13px;font-family:inherit;background:var(--bg2);color:var(--text);cursor:pointer}
 .perfil-select:focus{outline:none;border-color:var(--purple)}
 .perfil-divider{font-size:12px;font-weight:600;color:var(--text2);margin:12px 0 8px;padding-bottom:4px;border-bottom:0.5px solid var(--border)}
-.perfil-modalidades{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.perfil-modalidades{display:grid;grid-template-columns:1fr;gap:10px}
 .modalidade-card{border-radius:var(--radius);padding:10px;border:0.5px solid var(--border)}
 .modalidade-card.run{border-color:var(--run);background:var(--run-bg)}
 .modalidade-card.bike{border-color:var(--bike);background:var(--bike-bg)}
@@ -134,8 +123,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .perfil-status{font-size:12px;margin-top:8px;min-height:16px}
 .perfil-status.ok{color:#3B6D11}.perfil-status.err{color:#A32D2D}
 .perfil-resumo-box{background:var(--bg2);border-radius:var(--radius);padding:10px 12px;font-size:12px;color:var(--text2);margin-top:10px;line-height:1.6;border:0.5px solid var(--border)}
-
-/* MODAL */
 .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:100;align-items:center;justify-content:center;padding:1rem}
 .overlay.open{display:flex}
 .modal{background:var(--bg);border-radius:var(--radius-lg);padding:1.25rem;width:100%;max-width:380px;border:0.5px solid var(--border);max-height:90vh;overflow-y:auto}
@@ -153,8 +140,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .dp-cell{padding:6px 4px;text-align:center;font-size:12px;border-radius:var(--radius);cursor:pointer;border:0.5px solid var(--border)}
 .dp-cell:hover{background:var(--purple);color:white;border-color:var(--purple)}
 .dp-cell.empty{opacity:.3;cursor:default}
-
-/* PDF */
 @media print{*{-webkit-print-color-adjust:exact;print-color-adjust:exact}body{background:#fff;padding:0}.app{max-width:100%}.tabs,.header,.legend,.stats-row,.cal-grid,.cmd-area,.overlay,.tab-panel:not(#tab-cal){display:none!important}#pdfContent{display:block!important}}
 #pdfContent{display:none;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#1a1a1a}
 .pdf-header{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid #1a1a1a;padding-bottom:8px;margin-bottom:20px}
@@ -180,7 +165,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 </head>
 <body>
 <div class="app">
-
 <div class="tabs">
   <button class="tab active" onclick="switchTab('cal')"><i class="ti ti-calendar"></i><span> calendário</span></button>
   <button class="tab" onclick="switchTab('run')"><i class="ti ti-run" style="color:var(--run)"></i><span> corrida</span></button>
@@ -189,7 +173,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
   <button class="tab" onclick="switchTab('perfil')"><i class="ti ti-user"></i><span> perfil</span></button>
 </div>
 
-<!-- CALENDÁRIO -->
 <div class="tab-panel active" id="tab-cal">
   <div class="header">
     <h1 style="font-size:18px;font-weight:500;display:flex;align-items:center;gap:8px"><i class="ti ti-calendar" style="font-size:20px;color:var(--purple)"></i> meus treinos</h1>
@@ -201,37 +184,37 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     </div>
   </div>
   <div class="legend">
-    <div class="leg"><div class="leg-sq" style="background:var(--pink-bg);border:1px solid var(--pink-border)"></div>com Amélia</div>
+    <div class="leg"><div class="leg-sq" style="background:var(--pink-bg);border:1px solid var(--pink-border)"></div>com Amelia</div>
     <div class="leg"><div class="leg-dot" style="background:#378ADD"></div>corrida</div>
     <div class="leg"><div class="leg-dot" style="background:#639922"></div>ciclismo</div>
-    <div class="leg"><div class="leg-dot" style="background:#7F77DD"></div>musculação</div>
+    <div class="leg"><div class="leg-dot" style="background:#7F77DD"></div>musculacao</div>
     <div class="leg"><div class="leg-dot" style="background:#888780"></div>descanso</div>
     <div class="leg"><i class="ti ti-check" style="font-size:11px;color:#3B6D11"></i>realizado</div>
   </div>
   <div class="stats-row">
-    <div class="stat-card"><div class="stat-lbl"><i class="ti ti-run" style="font-size:12px"></i> corrida</div><div class="stat-val" id="sKmC">0</div><div class="stat-sub">km no mês</div></div>
-    <div class="stat-card"><div class="stat-lbl"><i class="ti ti-bike" style="font-size:12px"></i> ciclismo</div><div class="stat-val" id="sKmB">0</div><div class="stat-sub">km no mês</div></div>
-    <div class="stat-card"><div class="stat-lbl"><i class="ti ti-barbell" style="font-size:12px"></i> musculação</div><div class="stat-val" id="sMin">0</div><div class="stat-sub">min no mês</div></div>
-    <div class="stat-card"><div class="stat-lbl"><i class="ti ti-chart-bar" style="font-size:12px"></i> feitos</div><div class="stat-val" id="sCnt">0</div><div class="stat-sub">este mês</div></div>
+    <div class="stat-card"><div class="stat-lbl"><i class="ti ti-run" style="font-size:12px"></i> corrida</div><div class="stat-val" id="sKmC">0</div><div class="stat-sub">km no mes</div></div>
+    <div class="stat-card"><div class="stat-lbl"><i class="ti ti-bike" style="font-size:12px"></i> ciclismo</div><div class="stat-val" id="sKmB">0</div><div class="stat-sub">km no mes</div></div>
+    <div class="stat-card"><div class="stat-lbl"><i class="ti ti-barbell" style="font-size:12px"></i> musculacao</div><div class="stat-val" id="sMin">0</div><div class="stat-sub">min no mes</div></div>
+    <div class="stat-card"><div class="stat-lbl"><i class="ti ti-chart-bar" style="font-size:12px"></i> feitos</div><div class="stat-val" id="sCnt">0</div><div class="stat-sub">este mes</div></div>
   </div>
   <div class="cal-grid" id="calGrid">
     <div class="day-hdr">Dom</div><div class="day-hdr">Seg</div><div class="day-hdr">Ter</div>
-    <div class="day-hdr">Qua</div><div class="day-hdr">Qui</div><div class="day-hdr">Sex</div><div class="day-hdr">Sáb</div>
+    <div class="day-hdr">Qua</div><div class="day-hdr">Qui</div><div class="day-hdr">Sex</div><div class="day-hdr">Sab</div>
   </div>
   <div class="cmd-area">
     <div class="cmd-lbl">
       <span><i class="ti ti-robot" style="font-size:13px;vertical-align:-1px;margin-right:4px"></i>planeje, registre ou importe treinos</span>
       <button class="upload-btn" onclick="document.getElementById('fileInput').click()"><i class="ti ti-upload" style="font-size:12px"></i> arquivo</button>
-      <input type="file" id="fileInput" accept=".txt,.pdf,.doc,.docx" onchange="handleFile(this)"/>
+      <input type="file" id="fileInput" accept=".txt,.doc,.docx" onchange="handleFile(this)"/>
     </div>
     <div class="cmd-row">
-      <textarea class="cmd-input" id="cmdInput" placeholder="adicione corrida leve 5km na quarta&#10;&#10;ou em batelada:&#10;dia 15/06 corrida 10km pace 6:00&#10;dia 16/06 musculação 60min" rows="3"></textarea>
+      <textarea class="cmd-input" id="cmdInput" placeholder="adicione corrida leve 5km na quarta&#10;&#10;ou em batelada:&#10;dia 15/06 corrida 10km pace 6:00&#10;dia 16/06 musculacao 60min" rows="3"></textarea>
       <button class="cmd-btn" id="cmdBtn" onclick="runCmd()"><i class="ti ti-arrow-right"></i> enviar</button>
     </div>
     <div class="upload-name" id="uploadName"></div>
     <div class="sugs">
       <span class="sug" onclick="fillCmd(this)">adicione corrida leve 5km na quarta</span>
-      <span class="sug" onclick="fillCmd(this)">musculação toda segunda e quinta</span>
+      <span class="sug" onclick="fillCmd(this)">musculacao toda segunda e quinta</span>
       <span class="sug" onclick="fillCmd(this)">registre ciclismo 40km velocidade 28kmh hoje</span>
       <span class="sug" onclick="fillCmd(this)">registre academia 60 minutos ontem</span>
     </div>
@@ -239,12 +222,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
   </div>
 </div>
 
-<!-- CORRIDA -->
 <div class="tab-panel" id="tab-run">
   <div class="coach-header run">
     <div class="coach-title run"><i class="ti ti-run"></i> coach de corrida</div>
-    <div class="coach-perfil-resumo" id="resumoRun">⚠️ Preencha seu perfil primeiro para receber treinos personalizados</div>
-    <textarea class="coach-objetivo" id="objRun" placeholder="ex: quero melhorar meu pace nos 10km, treino 3x por semana, tenho 45 min por sessão. Semana passada fiz 8km totais."></textarea>
+    <div class="coach-perfil-resumo" id="resumoRun">Preencha seu perfil para receber treinos personalizados</div>
+    <textarea class="coach-objetivo" id="objRun" placeholder="ex: quero melhorar meu pace nos 10km, treino 3x por semana, tenho 45 min por sessao."></textarea>
     <div class="coach-actions">
       <button class="cmd-btn btn-run" id="gerarRunBtn" onclick="gerarCards('run')"><i class="ti ti-sparkles"></i> gerar plano</button>
       <button class="cmd-btn btn-danger" onclick="limparCards('run')"><i class="ti ti-trash"></i> limpar</button>
@@ -254,12 +236,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
   <div class="cards-grid" id="cardsRun"></div>
 </div>
 
-<!-- CICLISMO -->
 <div class="tab-panel" id="tab-bike">
   <div class="coach-header bike">
-    <div class="coach-title bike"><i class="ti ti-bike"></i> coach de ciclismo</div>
-    <div class="coach-perfil-resumo" id="resumoBike">⚠️ Preencha seu perfil primeiro para receber treinos personalizados</div>
-    <textarea class="coach-objetivo" id="objBike" placeholder="ex: quero pedalar 100km, saio 2x por semana, tenho bike speed. Última saída foi 35km a 25km/h."></textarea>
+    <div class="coach-title bike"><i class="ti ti-bike"></i> coach de ciclismo speed</div>
+    <div class="coach-perfil-resumo" id="resumoBike">Preencha seu perfil para receber treinos personalizados</div>
+    <textarea class="coach-objetivo" id="objBike" placeholder="ex: quero pedalar 100km, saio 2x por semana. Ultima saida foi 35km a 25km/h."></textarea>
     <div class="coach-actions">
       <button class="cmd-btn btn-bike" id="gerarBikeBtn" onclick="gerarCards('bike')"><i class="ti ti-sparkles"></i> gerar plano</button>
       <button class="cmd-btn btn-danger" onclick="limparCards('bike')"><i class="ti ti-trash"></i> limpar</button>
@@ -269,12 +250,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
   <div class="cards-grid" id="cardsBike"></div>
 </div>
 
-<!-- ACADEMIA -->
 <div class="tab-panel" id="tab-gym">
   <div class="coach-header gym">
     <div class="coach-title gym"><i class="ti ti-barbell"></i> coach de academia</div>
-    <div class="coach-perfil-resumo" id="resumoGym">⚠️ Preencha seu perfil primeiro para receber treinos personalizados</div>
-    <textarea class="coach-objetivo" id="objGym" placeholder="ex: hipertrofia, treino 3x por semana, foco em peito e costas, intermediário. Semana passada fiz treino A e B."></textarea>
+    <div class="coach-perfil-resumo" id="resumoGym">Preencha seu perfil para receber treinos personalizados</div>
+    <textarea class="coach-objetivo" id="objGym" placeholder="ex: hipertrofia, treino 3x por semana, foco em peito e costas, iniciante."></textarea>
     <div class="coach-actions">
       <button class="cmd-btn btn-gym" id="gerarGymBtn" onclick="gerarCards('gym')"><i class="ti ti-sparkles"></i> gerar plano</button>
       <button class="cmd-btn btn-danger" onclick="limparCards('gym')"><i class="ti ti-trash"></i> limpar</button>
@@ -284,7 +264,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
   <div class="cards-grid" id="cardsGym"></div>
 </div>
 
-<!-- PERFIL -->
 <div class="tab-panel" id="tab-perfil">
   <div class="perfil-section">
     <div class="perfil-title"><i class="ti ti-user-circle"></i> meu perfil de atleta</div>
@@ -295,174 +274,168 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     </div>
 
     <div class="perfil-divider"><i class="ti ti-run" style="color:var(--run)"></i> corrida</div>
-    <div class="perfil-modalidades" style="grid-template-columns:1fr">
-      <div class="modalidade-card run">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
-          <div class="perfil-field">
-            <label class="perfil-label">Nível atual</label>
-            <select class="perfil-select" id="pNivelRun" style="width:100%">
-              <option value="">selecione...</option>
-              <option value="iniciante">Iniciante — até 5km</option>
-              <option value="intermediario-5k">Intermediário — 5–10km</option>
-              <option value="intermediario-10k">Intermediário — 10–21km</option>
-              <option value="avancado-meia">Avançado — Meia maratona</option>
-              <option value="avancado-maratona">Avançado — Maratona</option>
-              <option value="ultra">Ultra — acima de 42km</option>
-            </select>
-          </div>
-          <div class="perfil-field">
-            <label class="perfil-label">Objetivo de prova</label>
-            <select class="perfil-select" id="pObjetivoRun" style="width:100%">
-              <option value="">sem prova específica</option>
-              <option value="5k">Prova 5km</option>
-              <option value="10k">Prova 10km</option>
-              <option value="meia">Meia maratona (21km)</option>
-              <option value="maratona">Maratona (42km)</option>
-              <option value="ultra">Ultra maratona</option>
-            </select>
-          </div>
-          <div class="perfil-field">
-            <label class="perfil-label">Pace atual (min/km)</label>
-            <input class="perfil-input" type="text" id="pPaceAtual" placeholder="ex: 6:30" style="width:100%"/>
-          </div>
-          <div class="perfil-field">
-            <label class="perfil-label">Dias/semana disponíveis</label>
-            <select class="perfil-select" id="pDiasRun" style="width:100%">
-              <option value="">selecione...</option>
-              <option value="2">2 dias</option>
-              <option value="3">3 dias</option>
-              <option value="4">4 dias</option>
-              <option value="5">5 dias</option>
-            </select>
-          </div>
-          <div class="perfil-field" style="grid-column:1/-1">
-            <label class="perfil-label">Melhores tempos em prova (opcional)</label>
-            <input class="perfil-input" type="text" id="pTemposRun" placeholder="ex: 5k 28min, 10k 58min, meia 2h10" style="width:100%"/>
-          </div>
-          <div class="perfil-field" style="grid-column:1/-1">
-            <label class="perfil-label">Lesões ou restrições</label>
-            <input class="perfil-input" type="text" id="pLesoesRun" placeholder="ex: joelho direito, nenhuma" style="width:100%"/>
-          </div>
+    <div class="modalidade-card run" style="margin-bottom:10px">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <div class="perfil-field">
+          <label class="perfil-label">Nivel atual</label>
+          <select class="perfil-select" id="pNivelRun" style="width:100%">
+            <option value="">selecione...</option>
+            <option value="iniciante">Iniciante - ate 5km</option>
+            <option value="intermediario-5k">Intermediario - 5 a 10km</option>
+            <option value="intermediario-10k">Intermediario - 10 a 21km</option>
+            <option value="avancado-meia">Avancado - Meia maratona</option>
+            <option value="avancado-maratona">Avancado - Maratona</option>
+            <option value="ultra">Ultra - acima de 42km</option>
+          </select>
+        </div>
+        <div class="perfil-field">
+          <label class="perfil-label">Objetivo de prova</label>
+          <select class="perfil-select" id="pObjetivoRun" style="width:100%">
+            <option value="">sem prova especifica</option>
+            <option value="5k">Prova 5km</option>
+            <option value="10k">Prova 10km</option>
+            <option value="meia">Meia maratona 21km</option>
+            <option value="maratona">Maratona 42km</option>
+            <option value="ultra">Ultra maratona</option>
+          </select>
+        </div>
+        <div class="perfil-field">
+          <label class="perfil-label">Pace atual (min/km)</label>
+          <input class="perfil-input" type="text" id="pPaceAtual" placeholder="ex: 6:30" style="width:100%"/>
+        </div>
+        <div class="perfil-field">
+          <label class="perfil-label">Dias/semana</label>
+          <select class="perfil-select" id="pDiasRun" style="width:100%">
+            <option value="">selecione...</option>
+            <option value="2">2 dias</option>
+            <option value="3">3 dias</option>
+            <option value="4">4 dias</option>
+            <option value="5">5 dias</option>
+          </select>
+        </div>
+        <div class="perfil-field" style="grid-column:1/-1">
+          <label class="perfil-label">Melhores tempos em prova (opcional)</label>
+          <input class="perfil-input" type="text" id="pTemposRun" placeholder="ex: 5k 28min, 10k 58min" style="width:100%"/>
+        </div>
+        <div class="perfil-field" style="grid-column:1/-1">
+          <label class="perfil-label">Lesoes ou restricoes</label>
+          <input class="perfil-input" type="text" id="pLesoesRun" placeholder="ex: joelho direito, nenhuma" style="width:100%"/>
         </div>
       </div>
     </div>
 
     <div class="perfil-divider"><i class="ti ti-bike" style="color:var(--bike)"></i> ciclismo speed</div>
-    <div class="perfil-modalidades" style="grid-template-columns:1fr">
-      <div class="modalidade-card bike">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
-          <div class="perfil-field">
-            <label class="perfil-label">Distância habitual de saída</label>
-            <select class="perfil-select" id="pNivelBike" style="width:100%">
-              <option value="">selecione...</option>
-              <option value="ate40">Até 40km (iniciante)</option>
-              <option value="40a80">40–80km (intermediário)</option>
-              <option value="80a120">80–120km (Gran Fondo)</option>
-              <option value="120a160">120–160km (Century)</option>
-              <option value="160mais">160km+ (Brevê / Endurance)</option>
-            </select>
-          </div>
-          <div class="perfil-field">
-            <label class="perfil-label">Objetivo no ciclismo</label>
-            <select class="perfil-select" id="pObjetivoBike" style="width:100%">
-              <option value="">condicionamento geral</option>
-              <option value="velocidade">Melhorar velocidade média</option>
-              <option value="granfondo">Completar Gran Fondo (120km+)</option>
-              <option value="century">Century Ride (160km)</option>
-              <option value="breve">Brevê (200km+)</option>
-              <option value="resistencia">Endurance / longa distância</option>
-            </select>
-          </div>
-          <div class="perfil-field">
-            <label class="perfil-label">Velocidade média atual</label>
-            <input class="perfil-input" type="text" id="pVelAtual" placeholder="ex: 27km/h" style="width:100%"/>
-          </div>
-          <div class="perfil-field">
-            <label class="perfil-label">Terreno preferido</label>
-            <select class="perfil-select" id="pTerrenoBike" style="width:100%">
-              <option value="">selecione...</option>
-              <option value="plano">Plano (asfalto liso)</option>
-              <option value="ondulado">Ondulado (subidas leves)</option>
-              <option value="montanhoso">Montanhoso (subidas longas)</option>
-            </select>
-          </div>
-          <div class="perfil-field">
-            <label class="perfil-label">Dias/semana disponíveis</label>
-            <select class="perfil-select" id="pDiasBike" style="width:100%">
-              <option value="">selecione...</option>
-              <option value="1">1 dia</option>
-              <option value="2">2 dias</option>
-              <option value="3">3 dias</option>
-              <option value="4">4+ dias</option>
-            </select>
-          </div>
-
+    <div class="modalidade-card bike" style="margin-bottom:10px">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <div class="perfil-field">
+          <label class="perfil-label">Distancia habitual de saida</label>
+          <select class="perfil-select" id="pNivelBike" style="width:100%">
+            <option value="">selecione...</option>
+            <option value="ate40">Ate 40km (iniciante)</option>
+            <option value="40a80">40 a 80km (intermediario)</option>
+            <option value="80a120">80 a 120km (Gran Fondo)</option>
+            <option value="120a160">120 a 160km (Century)</option>
+            <option value="160mais">160km+ (Breve / Endurance)</option>
+          </select>
+        </div>
+        <div class="perfil-field">
+          <label class="perfil-label">Objetivo no ciclismo</label>
+          <select class="perfil-select" id="pObjetivoBike" style="width:100%">
+            <option value="">condicionamento geral</option>
+            <option value="velocidade">Melhorar velocidade media</option>
+            <option value="granfondo">Gran Fondo 120km+</option>
+            <option value="century">Century Ride 160km</option>
+            <option value="breve">Breve 200km+</option>
+            <option value="resistencia">Endurance longa distancia</option>
+          </select>
+        </div>
+        <div class="perfil-field">
+          <label class="perfil-label">Velocidade media atual</label>
+          <input class="perfil-input" type="text" id="pVelAtual" placeholder="ex: 27km/h" style="width:100%"/>
+        </div>
+        <div class="perfil-field">
+          <label class="perfil-label">Terreno preferido</label>
+          <select class="perfil-select" id="pTerrenoBike" style="width:100%">
+            <option value="">selecione...</option>
+            <option value="plano">Plano (asfalto liso)</option>
+            <option value="ondulado">Ondulado (subidas leves)</option>
+            <option value="montanhoso">Montanhoso (subidas longas)</option>
+          </select>
+        </div>
+        <div class="perfil-field">
+          <label class="perfil-label">Dias/semana</label>
+          <select class="perfil-select" id="pDiasBike" style="width:100%">
+            <option value="">selecione...</option>
+            <option value="1">1 dia</option>
+            <option value="2">2 dias</option>
+            <option value="3">3 dias</option>
+            <option value="4">4+ dias</option>
+          </select>
         </div>
       </div>
     </div>
 
     <div class="perfil-divider"><i class="ti ti-barbell" style="color:var(--gym)"></i> academia</div>
-    <div class="perfil-modalidades" style="grid-template-columns:1fr">
-      <div class="modalidade-card gym">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-          <div class="perfil-field">
-            <label class="perfil-label">Tempo de treino</label>
-            <select class="perfil-select" id="pNivelGym" style="width:100%">
-              <option value="">selecione...</option>
-              <option value="iniciante">Iniciante — menos de 6 meses</option>
-              <option value="intermediario">Intermediário — 6 meses a 3 anos</option>
-              <option value="avancado">Avançado — mais de 3 anos</option>
-            </select>
-          </div>
-          <div class="perfil-field">
-            <label class="perfil-label">Dias/semana disponíveis</label>
-            <select class="perfil-select" id="pDiasGym" style="width:100%">
-              <option value="">selecione...</option>
-              <option value="2">2 dias</option>
-              <option value="3">3 dias</option>
-              <option value="4">4 dias</option>
-              <option value="5">5 dias</option>
-            </select>
-          </div>
-          <div class="perfil-field" style="grid-column:1/-1">
-            <label class="perfil-label">Objetivo principal</label>
-            <input class="perfil-input" type="text" id="pObjetivoGym" placeholder="ex: hipertrofia, perda de peso, força, condicionamento" style="width:100%"/>
-          </div>
-          <div class="perfil-field" style="grid-column:1/-1">
-            <label class="perfil-label">Restrições ou lesões</label>
-            <input class="perfil-input" type="text" id="pLesoesGym" placeholder="ex: ombro direito, hérnia, nenhuma" style="width:100%"/>
-          </div>
+    <div class="modalidade-card gym" style="margin-bottom:10px">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <div class="perfil-field">
+          <label class="perfil-label">Tempo de treino</label>
+          <select class="perfil-select" id="pNivelGym" style="width:100%">
+            <option value="">selecione...</option>
+            <option value="iniciante">Iniciante - menos de 6 meses</option>
+            <option value="intermediario">Intermediario - 6 meses a 3 anos</option>
+            <option value="avancado">Avancado - mais de 3 anos</option>
+          </select>
+        </div>
+        <div class="perfil-field">
+          <label class="perfil-label">Dias/semana</label>
+          <select class="perfil-select" id="pDiasGym" style="width:100%">
+            <option value="">selecione...</option>
+            <option value="2">2 dias</option>
+            <option value="3">3 dias</option>
+            <option value="4">4 dias</option>
+            <option value="5">5 dias</option>
+          </select>
+        </div>
+        <div class="perfil-field" style="grid-column:1/-1">
+          <label class="perfil-label">Objetivo principal</label>
+          <input class="perfil-input" type="text" id="pObjetivoGym" placeholder="ex: hipertrofia, perda de peso, forca" style="width:100%"/>
+        </div>
+        <div class="perfil-field" style="grid-column:1/-1">
+          <label class="perfil-label">Restricoes ou lesoes</label>
+          <input class="perfil-input" type="text" id="pLesoesGym" placeholder="ex: ombro direito, nenhuma" style="width:100%"/>
         </div>
       </div>
     </div>
-    <div class="perfil-divider"><i class="ti ti-heart-rate-monitor" style="color:#C0392B"></i> zonas de frequência cardíaca</div>
+
+    <div class="perfil-divider"><i class="ti ti-heart-rate-monitor" style="color:#C0392B"></i> zonas de frequencia cardiaca</div>
     <div style="background:var(--bg2);border-radius:var(--radius);padding:12px;border:0.5px solid var(--border);margin-bottom:1rem">
-      <p style="font-size:11px;color:var(--text2);margin-bottom:10px">Preencha com seus valores reais (teste de esforço, medição por relógio GPS, etc). Deixe em branco para usar o cálculo automático pela idade.</p>
-      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px">
+      <p style="font-size:11px;color:var(--text2);margin-bottom:10px">Preencha com seus valores reais do relogio GPS ou teste de esforco. Deixe em branco para calcular pela idade.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
         <div class="perfil-field">
-          <label class="perfil-label" style="color:#3498DB">Z1 — Recuperação</label>
-          <input class="perfil-input" type="text" id="pZ1" placeholder="ex: &lt;120"/>
+          <label class="perfil-label" style="color:#3498DB">Z1 Recuperacao</label>
+          <input class="perfil-input" type="text" id="pZ1" placeholder="ex: abaixo de 120"/>
           <span style="font-size:9px;color:var(--text3)">muito leve</span>
         </div>
         <div class="perfil-field">
-          <label class="perfil-label" style="color:#27AE60">Z2 — Base aeróbica</label>
-          <input class="perfil-input" type="text" id="pZ2" placeholder="ex: 120–140"/>
-          <span style="font-size:9px;color:var(--text3)">fácil / longa</span>
+          <label class="perfil-label" style="color:#27AE60">Z2 Base aerobica</label>
+          <input class="perfil-input" type="text" id="pZ2" placeholder="ex: 120 a 140"/>
+          <span style="font-size:9px;color:var(--text3)">facil / longa</span>
         </div>
         <div class="perfil-field">
-          <label class="perfil-label" style="color:#F39C12">Z3 — Aeróbico</label>
-          <input class="perfil-input" type="text" id="pZ3" placeholder="ex: 140–155"/>
+          <label class="perfil-label" style="color:#F39C12">Z3 Aerobico</label>
+          <input class="perfil-input" type="text" id="pZ3" placeholder="ex: 140 a 155"/>
           <span style="font-size:9px;color:var(--text3)">moderado</span>
         </div>
         <div class="perfil-field">
-          <label class="perfil-label" style="color:#E67E22">Z4 — Limiar</label>
-          <input class="perfil-input" type="text" id="pZ4" placeholder="ex: 155–170"/>
+          <label class="perfil-label" style="color:#E67E22">Z4 Limiar</label>
+          <input class="perfil-input" type="text" id="pZ4" placeholder="ex: 155 a 170"/>
           <span style="font-size:9px;color:var(--text3)">intenso / tempo</span>
         </div>
         <div class="perfil-field">
-          <label class="perfil-label" style="color:#C0392B">Z5 — VO2 Máx</label>
-          <input class="perfil-input" type="text" id="pZ5" placeholder="ex: &gt;170"/>
-          <span style="font-size:9px;color:var(--text3)">máximo / sprint</span>
+          <label class="perfil-label" style="color:#C0392B">Z5 VO2 Max</label>
+          <input class="perfil-input" type="text" id="pZ5" placeholder="ex: acima de 170"/>
+          <span style="font-size:9px;color:var(--text3)">maximo / sprint</span>
         </div>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px">
@@ -471,7 +444,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
           <input class="perfil-input" type="number" id="pFcRepouso" placeholder="ex: 52"/>
         </div>
         <div class="perfil-field">
-          <label class="perfil-label">FC máxima (bpm)</label>
+          <label class="perfil-label">FC maxima (bpm)</label>
           <input class="perfil-input" type="number" id="pFcMax" placeholder="ex: 185"/>
         </div>
       </div>
@@ -484,11 +457,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     <div class="perfil-resumo-box" id="perfilResumo" style="display:none"></div>
   </div>
 </div>
+</div>
 
-</div><!-- .app -->
 <div id="pdfContent"></div>
 
-<!-- MODAL TREINO -->
 <div class="overlay" id="overlay" onclick="closeModal(event)">
   <div class="modal">
     <div class="modal-title" id="modalTitle"></div>
@@ -497,11 +469,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
   </div>
 </div>
 
-<!-- MODAL DIA -->
 <div class="overlay" id="overlayDia" onclick="closeDiaModal(event)">
   <div class="modal">
     <div class="modal-title">adicionar ao dia</div>
-    <p style="font-size:12px;color:var(--text2);margin-bottom:10px">Escolha o dia do mês atual:</p>
+    <p style="font-size:12px;color:var(--text2);margin-bottom:10px">Escolha o dia do mes atual:</p>
     <div class="day-picker" id="dayPicker"></div>
     <button class="modal-close" onclick="closeDiaModal()">cancelar</button>
   </div>
@@ -510,15 +481,15 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 <script>
 const TODAY=new Date();TODAY.setHours(0,0,0,0);
 let viewYear=TODAY.getFullYear(),viewMonth=TODAY.getMonth();
-const MESES=['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
-const DIAS_PT=['domingo','segunda','terça','quarta','quinta','sexta','sábado'];
+const MESES=['janeiro','fevereiro','marco','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
+const DIAS_PT=['domingo','segunda','terca','quarta','quinta','sexta','sabado'];
 const API_URL='https://planilhadostreinin.vercel.app/api/claude';
 const REFERENCE_MONDAY=new Date(2026,5,9);REFERENCE_MONDAY.setHours(0,0,0,0);
 
 function getWeekMonday(date){const d=new Date(date);const day=d.getDay();d.setDate(d.getDate()+(day===0?-6:1-day));d.setHours(0,0,0,0);return d;}
 function isAmeliaDefault(date){const wm=getWeekMonday(date);const dw=Math.round((wm-REFERENCE_MONDAY)/(7*24*3600*1000));const isA=dw%2===0;const dow=date.getDay();return isA?!(dow===3||dow===4):(dow===3||dow===4);}
 function isAmeliaDay(date){const k=dKey(date.getFullYear(),date.getMonth(),date.getDate());if(guardaOverrides[k]!==undefined)return guardaOverrides[k]==='r';return isAmeliaDefault(date);}
-function dKey(y,m,d){return`${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`}
+function dKey(y,m,d){return y+'-'+String(m+1).padStart(2,'0')+'-'+String(d).padStart(2,'0');}
 
 let data=JSON.parse(localStorage.getItem('treinos_raphael')||'{}');
 let cards={run:[],bike:[],gym:[]};
@@ -529,433 +500,316 @@ function save(){try{localStorage.setItem('treinos_raphael',JSON.stringify(data))
 function saveCards(){try{localStorage.setItem('coach_cards',JSON.stringify(cards));}catch(e){}if(window._fbSetCards)window._fbSetCards(cards);}
 function savePerfil(){try{localStorage.setItem('atleta_perfil',JSON.stringify(perfil));}catch(e){}if(window._fbSetPerfil)window._fbSetPerfil(perfil);}
 
-// Firebase
-import('https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js').then(({initializeApp})=>{
-  return Promise.all([import('https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js')]).then(([{getDatabase,ref,onValue,set}])=>{
-    const app=initializeApp({apiKey:"AIzaSyBaHMewuyReIt9U72PEIwA7iipg1ZTBIFE",authDomain:"calendario-amelia-2202c.firebaseapp.com",databaseURL:"https://calendario-amelia-2202c-default-rtdb.firebaseio.com",projectId:"calendario-amelia-2202c",storageBucket:"calendario-amelia-2202c.firebasestorage.app",messagingSenderId:"329381802500",appId:"1:329381802500:web:9e6d1b7c9110478974fb51"});
-    const db=getDatabase(app);
-    onValue(ref(db,'treinos'),(s)=>{data=s.val()||{};localStorage.setItem('treinos_raphael',JSON.stringify(data));renderCal();});
-    onValue(ref(db,'coachCards'),(s)=>{cards=s.val()||{run:[],bike:[],gym:[]};if(!cards.run)cards.run=[];if(!cards.bike)cards.bike=[];if(!cards.gym)cards.gym=[];localStorage.setItem('coach_cards',JSON.stringify(cards));renderAllCards();});
-    onValue(ref(db,'guardaOverrides'),(s)=>{guardaOverrides=s.val()||{};localStorage.setItem('guarda_overrides',JSON.stringify(guardaOverrides));renderCal();});
-    onValue(ref(db,'atletaPerfil'),(s)=>{if(s.val()){perfil=s.val();localStorage.setItem('atleta_perfil',JSON.stringify(perfil));loadPerfilUI();updateResumos();}});
-    window._fbSet=(d)=>set(ref(db,'treinos'),d);
-    window._fbSetCards=(c)=>set(ref(db,'coachCards'),c);
-    window._fbSetOverride=(k,v)=>set(ref(db,'guardaOverrides/'+k),v);
-    window._fbRemoveOverride=(k)=>set(ref(db,'guardaOverrides/'+k),null);
-    window._fbSetPerfil=(p)=>set(ref(db,'atletaPerfil'),p);
+import('https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js').then(function(m){
+  return Promise.all([import('https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js')]).then(function(a){
+    var getDatabase=a[0].getDatabase,ref=a[0].ref,onValue=a[0].onValue,set=a[0].set;
+    var app=m.initializeApp({apiKey:"AIzaSyBaHMewuyReIt9U72PEIwA7iipg1ZTBIFE",authDomain:"calendario-amelia-2202c.firebaseapp.com",databaseURL:"https://calendario-amelia-2202c-default-rtdb.firebaseio.com",projectId:"calendario-amelia-2202c",storageBucket:"calendario-amelia-2202c.firebasestorage.app",messagingSenderId:"329381802500",appId:"1:329381802500:web:9e6d1b7c9110478974fb51"});
+    var db=getDatabase(app);
+    onValue(ref(db,'treinos'),function(s){data=s.val()||{};localStorage.setItem('treinos_raphael',JSON.stringify(data));renderCal();});
+    onValue(ref(db,'coachCards'),function(s){var v=s.val()||{};cards={run:v.run||[],bike:v.bike||[],gym:v.gym||[]};localStorage.setItem('coach_cards',JSON.stringify(cards));renderAllCards();});
+    onValue(ref(db,'guardaOverrides'),function(s){guardaOverrides=s.val()||{};localStorage.setItem('guarda_overrides',JSON.stringify(guardaOverrides));renderCal();});
+    onValue(ref(db,'atletaPerfil'),function(s){if(s.val()){perfil=s.val();localStorage.setItem('atleta_perfil',JSON.stringify(perfil));loadPerfilUI();updateResumos();}});
+    window._fbSet=function(d){set(ref(db,'treinos'),d);};
+    window._fbSetCards=function(c){set(ref(db,'coachCards'),c);};
+    window._fbSetOverride=function(k,v){set(ref(db,'guardaOverrides/'+k),v);};
+    window._fbRemoveOverride=function(k){set(ref(db,'guardaOverrides/'+k),null);};
+    window._fbSetPerfil=function(p){set(ref(db,'atletaPerfil'),p);};
   });
-}).catch(e=>console.warn('Firebase offline',e));
+}).catch(function(e){console.warn('Firebase offline',e);});
 
-// TABS
-const TAB_IDS={cal:'tab-cal',run:'tab-run',bike:'tab-bike',gym:'tab-gym',perfil:'tab-perfil'};
+var TAB_IDS={cal:'tab-cal',run:'tab-run',bike:'tab-bike',gym:'tab-gym',perfil:'tab-perfil'};
 function switchTab(tab){
-  document.querySelectorAll('.tab').forEach((t,i)=>{t.classList.toggle('active',['cal','run','bike','gym','perfil'][i]===tab);});
-  Object.entries(TAB_IDS).forEach(([k,v])=>{document.getElementById(v).classList.toggle('active',k===tab);});
+  document.querySelectorAll('.tab').forEach(function(t,i){t.classList.toggle('active',['cal','run','bike','gym','perfil'][i]===tab);});
+  Object.keys(TAB_IDS).forEach(function(k){document.getElementById(TAB_IDS[k]).classList.toggle('active',k===tab);});
   if(tab==='run')renderCards('run');
   if(tab==='bike')renderCards('bike');
   if(tab==='gym')renderCards('gym');
   if(tab==='perfil'){loadPerfilUI();updateResumos();}
 }
 
-// PERFIL
 function perfilTexto(){
   if(!perfil.idade&&!perfil.peso)return null;
-  const fc=perfil.idade?220-parseInt(perfil.idade):null;
-  const imc=(perfil.peso&&perfil.altura)?((perfil.peso/((perfil.altura/100)**2)).toFixed(1)):null;
-  let txt=`Atleta: ${perfil.idade||'?'} anos, ${perfil.peso||'?'}kg, ${perfil.altura||'?'}cm`;
-  if(imc)txt+=`, IMC ${imc}`;
-  const fcMax = perfil.fcMax ? parseInt(perfil.fcMax) : fc;
-  const fcRep = perfil.fcRepouso ? parseInt(perfil.fcRepouso) : null;
-  if(fcMax) txt+=`, FC máx: ${fcMax}bpm${fcRep?', FC repouso: '+fcRep+'bpm':''}`;
+  var fc=perfil.fcMax?parseInt(perfil.fcMax):(perfil.idade?220-parseInt(perfil.idade):null);
+  var imc=(perfil.peso&&perfil.altura)?((perfil.peso/((perfil.altura/100)*(perfil.altura/100))).toFixed(1)):null;
+  var txt='Atleta: '+(perfil.idade||'?')+' anos, '+(perfil.peso||'?')+'kg, '+(perfil.altura||'?')+'cm';
+  if(imc)txt+=', IMC '+imc;
+  if(fc)txt+=', FC max: '+fc+'bpm';
+  if(perfil.fcRepouso)txt+=', FC repouso: '+perfil.fcRepouso+'bpm';
   if(perfil.z1||perfil.z2||perfil.z3||perfil.z4||perfil.z5){
-    txt+=`. Zonas FC (definidas pelo usuário): Z1=${perfil.z1||'?'}, Z2=${perfil.z2||'?'}, Z3=${perfil.z3||'?'}, Z4=${perfil.z4||'?'}, Z5=${perfil.z5||'?'}`;
-  } else if(fcMax) {
-    const z1=Math.round(fcMax*.6),z2=Math.round(fcMax*.7),z3=Math.round(fcMax*.8),z4=Math.round(fcMax*.9);
-    txt+=`. Zonas FC (calculadas): Z1<${z1}, Z2=${z1}-${z2}, Z3=${z2}-${z3}, Z4=${z3}-${z4}, Z5>${z4}`;
+    txt+='. Zonas FC: Z1='+( perfil.z1||'?')+', Z2='+(perfil.z2||'?')+', Z3='+(perfil.z3||'?')+', Z4='+(perfil.z4||'?')+', Z5='+(perfil.z5||'?');
+  } else if(fc){
+    var z1=Math.round(fc*.6),z2=Math.round(fc*.7),z3=Math.round(fc*.8),z4=Math.round(fc*.9);
+    txt+='. Zonas FC calc: Z1<'+z1+', Z2='+z1+'-'+z2+', Z3='+z2+'-'+z3+', Z4='+z3+'-'+z4+', Z5>'+z4;
   }
-  if(perfil.nivelRun){txt+=`. CORRIDA: nível ${perfil.nivelRun}`;if(perfil.paceAtual)txt+=`, pace atual ${perfil.paceAtual}/km`;if(perfil.objetivoRun)txt+=`, objetivo: ${perfil.objetivoRun}`;if(perfil.diasRun)txt+=`, ${perfil.diasRun}x/semana`;if(perfil.temposRun)txt+=`, tempos: ${perfil.temposRun}`;if(perfil.lesoesRun)txt+=`, restrições: ${perfil.lesoesRun}`;}
-  if(perfil.nivelBike){txt+=`. CICLISMO SPEED: distância habitual ${perfil.nivelBike}`;if(perfil.velAtual)txt+=`, velocidade média ${perfil.velAtual}`;if(perfil.objetivoBike)txt+=`, objetivo: ${perfil.objetivoBike}`;if(perfil.terrenoBike)txt+=`, terreno: ${perfil.terrenoBike}`;if(perfil.diasBike)txt+=`, ${perfil.diasBike}x/semana`;}
-  if(perfil.nivelGym){txt+=`. ACADEMIA: ${perfil.nivelGym}`;if(perfil.objetivoGym)txt+=`, objetivo: ${perfil.objetivoGym}`;if(perfil.diasGym)txt+=`, ${perfil.diasGym}x/semana`;if(perfil.lesoesGym)txt+=`, restrições: ${perfil.lesoesGym}`;}
+  if(perfil.nivelRun){txt+='. CORRIDA: nivel '+perfil.nivelRun;if(perfil.paceAtual)txt+=', pace '+perfil.paceAtual+'/km';if(perfil.objetivoRun)txt+=', objetivo '+perfil.objetivoRun;if(perfil.diasRun)txt+=', '+perfil.diasRun+'x/semana';if(perfil.temposRun)txt+=', tempos: '+perfil.temposRun;if(perfil.lesoesRun)txt+=', restricoes: '+perfil.lesoesRun;}
+  if(perfil.nivelBike){txt+='. CICLISMO SPEED: distancia habitual '+perfil.nivelBike;if(perfil.velAtual)txt+=', velocidade media '+perfil.velAtual;if(perfil.objetivoBike)txt+=', objetivo: '+perfil.objetivoBike;if(perfil.terrenoBike)txt+=', terreno: '+perfil.terrenoBike;if(perfil.diasBike)txt+=', '+perfil.diasBike+'x/semana';}
+  if(perfil.nivelGym){txt+='. ACADEMIA: '+perfil.nivelGym;if(perfil.objetivoGym)txt+=', objetivo: '+perfil.objetivoGym;if(perfil.diasGym)txt+=', '+perfil.diasGym+'x/semana';if(perfil.lesoesGym)txt+=', restricoes: '+perfil.lesoesGym;}
   return txt;
 }
 
 function updateResumos(){
-  const txt=perfilTexto();
-  const msg=txt||'⚠️ Preencha seu perfil para receber treinos personalizados';
-  ['Run','Bike','Gym'].forEach(m=>{const el=document.getElementById('resumo'+m);if(el)el.textContent=msg;});
-  const box=document.getElementById('perfilResumo');
-  if(box){box.style.display=txt?'block':'none';if(txt)box.textContent='✓ Perfil ativo: '+txt;}
+  var txt=perfilTexto()||'Preencha seu perfil para receber treinos personalizados';
+  ['Run','Bike','Gym'].forEach(function(m){var el=document.getElementById('resumo'+m);if(el)el.textContent=txt;});
+  var box=document.getElementById('perfilResumo');
+  if(box){box.style.display=txt&&txt.indexOf('Preencha')<0?'block':'none';if(txt&&txt.indexOf('Preencha')<0)box.textContent='Perfil ativo: '+txt;}
 }
 
 function loadPerfilUI(){
-  if(perfil.idade)document.getElementById('pIdade').value=perfil.idade;
-  if(perfil.peso)document.getElementById('pPeso').value=perfil.peso;
-  if(perfil.altura)document.getElementById('pAltura').value=perfil.altura;
-  const sv=(id,val)=>{const el=document.getElementById(id);if(el&&val)el.value=val;};
-  sv('pNivelRun',perfil.nivelRun);sv('pObjetivoRun',perfil.objetivoRun);
-  sv('pPaceAtual',perfil.paceAtual);sv('pDiasRun',perfil.diasRun);
-  sv('pTemposRun',perfil.temposRun);sv('pLesoesRun',perfil.lesoesRun);
-  sv('pNivelBike',perfil.nivelBike);sv('pObjetivoBike',perfil.objetivoBike);
-  sv('pVelAtual',perfil.velAtual);sv('pTerrenoBike',perfil.terrenoBike);
-  sv('pDiasBike',perfil.diasBike);
-  sv('pNivelGym',perfil.nivelGym);sv('pDiasGym',perfil.diasGym);
-  sv('pObjetivoGym',perfil.objetivoGym);sv('pLesoesGym',perfil.lesoesGym);
-  sv('pZ1',perfil.z1);sv('pZ2',perfil.z2);sv('pZ3',perfil.z3);sv('pZ4',perfil.z4);sv('pZ5',perfil.z5);
-  sv('pFcRepouso',perfil.fcRepouso);sv('pFcMax',perfil.fcMax);
+  var sv=function(id,val){var el=document.getElementById(id);if(el&&val)el.value=val;};
+  sv('pIdade',perfil.idade);sv('pPeso',perfil.peso);sv('pAltura',perfil.altura);
+  sv('pNivelRun',perfil.nivelRun);sv('pObjetivoRun',perfil.objetivoRun);sv('pPaceAtual',perfil.paceAtual);sv('pDiasRun',perfil.diasRun);sv('pTemposRun',perfil.temposRun);sv('pLesoesRun',perfil.lesoesRun);
+  sv('pNivelBike',perfil.nivelBike);sv('pObjetivoBike',perfil.objetivoBike);sv('pVelAtual',perfil.velAtual);sv('pTerrenoBike',perfil.terrenoBike);sv('pDiasBike',perfil.diasBike);
+  sv('pNivelGym',perfil.nivelGym);sv('pDiasGym',perfil.diasGym);sv('pObjetivoGym',perfil.objetivoGym);sv('pLesoesGym',perfil.lesoesGym);
+  sv('pZ1',perfil.z1);sv('pZ2',perfil.z2);sv('pZ3',perfil.z3);sv('pZ4',perfil.z4);sv('pZ5',perfil.z5);sv('pFcRepouso',perfil.fcRepouso);sv('pFcMax',perfil.fcMax);
 }
 
 function salvarPerfil(){
-  const gv=id=>document.getElementById(id)?.value||'';
-  perfil={
-    idade:gv('pIdade'),peso:gv('pPeso'),altura:gv('pAltura'),
-    nivelRun:gv('pNivelRun'),objetivoRun:gv('pObjetivoRun'),paceAtual:gv('pPaceAtual'),
-    diasRun:gv('pDiasRun'),temposRun:gv('pTemposRun'),lesoesRun:gv('pLesoesRun'),
-    nivelBike:gv('pNivelBike'),objetivoBike:gv('pObjetivoBike'),velAtual:gv('pVelAtual'),
-    terrenoBike:gv('pTerrenoBike'),diasBike:gv('pDiasBike'),
-    nivelGym:gv('pNivelGym'),diasGym:gv('pDiasGym'),objetivoGym:gv('pObjetivoGym'),lesoesGym:gv('pLesoesGym'),
-    z1:gv('pZ1'),z2:gv('pZ2'),z3:gv('pZ3'),z4:gv('pZ4'),z5:gv('pZ5'),fcRepouso:gv('pFcRepouso'),fcMax:gv('pFcMax'),
-  };
+  var gv=function(id){var el=document.getElementById(id);return el?el.value:'';};
+  perfil={idade:gv('pIdade'),peso:gv('pPeso'),altura:gv('pAltura'),nivelRun:gv('pNivelRun'),objetivoRun:gv('pObjetivoRun'),paceAtual:gv('pPaceAtual'),diasRun:gv('pDiasRun'),temposRun:gv('pTemposRun'),lesoesRun:gv('pLesoesRun'),nivelBike:gv('pNivelBike'),objetivoBike:gv('pObjetivoBike'),velAtual:gv('pVelAtual'),terrenoBike:gv('pTerrenoBike'),diasBike:gv('pDiasBike'),nivelGym:gv('pNivelGym'),diasGym:gv('pDiasGym'),objetivoGym:gv('pObjetivoGym'),lesoesGym:gv('pLesoesGym'),z1:gv('pZ1'),z2:gv('pZ2'),z3:gv('pZ3'),z4:gv('pZ4'),z5:gv('pZ5'),fcRepouso:gv('pFcRepouso'),fcMax:gv('pFcMax')};
   savePerfil();updateResumos();
-  const el=document.getElementById('perfilStatus');el.textContent='✓ Perfil salvo!';el.className='perfil-status ok';
-  setTimeout(()=>{el.textContent='';},3000);
+  var el=document.getElementById('perfilStatus');el.textContent='Perfil salvo!';el.className='perfil-status ok';
+  setTimeout(function(){el.textContent='';},3000);
 }
 
-// STATS
 function renderStats(){
-  let kmC=0,kmB=0,minM=0,cnt=0;
-  const dim=new Date(viewYear,viewMonth+1,0).getDate();
-  for(let d=1;d<=dim;d++){((data[dKey(viewYear,viewMonth,d)]||{}).realizado||[]).forEach(r=>{cnt++;if(r.tipo==='corrida')kmC+=parseFloat(r.distancia)||0;if(r.tipo==='ciclismo')kmB+=parseFloat(r.distancia)||0;if(r.tipo==='musculacao')minM+=parseFloat(r.tempo)||0;});}
+  var kmC=0,kmB=0,minM=0,cnt=0;
+  var dim=new Date(viewYear,viewMonth+1,0).getDate();
+  for(var d=1;d<=dim;d++){
+    var dd=data[dKey(viewYear,viewMonth,d)]||{};
+    (dd.realizado||[]).forEach(function(r){cnt++;if(r.tipo==='corrida')kmC+=parseFloat(r.distancia)||0;if(r.tipo==='ciclismo')kmB+=parseFloat(r.distancia)||0;if(r.tipo==='musculacao')minM+=parseFloat(r.tempo)||0;});
+  }
   document.getElementById('sKmC').textContent=kmC.toFixed(1);
   document.getElementById('sKmB').textContent=kmB.toFixed(1);
   document.getElementById('sMin').textContent=Math.round(minM);
   document.getElementById('sCnt').textContent=cnt;
 }
 
-// CALENDAR
 function renderCal(){
-  const grid=document.getElementById('calGrid');
-  const hdrs=Array.from(grid.querySelectorAll('.day-hdr'));
-  grid.innerHTML='';hdrs.forEach(h=>grid.appendChild(h));
-  document.getElementById('monthLbl').textContent=`${MESES[viewMonth]} ${viewYear}`;
-  const first=new Date(viewYear,viewMonth,1).getDay();
-  const dim=new Date(viewYear,viewMonth+1,0).getDate();
-  const prevDim=new Date(viewYear,viewMonth,0).getDate();
-  const icons={corrida:'ti-run',ciclismo:'ti-bike',musculacao:'ti-barbell',descanso:'ti-moon'};
-  for(let i=0;i<first;i++){const c=document.createElement('div');c.className='day-cell other';c.innerHTML=`<div class="day-num">${prevDim-first+1+i}</div>`;grid.appendChild(c);}
-  for(let d=1;d<=dim;d++){
-    const dt=new Date(viewYear,viewMonth,d);
-    const amelia=isAmeliaDay(dt);const isToday=dt.getTime()===TODAY.getTime();
-    const isOverridden=guardaOverrides[dKey(viewYear,viewMonth,d)]!==undefined;
-    const c=document.createElement('div');
-    c.className='day-cell'+(isToday?' today':'')+(amelia?' amelia':'')+(isOverridden?' overridden':'');
-    const k=dKey(viewYear,viewMonth,d);const dd=data[k]||{};const pl=dd.planejado||[];const re=dd.realizado||[];
-    let html=`<div class="day-num">${d}${amelia?'<span class="amelia-dot"></span>':''}</div>`;
-    pl.forEach(t=>{const done=re.find(r=>r.tipo===t.tipo);html+=`<span class="tag ${t.tipo}-p">${done?'<i class="ti ti-check" style="font-size:8px"></i> ':''}<i class="ti ${icons[t.tipo]||'ti-activity'}" style="font-size:8px"></i> ${t.label}</span>`;});
-    re.forEach(r=>{if(!pl.find(p=>p.tipo===r.tipo)){let ex='';if(r.tipo==='corrida')ex=`${r.distancia||''}km`;if(r.tipo==='ciclismo')ex=`${r.distancia||''}km`;if(r.tipo==='musculacao')ex=`${r.tempo||''}min`;html+=`<span class="tag ${r.tipo}-r"><i class="ti ti-check" style="font-size:8px"></i> ${ex}</span>`;}});
-    c.innerHTML=html;c.onclick=()=>openModal(k,d,dt,amelia);grid.appendChild(c);
+  var grid=document.getElementById('calGrid');
+  var hdrs=Array.from(grid.querySelectorAll('.day-hdr'));
+  grid.innerHTML='';hdrs.forEach(function(h){grid.appendChild(h);});
+  document.getElementById('monthLbl').textContent=MESES[viewMonth]+' '+viewYear;
+  var first=new Date(viewYear,viewMonth,1).getDay();
+  var dim=new Date(viewYear,viewMonth+1,0).getDate();
+  var prevDim=new Date(viewYear,viewMonth,0).getDate();
+  var icons={corrida:'ti-run',ciclismo:'ti-bike',musculacao:'ti-barbell',descanso:'ti-moon'};
+  for(var i=0;i<first;i++){var c=document.createElement('div');c.className='day-cell other';c.innerHTML='<div class="day-num">'+(prevDim-first+1+i)+'</div>';grid.appendChild(c);}
+  for(var d=1;d<=dim;d++){
+    var dt=new Date(viewYear,viewMonth,d);
+    var amelia=isAmeliaDay(dt);
+    var isToday=dt.getTime()===TODAY.getTime();
+    var isOvr=guardaOverrides[dKey(viewYear,viewMonth,d)]!==undefined;
+    var c=document.createElement('div');
+    c.className='day-cell'+(isToday?' today':'')+(amelia?' amelia':'')+(isOvr?' overridden':'');
+    var k=dKey(viewYear,viewMonth,d);
+    var dd=data[k]||{};var pl=dd.planejado||[];var re=dd.realizado||[];
+    var html='<div class="day-num">'+d+(amelia?'<span class="amelia-dot"></span>':'')+'</div>';
+    pl.forEach(function(t){
+      var done=re.find(function(r){return r.tipo===t.tipo;});
+      html+='<span class="tag '+t.tipo+'-p">'+(done?'<i class="ti ti-check" style="font-size:8px"></i> ':'')+' '+t.label+'</span>';
+    });
+    re.forEach(function(r){
+      if(!pl.find(function(p){return p.tipo===r.tipo;})){
+        var ex='';if(r.tipo==='corrida')ex=r.distancia+'km';if(r.tipo==='ciclismo')ex=r.distancia+'km';if(r.tipo==='musculacao')ex=r.tempo+'min';
+        html+='<span class="tag '+r.tipo+'-r"><i class="ti ti-check" style="font-size:8px"></i> '+ex+'</span>';
+      }
+    });
+    c.innerHTML=html;
+    (function(kk,dd2,dt2,am){c.onclick=function(){openModal(kk,dd2,dt2,am);};})(k,d,dt,amelia);
+    grid.appendChild(c);
   }
-  const rem=42-first-dim;for(let d=1;d<=rem;d++){const c=document.createElement('div');c.className='day-cell other';c.innerHTML=`<div class="day-num">${d}</div>`;grid.appendChild(c);}
+  var rem=42-first-dim;for(var d2=1;d2<=rem;d2++){var c2=document.createElement('div');c2.className='day-cell other';c2.innerHTML='<div class="day-num">'+d2+'</div>';grid.appendChild(c2);}
   renderStats();
 }
+
 function changeMonth(dir){viewMonth+=dir;if(viewMonth>11){viewMonth=0;viewYear++;}if(viewMonth<0){viewMonth=11;viewYear--;}renderCal();}
 
 function openModal(k,d,dt,amelia){
-  const dd=data[k]||{};const pl=dd.planejado||[];const re=dd.realizado||[];
-  document.getElementById('modalTitle').textContent=`${d} de ${MESES[viewMonth]} · ${DIAS_PT[dt.getDay()]}`;
-  let html='';
-  if(amelia)html+=`<div class="amelia-badge"><i class="ti ti-heart" style="font-size:12px"></i> dia com Amélia</div>`;
+  var dd=data[k]||{};var pl=dd.planejado||[];var re=dd.realizado||[];
+  document.getElementById('modalTitle').textContent=d+' de '+MESES[viewMonth]+' - '+DIAS_PT[dt.getDay()];
+  var html='';
+  if(amelia)html+='<div class="amelia-badge"><i class="ti ti-heart" style="font-size:12px"></i> dia com Amelia</div>';
   if(pl.length){
     html+='<div class="modal-sec">planejado</div>';
-    pl.forEach((t,i)=>{
-      html+=`<div class="modal-item">
-        <span style="display:flex;align-items:center;gap:6px">
-          ${t.label}
-          ${t.cardSnapshot?`<button onclick="verCard(${JSON.stringify(t.cardSnapshot).replace(/"/g,'&quot;')})" style="font-size:10px;padding:2px 7px;border-radius:4px;border:0.5px solid var(--border2);background:transparent;cursor:pointer;color:var(--text2)">ver treino</button>`:''}
-        </span>
-        <button class="del-btn" onclick="delPlan('${k}',${i})">×</button>
-      </div>`;
+    pl.forEach(function(t,i){
+      html+='<div class="modal-item"><span style="display:flex;align-items:center;gap:6px">'+t.label+(t.cardSnapshot?'<button onclick="verCard(this)" data-snap=\''+JSON.stringify(t.cardSnapshot).replace(/'/g,"&#39;")+'\'  style="font-size:10px;padding:2px 7px;border-radius:4px;border:0.5px solid var(--border2);background:transparent;cursor:pointer;color:var(--text2)">ver treino</button>':'')+'</span><button class="del-btn" onclick="delPlan(\''+k+'\','+i+')">x</button></div>';
     });
   }
-  if(re.length){html+='<div class="modal-sec">realizado</div>';re.forEach((r,i)=>{let info='';if(r.tipo==='corrida')info=`${r.distancia||'?'}km · pace ${r.pace||'?'}`;if(r.tipo==='ciclismo')info=`${r.distancia||'?'}km · ${r.velocidade||'?'}km/h`;if(r.tipo==='musculacao')info=`${r.tempo||'?'} min`;html+=`<div class="modal-item"><span><i class="ti ti-check" style="font-size:12px;color:#3B6D11;margin-right:4px"></i>${r.tipo}</span><span class="modal-info">${info}</span><button class="del-btn" onclick="delReal('${k}',${i})">×</button></div>`;});}
-  const ameliaNow=isAmeliaDay(dt);const isOverridden=guardaOverrides[k]!==undefined;
-  html+=`<div class="modal-sec">guarda da amélia</div>
-  <div style="display:flex;gap:8px;margin-bottom:8px">
-    <button onclick="setGuardaOverride('${k}','r',${d})" style="flex:1;padding:7px;border-radius:var(--radius);border:1.5px solid ${ameliaNow?'#D4537E':'var(--border)'};background:${ameliaNow?'var(--pink-bg)':'transparent'};color:${ameliaNow?'var(--pink-text)':'var(--text2)'};cursor:pointer;font-size:12px;font-family:inherit">👧 com Amélia</button>
-    <button onclick="setGuardaOverride('${k}','y',${d})" style="flex:1;padding:7px;border-radius:var(--radius);border:1.5px solid ${!ameliaNow?'#534AB7':'var(--border)'};background:${!ameliaNow?'#EEEDFE':'transparent'};color:${!ameliaNow?'#3C3489':'var(--text2)'};cursor:pointer;font-size:12px;font-family:inherit">👤 sem Amélia</button>
-  </div>
-  ${isOverridden?`<button onclick="resetGuarda('${k}',${d})" style="width:100%;margin-bottom:8px;padding:5px;border-radius:var(--radius);border:0.5px dashed var(--border2);background:transparent;color:var(--text3);cursor:pointer;font-size:11px;font-family:inherit">↺ voltar ao padrão automático</button>`:''}`;
+  if(re.length){
+    html+='<div class="modal-sec">realizado</div>';
+    re.forEach(function(r,i){
+      var info='';if(r.tipo==='corrida')info=r.distancia+'km pace '+r.pace;if(r.tipo==='ciclismo')info=r.distancia+'km '+r.velocidade+'km/h';if(r.tipo==='musculacao')info=r.tempo+' min';
+      html+='<div class="modal-item"><span><i class="ti ti-check" style="font-size:12px;color:#3B6D11;margin-right:4px"></i>'+r.tipo+'</span><span class="modal-info">'+info+'</span><button class="del-btn" onclick="delReal(\''+k+'\','+i+')">x</button></div>';
+    });
+  }
+  var ameliaNow=isAmeliaDay(dt);var isOvr=guardaOverrides[k]!==undefined;
+  html+='<div class="modal-sec">guarda da amelia</div>';
+  html+='<div style="display:flex;gap:8px;margin-bottom:8px">';
+  html+='<button onclick="setGuardaOverride(\''+k+'\',\'r\','+d+')" style="flex:1;padding:7px;border-radius:var(--radius);border:1.5px solid '+(ameliaNow?'#D4537E':'var(--border)')+';background:'+(ameliaNow?'var(--pink-bg)':'transparent')+';color:'+(ameliaNow?'var(--pink-text)':'var(--text2)')+';cursor:pointer;font-size:12px;font-family:inherit">com Amelia</button>';
+  html+='<button onclick="setGuardaOverride(\''+k+'\',\'y\','+d+')" style="flex:1;padding:7px;border-radius:var(--radius);border:1.5px solid '+(!ameliaNow?'#534AB7':'var(--border)')+';background:'+(!ameliaNow?'#EEEDFE':'transparent')+';color:'+(!ameliaNow?'#3C3489':'var(--text2)')+';cursor:pointer;font-size:12px;font-family:inherit">sem Amelia</button>';
+  html+='</div>';
+  if(isOvr)html+='<button onclick="resetGuarda(\''+k+'\','+d+')" style="width:100%;margin-bottom:8px;padding:5px;border-radius:var(--radius);border:0.5px dashed var(--border2);background:transparent;color:var(--text3);cursor:pointer;font-size:11px;font-family:inherit">voltar ao padrao automatico</button>';
   document.getElementById('modalContent').innerHTML=html;
   document.getElementById('overlay').classList.add('open');
 }
-function setGuardaOverride(k,val,d){guardaOverrides[k]=val;localStorage.setItem('guarda_overrides',JSON.stringify(guardaOverrides));if(window._fbSetOverride)window._fbSetOverride(k,val);renderCal();const parts=k.split('-');const dt=new Date(+parts[0],+parts[1]-1,+parts[2]);openModal(k,d,dt,isAmeliaDay(dt));}
-function resetGuarda(k,d){delete guardaOverrides[k];localStorage.setItem('guarda_overrides',JSON.stringify(guardaOverrides));if(window._fbRemoveOverride)window._fbRemoveOverride(k);renderCal();const parts=k.split('-');const dt=new Date(+parts[0],+parts[1]-1,+parts[2]);openModal(k,d,dt,isAmeliaDay(dt));}
-function verCard(snap){
-  if(typeof snap==='string') snap=JSON.parse(snap);
-  const cfg={corrida:{cor:'var(--run)',icon:'ti-run'},ciclismo:{cor:'var(--bike)',icon:'ti-bike'},musculacao:{cor:'var(--gym)',icon:'ti-barbell'}};
-  let html=`<div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
-    <span style="font-size:11px;padding:2px 8px;border-radius:10px;background:var(--bg2);color:var(--text2);font-weight:600">${snap.badge||''}</span>
-    <span style="font-size:14px;font-weight:600">${snap.titulo}</span>
-  </div>`;
-  (snap.itens||[]).forEach(it=>{
-    html+=`<div style="padding:7px 0;border-bottom:0.5px solid var(--border)">
-      <div style="font-size:13px;font-weight:500">${it.nome}</div>
-      <div style="font-size:11px;color:var(--text2)">${it.info}</div>
-      ${it.obs?`<div style="font-size:10px;color:var(--text3);font-style:italic">${it.obs}</div>`:''}
-    </div>`;
+
+function verCard(btn){
+  var snap=JSON.parse(btn.getAttribute('data-snap'));
+  var html='<div style="display:flex;align-items:center;gap:8px;margin-bottom:12px"><span style="font-size:11px;padding:2px 8px;border-radius:10px;background:var(--bg2);color:var(--text2);font-weight:600">'+(snap.badge||'')+'</span><span style="font-size:14px;font-weight:600">'+snap.titulo+'</span></div>';
+  (snap.itens||[]).forEach(function(it){
+    html+='<div style="padding:7px 0;border-bottom:0.5px solid var(--border)"><div style="font-size:13px;font-weight:500">'+it.nome+'</div><div style="font-size:11px;color:var(--text2)">'+it.info+'</div>'+(it.obs?'<div style="font-size:10px;color:var(--text3);font-style:italic">'+it.obs+'</div>':'')+'</div>';
   });
   document.getElementById('modalTitle').textContent='detalhes do treino';
   document.getElementById('modalContent').innerHTML=html;
-  document.getElementById('overlay').classList.add('open');
 }
 
+function setGuardaOverride(k,val,d){guardaOverrides[k]=val;localStorage.setItem('guarda_overrides',JSON.stringify(guardaOverrides));if(window._fbSetOverride)window._fbSetOverride(k,val);renderCal();var parts=k.split('-');var dt=new Date(+parts[0],+parts[1]-1,+parts[2]);openModal(k,d,dt,isAmeliaDay(dt));}
+function resetGuarda(k,d){delete guardaOverrides[k];localStorage.setItem('guarda_overrides',JSON.stringify(guardaOverrides));if(window._fbRemoveOverride)window._fbRemoveOverride(k);renderCal();var parts=k.split('-');var dt=new Date(+parts[0],+parts[1]-1,+parts[2]);openModal(k,d,dt,isAmeliaDay(dt));}
 function delPlan(k,i){if(data[k]){data[k].planejado.splice(i,1);save();renderCal();closeModal();}}
 function delReal(k,i){if(data[k]){data[k].realizado.splice(i,1);save();renderCal();closeModal();}}
 function closeModal(e){if(!e||e.target===document.getElementById('overlay'))document.getElementById('overlay').classList.remove('open');}
-
-// CMD
 function fillCmd(el){document.getElementById('cmdInput').value=el.textContent.trim();document.getElementById('cmdInput').focus();}
-function setStatus(m,t){const el=document.getElementById('status');el.textContent=m;el.className='status '+(t||'');}
-async function handleFile(input){const file=input.files[0];if(!file)return;const nameEl=document.getElementById('uploadName');nameEl.textContent='📎 '+file.name;nameEl.classList.add('visible');const reader=new FileReader();reader.onload=(e)=>{document.getElementById('cmdInput').value=e.target.result;};reader.readAsText(file,'UTF-8');input.value='';}
+function setStatus(m,t){var el=document.getElementById('status');el.textContent=m;el.className='status '+(t||'');}
+function handleFile(input){var file=input.files[0];if(!file)return;var nameEl=document.getElementById('uploadName');nameEl.textContent='Arquivo: '+file.name;nameEl.classList.add('visible');var reader=new FileReader();reader.onload=function(e){document.getElementById('cmdInput').value=e.target.result;};reader.readAsText(file,'UTF-8');input.value='';}
+
+function parseJSON(txt){
+  txt=txt.replace(/^[\s\S]*?(\{)/,'$1');
+  var last=txt.lastIndexOf('}');
+  txt=txt.substring(0,last+1);
+  return JSON.parse(txt);
+}
 
 async function runCmd(){
-  const input=document.getElementById('cmdInput');const cmd=input.value.trim();if(!cmd)return;
-  const btn=document.getElementById('cmdBtn');btn.disabled=true;setStatus('processando...','loading');
-  const dim=new Date(viewYear,viewMonth+1,0).getDate();
-  const ameliaDays=[];for(let d=1;d<=dim;d++){if(isAmeliaDay(new Date(viewYear,viewMonth,d)))ameliaDays.push(d);}
-  const now=new Date();
-  const prompt=`Assistente de calendário de treinos. Hoje: ${now.getDate()} de ${MESES[now.getMonth()]} de ${now.getFullYear()} (${DIAS_PT[now.getDay()]}). Mês: ${MESES[viewMonth]} ${viewYear} (${dim} dias). Dias com Amélia: ${ameliaDays.join(', ')}.
-Dados: ${JSON.stringify(data,null,1)}
-Comando: "${cmd}"
-Aceita comando único OU lista em batelada. Formatos: "dia DD/MM corrida Xkm pace M:SS", "dia DD/MM musculação Xmin", "dia DD/MM ciclismo Xkm velocidade Ykmh". Ano padrão: ${viewYear}.
-JSON SOMENTE, sem markdown:
-{"acao":"desc","upsert":{"YYYY-MM-DD":{"planejado":[{"tipo":"corrida|ciclismo|musculacao|descanso","label":"max14"}],"realizado":[{"tipo":"corrida|ciclismo|musculacao","distancia":0,"pace":"0:00","velocidade":0,"tempo":0}]}},"remover":[]}
-Regras: merge no upsert. datas ${viewYear}-${String(viewMonth+1).padStart(2,'0')}-DD.`;
+  var input=document.getElementById('cmdInput');var cmd=input.value.trim();if(!cmd)return;
+  var btn=document.getElementById('cmdBtn');btn.disabled=true;setStatus('processando...','loading');
+  var dim=new Date(viewYear,viewMonth+1,0).getDate();
+  var ameliaDays=[];for(var d=1;d<=dim;d++){if(isAmeliaDay(new Date(viewYear,viewMonth,d)))ameliaDays.push(d);}
+  var now=new Date();
+  var prompt='Assistente de calendario de treinos. Hoje: '+now.getDate()+' de '+MESES[now.getMonth()]+' de '+now.getFullYear()+' ('+DIAS_PT[now.getDay()]+'). Mes: '+MESES[viewMonth]+' '+viewYear+' ('+dim+' dias). Dias com Amelia: '+ameliaDays.join(', ')+'.\nDados: '+JSON.stringify(data)+'\nComando: "'+cmd+'"\nAceita comando unico OU lista em batelada. Formatos: "dia DD/MM corrida Xkm pace M:SS", "dia DD/MM musculacao Xmin", "dia DD/MM ciclismo Xkm velocidade Ykmh". Ano padrao: '+viewYear+'.\nRetorne SOMENTE JSON valido sem markdown:\n{"acao":"desc","upsert":{"YYYY-MM-DD":{"planejado":[{"tipo":"corrida|ciclismo|musculacao|descanso","label":"max14"}],"realizado":[{"tipo":"corrida|ciclismo|musculacao","distancia":0,"pace":"0:00","velocidade":0,"tempo":0}]}},"remover":[]}\nMerge no upsert. Datas '+viewYear+'-'+String(viewMonth+1).padStart(2,'0')+'-DD.';
   try{
-    const resp=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:[{role:'user',content:prompt}]})});
-    const d=await resp.json();if(d.error)throw new Error(d.error.message);
-    let txt=d.content.map(c=>c.text||'').join('').trim().replace(/```json|```/g,'').trim();
-    const js=txt.indexOf('{');const je=txt.lastIndexOf('}');txt=txt.substring(js,je+1);
-    const res=JSON.parse(txt);
-    if(res.remover)res.remover.forEach(k=>delete data[k]);
-    if(res.upsert){Object.entries(res.upsert).forEach(([k,v])=>{if(!data[k])data[k]={planejado:[],realizado:[]};if(!data[k].planejado)data[k].planejado=[];if(!data[k].realizado)data[k].realizado=[];if(v.planejado)v.planejado.forEach(t=>{if(!data[k].planejado.find(e=>e.tipo===t.tipo))data[k].planejado.push(t);});if(v.realizado)v.realizado.forEach(r=>{const ex=data[k].realizado.find(e=>e.tipo===r.tipo);if(ex)Object.assign(ex,r);else data[k].realizado.push(r);});});}
+    var resp=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:[{role:'user',content:prompt}]})});
+    var d=await resp.json();if(d.error)throw new Error(d.error.message);
+    var txt=d.content.map(function(c){return c.text||'';}).join('');
+    var res=parseJSON(txt);
+    if(res.remover)res.remover.forEach(function(k){delete data[k];});
+    if(res.upsert){Object.keys(res.upsert).forEach(function(k){var v=res.upsert[k];if(!data[k])data[k]={planejado:[],realizado:[]};if(!data[k].planejado)data[k].planejado=[];if(!data[k].realizado)data[k].realizado=[];if(v.planejado)v.planejado.forEach(function(t){if(!data[k].planejado.find(function(e){return e.tipo===t.tipo;}))data[k].planejado.push(t);});if(v.realizado)v.realizado.forEach(function(r){var ex=data[k].realizado.find(function(e){return e.tipo===r.tipo;});if(ex)Object.assign(ex,r);else data[k].realizado.push(r);});});}
     save();renderCal();input.value='';
-    const nameEl=document.getElementById('uploadName');if(nameEl){nameEl.textContent='';nameEl.classList.remove('visible');}
-    setStatus('✓ '+(res.acao||'feito!'),'ok');
-    if(Notification.permission==='granted')new Notification('treino atualizado',{body:res.acao||''});
-  }catch(err){setStatus('erro: '+err.message,'err');}
+    var nameEl=document.getElementById('uploadName');if(nameEl){nameEl.textContent='';nameEl.classList.remove('visible');}
+    setStatus('OK: '+(res.acao||'feito!'),'ok');
+  }catch(err){setStatus('erro: '+err.message,'err');console.error(err);}
   finally{document.getElementById('cmdBtn').disabled=false;}
 }
 
-// COACH CARDS
-const MODAL_CONFIG={
-  run:{nome:'corrida',cor:'var(--run)',icon:'ti-run',badgeClass:'badge-run'},
-  bike:{nome:'ciclismo',cor:'var(--bike)',icon:'ti-bike',badgeClass:'badge-bike'},
-  gym:{nome:'academia',cor:'var(--gym)',icon:'ti-barbell',badgeClass:'badge-gym'},
-};
+var COACH_CFG={run:{nome:'corrida',cor:'var(--run)',icon:'ti-run',badgeClass:'badge-run'},bike:{nome:'ciclismo',cor:'var(--bike)',icon:'ti-bike',badgeClass:'badge-bike'},gym:{nome:'academia',cor:'var(--gym)',icon:'ti-barbell',badgeClass:'badge-gym'}};
 
-function setCoachStatus(mod,m,t){const el=document.getElementById('status'+mod.charAt(0).toUpperCase()+mod.slice(1));if(el){el.textContent=m;el.className='coach-status '+(t||'');}}
+function setCoachStatus(mod,m,t){var cap=mod.charAt(0).toUpperCase()+mod.slice(1);var el=document.getElementById('status'+cap);if(el){el.textContent=m;el.className='coach-status '+(t||'');}}
 
 async function gerarCards(mod){
-  const objId={run:'objRun',bike:'objBike',gym:'objGym'}[mod];
-  const objetivo=document.getElementById(objId).value.trim();
-  const btnId={run:'gerarRunBtn',bike:'gerarBikeBtn',gym:'gerarGymBtn'}[mod];
-  const btn=document.getElementById(btnId);btn.disabled=true;
+  var objId={run:'objRun',bike:'objBike',gym:'objGym'}[mod];
+  var objetivo=document.getElementById(objId).value.trim();
+  var btnId={run:'gerarRunBtn',bike:'gerarBikeBtn',gym:'gerarGymBtn'}[mod];
+  var btn=document.getElementById(btnId);btn.disabled=true;
   setCoachStatus(mod,'gerando plano...','loading');
-
-  const pt=perfilTexto()||'perfil não preenchido';
-  const hist=[];const hoje=new Date();
-  for(let i=1;i<=14;i++){const d=new Date(hoje);d.setDate(hoje.getDate()-i);const k=dKey(d.getFullYear(),d.getMonth(),d.getDate());if(data[k]){const r=data[k].realizado||[];const filtered=r.filter(x=>mod==='run'?x.tipo==='corrida':mod==='bike'?x.tipo==='ciclismo':x.tipo==='musculacao');if(filtered.length)hist.push(`${k}: ${JSON.stringify(filtered)}`);}}
-
-  const prompts={
-    run:`Você é um coach especialista em corrida. Monte um plano semanal de treinos.
-Perfil do atleta: ${pt}
-Objetivo: "${objetivo||'sem objetivo especificado'}"
-Histórico recente (corridas últimas 2 semanas): ${hist.length?hist.join('\n'):'nenhum registro'}
-
-Crie 3 a 5 cards de treino de corrida para a semana. Considere progressão, recuperação e o histórico.
-Cada card deve ter um tipo de sessão (ex: Rodagem Leve, Intervalado, Longão, Fartlek, Recuperação).
-
-JSON SOMENTE, sem markdown, sem texto extra:
-{"cards":[{"titulo":"Rodagem Leve","badge":"Fácil","itens":[{"nome":"Aquecimento","info":"10 min caminhada rápida","obs":"FC zona 1"},{"nome":"Corrida contínua","info":"5km em pace fácil","obs":"pace sugerido: 7:00/km, FC zona 2"},{"nome":"Desaquecimento","info":"5 min caminhada","obs":"alongar panturrilha"}]}]}
-Regras: badge curto (Fácil/Moderado/Intenso/Longo/Recovery). info com distância ou duração. obs com pace alvo, zona de FC ou dica técnica. 3 a 6 itens por card. Use aspas duplas, sem acentos nas chaves.`,
-
-    bike:`Voce e um coach especialista em ciclismo speed (bike de estrada). Monte um plano semanal personalizado.
-Perfil completo do atleta: ${pt}
-Objetivo desta semana: "${objetivo||'sem objetivo especifico'}"
-Historico recente (ciclismo ultimas 2 semanas): ${hist.length?hist.join('\n'):'nenhum registro'}
-
-Crie 3 a 5 cards de treino de ciclismo speed. Use as zonas de FC do perfil para prescrever cada sessao.
-Tipos de treino: Base Z2, Intervalado, Subida, Endurance longo, Recovery ativo, Tempo/Limiar.
-
-RESPONDA APENAS COM JSON VALIDO. Sem markdown, sem texto antes ou depois, sem comentarios.
-Formato exato (use apenas aspas duplas, sem acentos nas chaves):
-{"cards":[{"titulo":"Base Aerobica Z2","badge":"Z2","itens":[{"nome":"Aquecimento","info":"15 min leve","obs":"FC zona 1"},{"nome":"Rodagem base","info":"50km ritmo constante","obs":"FC zona 2, velocidade alvo 27km/h"},{"nome":"Volta a calma","info":"10 min suave","obs":"respiracao controlada"}]}]}
-
-Regras criticas:
-- Use APENAS aspas duplas no JSON
-- NUNCA use aspas simples, acentos ou cedilha nas CHAVES do JSON (apenas nos valores)
-- badge: Z2, Z3, Longo, Subida, Recovery, Limiar
-- info: distancia em km ou duracao em minutos
-- obs: zona de FC especifica do perfil, velocidade alvo, dica tecnica
-- 3 a 6 itens por card
-- adapte distancias ao nivel do atleta (perfil indica distancia habitual)`,
-
-    gym:`Voce e um personal trainer especialista em musculacao. Monte fichas completas e personalizadas.
-Perfil completo do atleta: ${pt}
-Objetivo desta semana: "${objetivo||'sem objetivo especifico'}"
-Historico recente (academia ultimas 2 semanas): ${hist.length?hist.join('\n'):'nenhum registro'}
-
-Crie 2 a 4 fichas de musculacao. Considere divisao adequada ao nivel, nao repita grupos musculares recentes.
-
-RESPONDA APENAS COM JSON VALIDO. Sem markdown, sem texto antes ou depois, sem comentarios.
-Formato exato (use apenas aspas duplas, sem acentos ou caracteres especiais nas chaves):
-{"cards":[{"titulo":"Treino A - Peito e Triceps","badge":"A","itens":[{"nome":"Supino Reto","info":"4x 8-12 reps","obs":"descanso 90s cadencia 2-1-2"},{"nome":"Crucifixo Inclinado","info":"3x 10-12 reps","obs":"amplitude maxima cotovelo levemente flexionado"}]}]}
-
-Regras criticas:
-- Use APENAS aspas duplas no JSON
-- NUNCA use aspas simples acentos ou cedilha nas CHAVES (apenas nos valores string)
-- badge: letra A B C D ou Push Pull Legs sem acento
-- info: series e reps ex "4x 8-12 reps"
-- obs: dica tecnica curta sem aspas internas
-- 5 a 8 itens por ficha
-- adapte ao nivel do atleta e objetivo informado`
+  var pt=perfilTexto()||'perfil nao preenchido';
+  var hist=[];var hoje=new Date();
+  for(var i=1;i<=14;i++){var di=new Date(hoje);di.setDate(hoje.getDate()-i);var k=dKey(di.getFullYear(),di.getMonth(),di.getDate());if(data[k]){var re=data[k].realizado||[];var filtered=re.filter(function(x){return mod==='run'?x.tipo==='corrida':mod==='bike'?x.tipo==='ciclismo':x.tipo==='musculacao';});if(filtered.length)hist.push(k+': '+JSON.stringify(filtered));}}
+  var prompts={
+    run:'Voce e um coach especialista em corrida de rua. Monte um plano semanal personalizado.\nPerfil completo: '+pt+'\nObjetivo: "'+( objetivo||'sem objetivo')+'".\nHistorico recente (corrida ultimas 2 semanas): '+(hist.length?hist.join(' | '):'nenhum')+'.\nCrie 3 a 5 cards de treino de corrida para a semana. Use as zonas de FC do perfil. Tipos: Rodagem Leve, Intervalado, Longo, Fartlek, Recuperacao, Tempo.\nRetorne SOMENTE JSON valido, sem markdown, sem texto fora do JSON:\n{"cards":[{"titulo":"Rodagem Leve","badge":"Facil","itens":[{"nome":"Aquecimento","info":"10 min caminhada rapida","obs":"FC zona 1"},{"nome":"Corrida continua","info":"5km em pace facil","obs":"pace 7:00/km FC zona 2"},{"nome":"Desaquecimento","info":"5 min caminhada","obs":"alongar panturrilha"}]}]}\nRegras: badge sem acento (Facil/Moderado/Intenso/Longo/Recovery). info com distancia ou duracao. obs com pace alvo e zona de FC. 3 a 6 itens. Use apenas aspas duplas.',
+    bike:'Voce e um coach de ciclismo speed (bike de estrada). Monte um plano semanal.\nPerfil completo: '+pt+'\nObjetivo: "'+(objetivo||'sem objetivo')+'".\nHistorico recente (ciclismo ultimas 2 semanas): '+(hist.length?hist.join(' | '):'nenhum')+'.\nCrie 3 a 5 cards de treino de ciclismo speed. Use as zonas de FC do perfil. Tipos: Base Z2, Intervalado, Subida, Endurance longo, Recovery, Limiar.\nRetorne SOMENTE JSON valido, sem markdown, sem texto fora do JSON:\n{"cards":[{"titulo":"Base Aerobica Z2","badge":"Z2","itens":[{"nome":"Aquecimento","info":"15 min leve","obs":"FC zona 1"},{"nome":"Rodagem base","info":"50km ritmo constante","obs":"FC zona 2 velocidade 27km/h"},{"nome":"Volta a calma","info":"10 min suave","obs":"respiracao controlada"}]}]}\nRegras: badge sem acento (Z2/Z3/Longo/Subida/Recovery/Limiar). info com distancia ou tempo. obs com zona de FC e velocidade alvo. 3 a 6 itens. Use apenas aspas duplas.',
+    gym:'Voce e um personal trainer. Monte fichas de musculacao completas.\nPerfil completo: '+pt+'\nObjetivo: "'+(objetivo||'sem objetivo')+'".\nHistorico recente (academia ultimas 2 semanas): '+(hist.length?hist.join(' | '):'nenhum')+'.\nCrie 2 a 4 fichas de musculacao. Considere divisao adequada ao nivel, nao repita grupos recentes.\nRetorne SOMENTE JSON valido, sem markdown, sem texto fora do JSON:\n{"cards":[{"titulo":"Treino A Peito e Triceps","badge":"A","itens":[{"nome":"Supino Reto","info":"4x 8-12 reps","obs":"descanso 90s cadencia 2-1-2"},{"nome":"Crucifixo Inclinado","info":"3x 10-12 reps","obs":"amplitude maxima cotovelo leve"}]}]}\nRegras: badge letra A B C D ou Push Pull Legs. info com series e reps. obs com dica tecnica. 5 a 8 itens. Use apenas aspas duplas.'
   };
-
   try{
-    const resp=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:[{role:'user',content:prompts[mod]}]})});
-    const d=await resp.json();if(d.error)throw new Error(d.error.message);
-    let txt=d.content.map(c=>c.text||'').join('').trim().replace(/```json|```/g,'').trim();
-    const js=txt.indexOf('{');const je=txt.lastIndexOf('}');txt=txt.substring(js,je+1);
-    // sanitizar: remover caracteres de controle que quebram JSON
-    txt=txt.replace(/[-]/g,' ').replace(/
-/g,' ').replace(/
-/g,'');
-    // corrigir aspas simples em chaves (erro comum do modelo)
-    txt=txt.replace(/'([a-zA-Z]+)'(\s*:)/g,'"$1"$2');
-    const res=JSON.parse(txt);
-    cards[mod]=res.cards.map(c=>({...c,id:Date.now()+Math.random(),cargas:{}}));
+    var resp=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:[{role:'user',content:prompts[mod]}]})});
+    var d=await resp.json();if(d.error)throw new Error(d.error.message);
+    var txt=d.content.map(function(c){return c.text||'';}).join('');
+    var res=parseJSON(txt);
+    cards[mod]=res.cards.map(function(c){return Object.assign({},c,{id:Date.now()+Math.random(),cargas:{}});});
     saveCards();renderCards(mod);
-    setCoachStatus(mod,'✓ '+res.cards.length+' treinos gerados!','ok');
+    setCoachStatus(mod,'OK: '+res.cards.length+' treinos gerados!','ok');
   }catch(err){setCoachStatus(mod,'erro: '+err.message,'err');console.error(err);}
   finally{btn.disabled=false;}
 }
 
-function limparCards(mod){
-  if(!cards[mod]||!cards[mod].length)return;
-  if(!confirm('Remover todos os cards de '+MODAL_CONFIG[mod].nome+'?'))return;
-  cards[mod]=[];saveCards();renderCards(mod);
-}
+function limparCards(mod){if(!cards[mod]||!cards[mod].length)return;if(!confirm('Remover todos os cards?'))return;cards[mod]=[];saveCards();renderCards(mod);}
+function deleteCard(mod,id){cards[mod]=cards[mod].filter(function(c){return c.id!==id;});saveCards();renderCards(mod);}
+function saveCarga(mod,cardId,itemIdx,campo,valor){var c=cards[mod].find(function(c){return c.id===cardId;});if(!c)return;if(!c.cargas)c.cargas={};if(!c.cargas[itemIdx])c.cargas[itemIdx]={};c.cargas[itemIdx][campo]=valor;saveCards();}
 
-function deleteCard(mod,id){cards[mod]=cards[mod].filter(c=>c.id!==id);saveCards();renderCards(mod);}
-
-function saveCarga(mod,cardId,itemIdx,campo,valor){
-  const c=cards[mod].find(c=>c.id===cardId);if(!c)return;
-  if(!c.cargas)c.cargas={};if(!c.cargas[itemIdx])c.cargas[itemIdx]={};
-  c.cargas[itemIdx][campo]=valor;saveCards();
-}
-
-let cardParaAdicionar=null;let modParaAdicionar=null;
+var cardParaAdicionar=null;var modParaAdicionar=null;
 function openDiaModal(mod,cardId){
   cardParaAdicionar=cardId;modParaAdicionar=mod;
-  const dim=new Date(viewYear,viewMonth+1,0).getDate();
-  const first=new Date(viewYear,viewMonth,1).getDay();
-  const picker=document.getElementById('dayPicker');picker.innerHTML='';
-  ['D','S','T','Q','Q','S','S'].forEach(h=>{const el=document.createElement('div');el.style.cssText='text-align:center;font-size:9px;color:var(--text3);padding:2px';el.textContent=h;picker.appendChild(el);});
-  for(let i=0;i<first;i++){const el=document.createElement('div');el.className='dp-cell empty';picker.appendChild(el);}
-  for(let d=1;d<=dim;d++){const el=document.createElement('div');el.className='dp-cell';el.textContent=d;el.onclick=()=>addCardAoDia(d);picker.appendChild(el);}
+  var dim=new Date(viewYear,viewMonth+1,0).getDate();
+  var first=new Date(viewYear,viewMonth,1).getDay();
+  var picker=document.getElementById('dayPicker');picker.innerHTML='';
+  ['D','S','T','Q','Q','S','S'].forEach(function(h){var el=document.createElement('div');el.style.cssText='text-align:center;font-size:9px;color:var(--text3);padding:2px';el.textContent=h;picker.appendChild(el);});
+  for(var i=0;i<first;i++){var el=document.createElement('div');el.className='dp-cell empty';picker.appendChild(el);}
+  for(var d=1;d<=dim;d++){var el=document.createElement('div');el.className='dp-cell';el.textContent=d;(function(dd){el.onclick=function(){addCardAoDia(dd);};})(d);picker.appendChild(el);}
   document.getElementById('overlayDia').classList.add('open');
 }
 
 function addCardAoDia(day){
-  const card=cards[modParaAdicionar].find(c=>c.id===cardParaAdicionar);if(!card)return;
-  const k=dKey(viewYear,viewMonth,day);
+  var card=cards[modParaAdicionar].find(function(c){return c.id===cardParaAdicionar;});if(!card)return;
+  var k=dKey(viewYear,viewMonth,day);
   if(!data[k])data[k]={planejado:[],realizado:[]};
   if(!data[k].planejado)data[k].planejado=[];
-  const tipo=modParaAdicionar==='run'?'corrida':modParaAdicionar==='bike'?'ciclismo':'musculacao';
-  if(!data[k].planejado.find(p=>p.tipo===tipo)){
-    data[k].planejado.push({
-      tipo,
-      label:card.titulo.substring(0,14),
-      cardSnapshot:{titulo:card.titulo,badge:card.badge,itens:card.itens}
-    });
+  var tipo=modParaAdicionar==='run'?'corrida':modParaAdicionar==='bike'?'ciclismo':'musculacao';
+  if(!data[k].planejado.find(function(p){return p.tipo===tipo;})){
+    data[k].planejado.push({tipo:tipo,label:card.titulo.substring(0,14),cardSnapshot:{titulo:card.titulo,badge:card.badge,itens:card.itens}});
   }
   save();renderCal();closeDiaModal();
-  setCoachStatus(modParaAdicionar,`✓ "${card.titulo}" adicionado ao dia ${day}/${viewMonth+1}`,'ok');
+  setCoachStatus(modParaAdicionar,'"'+card.titulo+'" adicionado ao dia '+day+'/'+( viewMonth+1),'ok');
 }
 function closeDiaModal(e){if(!e||e.target===document.getElementById('overlayDia'))document.getElementById('overlayDia').classList.remove('open');}
 
 function renderCards(mod){
-  const cfg=MODAL_CONFIG[mod];
-  const grid=document.getElementById('cards'+mod.charAt(0).toUpperCase()+mod.slice(1));
+  var cap=mod.charAt(0).toUpperCase()+mod.slice(1);
+  var grid=document.getElementById('cards'+cap);
   if(!grid)return;
-  const list=cards[mod]||[];
-  if(!list.length){grid.innerHTML=`<div class="empty-cards">nenhum plano gerado ainda — descreva seu objetivo e clique em "gerar plano"</div>`;return;}
+  var list=cards[mod]||[];
+  if(!list.length){grid.innerHTML='<div class="empty-cards">nenhum plano gerado ainda - descreva seu objetivo e clique em "gerar plano"</div>';return;}
   grid.innerHTML='';
-  list.forEach(card=>{
-    const el=document.createElement('div');el.className='coach-card';
-    const itensHtml=card.itens.map((it,ii)=>{
-      const carga=card.cargas&&card.cargas[ii]||{};
-      const showCarga=mod==='gym';
-      return`<div class="card-item">
-        <div class="card-item-nome">${it.nome}</div>
-        <div class="card-item-info">${it.info}</div>
-        ${it.obs?`<div class="card-item-obs">${it.obs}</div>`:''}
-        ${showCarga?`<div class="card-carga">
-          <input class="carga-input" type="number" placeholder="kg" value="${carga.peso||''}" onchange="saveCarga('${mod}',${card.id},${ii},'peso',this.value)" title="peso usado"/>
-          <span class="carga-lbl">kg</span>
-          <input class="carga-input" type="text" placeholder="reps" value="${carga.repsFeitas||''}" onchange="saveCarga('${mod}',${card.id},${ii},'repsFeitas',this.value)" title="reps feitas"/>
-          <span class="carga-lbl">feitas</span>
-        </div>`:''}
-      </div>`;
+  var cfg=COACH_CFG[mod];
+  list.forEach(function(card){
+    var el=document.createElement('div');el.className='coach-card';
+    var itensHtml=card.itens.map(function(it,ii){
+      var carga=card.cargas&&card.cargas[ii]||{};
+      var showCarga=mod==='gym';
+      return '<div class="card-item"><div class="card-item-nome">'+it.nome+'</div><div class="card-item-info">'+it.info+'</div>'+(it.obs?'<div class="card-item-obs">'+it.obs+'</div>':'')+(showCarga?'<div class="card-carga"><input class="carga-input" type="number" placeholder="kg" value="'+(carga.peso||'')+'" onchange="saveCarga(\''+mod+'\','+card.id+','+ii+',\'peso\',this.value)" title="peso"/><span class="carga-lbl">kg</span><input class="carga-input" type="text" placeholder="reps" value="'+(carga.repsFeitas||'')+'" onchange="saveCarga(\''+mod+'\','+card.id+','+ii+',\'repsFeitas\',this.value)" title="reps feitas"/><span class="carga-lbl">feitas</span></div>':'')+'</div>';
     }).join('');
-    el.innerHTML=`
-      <div class="card-header">
-        <div class="card-title" style="color:${cfg.cor}"><i class="ti ${cfg.icon}"></i>${card.titulo}</div>
-        <div style="display:flex;align-items:center;gap:6px">
-          <span class="card-badge ${cfg.badgeClass}">${card.badge}</span>
-          <button class="card-close" onclick="deleteCard('${mod}',${card.id})" title="remover">×</button>
-        </div>
-      </div>
-      <div class="card-body">${itensHtml}</div>
-      <div class="card-footer">
-        <button class="add-dia-btn" onclick="openDiaModal('${mod}',${card.id})"><i class="ti ti-calendar-plus"></i> adicionar ao dia</button>
-      </div>`;
+    el.innerHTML='<div class="card-header"><div class="card-title" style="color:'+cfg.cor+'"><i class="ti '+cfg.icon+'"></i>'+card.titulo+'</div><div style="display:flex;align-items:center;gap:6px"><span class="card-badge '+cfg.badgeClass+'">'+card.badge+'</span><button class="card-close" onclick="deleteCard(\''+mod+'\','+card.id+')" title="remover">x</button></div></div><div class="card-body">'+itensHtml+'</div><div class="card-footer"><button class="add-dia-btn" onclick="openDiaModal(\''+mod+'\','+card.id+')"><i class="ti ti-calendar-plus"></i> adicionar ao dia</button></div>';
     grid.appendChild(el);
   });
 }
-
 function renderAllCards(){renderCards('run');renderCards('bike');renderCards('gym');}
 
-// PDF
 function exportPDF(){
-  const dim=new Date(viewYear,viewMonth+1,0).getDate();
-  const mesNome=MESES[viewMonth].charAt(0).toUpperCase()+MESES[viewMonth].slice(1);
-  let kmC=0,kmB=0,minM=0,cnt=0;
-  for(let d=1;d<=dim;d++){((data[dKey(viewYear,viewMonth,d)]||{}).realizado||[]).forEach(r=>{cnt++;if(r.tipo==='corrida')kmC+=parseFloat(r.distancia)||0;if(r.tipo==='ciclismo')kmB+=parseFloat(r.distancia)||0;if(r.tipo==='musculacao')minM+=parseFloat(r.tempo)||0;});}
-  const first=new Date(viewYear,viewMonth,1).getDay();
-  const weeks=[];let week=[];
-  for(let i=0;i<first;i++)week.push(null);
-  for(let d=1;d<=dim;d++){week.push(d);if(week.length===7){weeks.push(week);week=[];}}
+  var dim=new Date(viewYear,viewMonth+1,0).getDate();
+  var mesNome=MESES[viewMonth].charAt(0).toUpperCase()+MESES[viewMonth].slice(1);
+  var kmC=0,kmB=0,minM=0,cnt=0;
+  for(var d=1;d<=dim;d++){((data[dKey(viewYear,viewMonth,d)]||{}).realizado||[]).forEach(function(r){cnt++;if(r.tipo==='corrida')kmC+=parseFloat(r.distancia)||0;if(r.tipo==='ciclismo')kmB+=parseFloat(r.distancia)||0;if(r.tipo==='musculacao')minM+=parseFloat(r.tempo)||0;});}
+  var first=new Date(viewYear,viewMonth,1).getDay();
+  var weeks=[];var week=[];
+  for(var i=0;i<first;i++)week.push(null);
+  for(var d=1;d<=dim;d++){week.push(d);if(week.length===7){weeks.push(week);week=[];}}
   if(week.length){while(week.length<7)week.push(null);weeks.push(week);}
-  const DA=['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
-  const tl={corrida:'Corrida',ciclismo:'Ciclismo',musculacao:'Academia',descanso:'Descanso'};
-  let wh='';
-  weeks.forEach((wk,wi)=>{
-    const vd=wk.filter(Boolean);if(!vd.length)return;
-    let wC=0,wB=0,wM=0,wCnt=0,dh='';
-    wk.forEach(d=>{
-      if(!d)return;const k=dKey(viewYear,viewMonth,d);const dd=data[k]||{};const pl=dd.planejado||[];const re=dd.realizado||[];const dt=new Date(viewYear,viewMonth,d);
-      re.forEach(r=>{wCnt++;if(r.tipo==='corrida')wC+=parseFloat(r.distancia)||0;if(r.tipo==='ciclismo')wB+=parseFloat(r.distancia)||0;if(r.tipo==='musculacao')wM+=parseFloat(r.tempo)||0;});
-      let th='';
-      if(!pl.length&&!re.length){th='<span class="pdf-empty">—</span>';}
-      else{pl.forEach(t=>{const done=re.find(r=>r.tipo===t.tipo);let ex='';if(done){if(done.tipo==='corrida')ex=` ${done.distancia||''}km·pace${done.pace||''}`;if(done.tipo==='ciclismo')ex=` ${done.distancia||''}km·${done.velocidade||''}km/h`;if(done.tipo==='musculacao')ex=` ${done.tempo||''}min`;}th+=`<span class="pdf-tag ${done?'r':'p'}">${done?'✓ ':''}${tl[t.tipo]||t.tipo}${ex}</span>`;});re.forEach(r=>{if(!pl.find(p=>p.tipo===r.tipo)){let ex='';if(r.tipo==='corrida')ex=` ${r.distancia||''}km`;if(r.tipo==='ciclismo')ex=` ${r.distancia||''}km`;if(r.tipo==='musculacao')ex=` ${r.tempo||''}min`;th+=`<span class="pdf-tag r">✓ ${tl[r.tipo]||r.tipo}${ex}</span>`;}});}
-      dh+=`<div class="pdf-day"><div class="pdf-day-date"><strong>${d}</strong> ${DA[dt.getDay()]}</div><div class="pdf-day-content">${th}</div></div>`;
+  var DA=['Dom','Seg','Ter','Qua','Qui','Sex','Sab'];
+  var tl={corrida:'Corrida',ciclismo:'Ciclismo',musculacao:'Academia',descanso:'Descanso'};
+  var wh='';
+  weeks.forEach(function(wk,wi){
+    var vd=wk.filter(Boolean);if(!vd.length)return;
+    var wC=0,wB=0,wM=0,wCnt=0,dh='';
+    wk.forEach(function(d){
+      if(!d)return;var k=dKey(viewYear,viewMonth,d);var dd=data[k]||{};var pl=dd.planejado||[];var re=dd.realizado||[];var dt=new Date(viewYear,viewMonth,d);
+      re.forEach(function(r){wCnt++;if(r.tipo==='corrida')wC+=parseFloat(r.distancia)||0;if(r.tipo==='ciclismo')wB+=parseFloat(r.distancia)||0;if(r.tipo==='musculacao')wM+=parseFloat(r.tempo)||0;});
+      var th='';
+      if(!pl.length&&!re.length){th='<span class="pdf-empty">-</span>';}
+      else{pl.forEach(function(t){var done=re.find(function(r){return r.tipo===t.tipo;});var ex='';if(done){if(done.tipo==='corrida')ex=' '+done.distancia+'km pace'+done.pace;if(done.tipo==='ciclismo')ex=' '+done.distancia+'km '+done.velocidade+'km/h';if(done.tipo==='musculacao')ex=' '+done.tempo+'min';}th+='<span class="pdf-tag '+(done?'r':'p')+'">'+(done?'OK ':'')+(tl[t.tipo]||t.tipo)+ex+'</span>';});re.forEach(function(r){if(!pl.find(function(p){return p.tipo===r.tipo;})){var ex='';if(r.tipo==='corrida')ex=' '+r.distancia+'km';if(r.tipo==='ciclismo')ex=' '+r.distancia+'km';if(r.tipo==='musculacao')ex=' '+r.tempo+'min';th+='<span class="pdf-tag r">OK '+(tl[r.tipo]||r.tipo)+ex+'</span>';}});}
+      dh+='<div class="pdf-day"><div class="pdf-day-date"><strong>'+d+'</strong> '+DA[dt.getDay()]+'</div><div class="pdf-day-content">'+th+'</div></div>';
     });
-    let sp=[];if(wC>0)sp.push(`Corrida: <span>${wC.toFixed(1)}km</span>`);if(wB>0)sp.push(`Ciclismo: <span>${wB.toFixed(1)}km</span>`);if(wM>0)sp.push(`Academia: <span>${Math.round(wM)}min</span>`);if(wCnt>0)sp.push(`Treinos: <span>${wCnt}</span>`);
-    wh+=`<div class="pdf-week"><div class="pdf-week-title">semana ${wi+1} · ${vd[0]} a ${vd[vd.length-1]} de ${mesNome.toLowerCase()}</div>${dh}${sp.length?`<div class="pdf-week-summary">${sp.join(' · ')}</div>`:''}</div>`;
+    var sp=[];if(wC>0)sp.push('Corrida: <span>'+wC.toFixed(1)+'km</span>');if(wB>0)sp.push('Ciclismo: <span>'+wB.toFixed(1)+'km</span>');if(wM>0)sp.push('Academia: <span>'+Math.round(wM)+'min</span>');if(wCnt>0)sp.push('Treinos: <span>'+wCnt+'</span>');
+    wh+='<div class="pdf-week"><div class="pdf-week-title">semana '+(wi+1)+' - '+vd[0]+' a '+vd[vd.length-1]+' de '+mesNome.toLowerCase()+'</div>'+dh+(sp.length?'<div class="pdf-week-summary">'+sp.join(' - ')+'</div>':'')+'</div>';
   });
-  document.getElementById('pdfContent').innerHTML=`<div class="pdf-header"><div><div class="pdf-title">meus treinos · ${mesNome} ${viewYear}</div><div class="pdf-sub">gerado em ${new Date().toLocaleDateString('pt-BR')}</div></div></div><div class="pdf-summary"><div class="pdf-stat"><div class="pdf-stat-lbl">corrida</div><div class="pdf-stat-val">${kmC.toFixed(1)}</div><div class="pdf-stat-unit">km</div></div><div class="pdf-stat"><div class="pdf-stat-lbl">ciclismo</div><div class="pdf-stat-val">${kmB.toFixed(1)}</div><div class="pdf-stat-unit">km</div></div><div class="pdf-stat"><div class="pdf-stat-lbl">academia</div><div class="pdf-stat-val">${Math.round(minM)}</div><div class="pdf-stat-unit">min</div></div><div class="pdf-stat"><div class="pdf-stat-lbl">treinos</div><div class="pdf-stat-val">${cnt}</div><div class="pdf-stat-unit">feitos</div></div></div>${wh}`;
-  setTimeout(()=>window.print(),100);
+  document.getElementById('pdfContent').innerHTML='<div class="pdf-header"><div><div class="pdf-title">meus treinos - '+mesNome+' '+viewYear+'</div><div class="pdf-sub">gerado em '+new Date().toLocaleDateString('pt-BR')+'</div></div></div><div class="pdf-summary"><div class="pdf-stat"><div class="pdf-stat-lbl">corrida</div><div class="pdf-stat-val">'+kmC.toFixed(1)+'</div><div class="pdf-stat-unit">km</div></div><div class="pdf-stat"><div class="pdf-stat-lbl">ciclismo</div><div class="pdf-stat-val">'+kmB.toFixed(1)+'</div><div class="pdf-stat-unit">km</div></div><div class="pdf-stat"><div class="pdf-stat-lbl">academia</div><div class="pdf-stat-val">'+Math.round(minM)+'</div><div class="pdf-stat-unit">min</div></div><div class="pdf-stat"><div class="pdf-stat-lbl">treinos</div><div class="pdf-stat-val">'+cnt+'</div><div class="pdf-stat-unit">feitos</div></div></div>'+wh;
+  setTimeout(function(){window.print();},100);
 }
 
 if(Notification.permission==='default')Notification.requestPermission();
