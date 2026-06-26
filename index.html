@@ -664,7 +664,18 @@ function openModal(k,d,dt,amelia){
   document.getElementById('modalTitle').textContent=`${d} de ${MESES[viewMonth]} · ${DIAS_PT[dt.getDay()]}`;
   let html='';
   if(amelia)html+=`<div class="amelia-badge"><i class="ti ti-heart" style="font-size:12px"></i> dia com Amélia</div>`;
-  if(pl.length){html+='<div class="modal-sec">planejado</div>';pl.forEach((t,i)=>{html+=`<div class="modal-item"><span>${t.label}</span><button class="del-btn" onclick="delPlan('${k}',${i})">×</button></div>`;});}
+  if(pl.length){
+    html+='<div class="modal-sec">planejado</div>';
+    pl.forEach((t,i)=>{
+      html+=`<div class="modal-item">
+        <span style="display:flex;align-items:center;gap:6px">
+          ${t.label}
+          ${t.cardSnapshot?`<button onclick="verCard(${JSON.stringify(t.cardSnapshot).replace(/"/g,'&quot;')})" style="font-size:10px;padding:2px 7px;border-radius:4px;border:0.5px solid var(--border2);background:transparent;cursor:pointer;color:var(--text2)">ver treino</button>`:''}
+        </span>
+        <button class="del-btn" onclick="delPlan('${k}',${i})">×</button>
+      </div>`;
+    });
+  }
   if(re.length){html+='<div class="modal-sec">realizado</div>';re.forEach((r,i)=>{let info='';if(r.tipo==='corrida')info=`${r.distancia||'?'}km · pace ${r.pace||'?'}`;if(r.tipo==='ciclismo')info=`${r.distancia||'?'}km · ${r.velocidade||'?'}km/h`;if(r.tipo==='musculacao')info=`${r.tempo||'?'} min`;html+=`<div class="modal-item"><span><i class="ti ti-check" style="font-size:12px;color:#3B6D11;margin-right:4px"></i>${r.tipo}</span><span class="modal-info">${info}</span><button class="del-btn" onclick="delReal('${k}',${i})">×</button></div>`;});}
   const ameliaNow=isAmeliaDay(dt);const isOverridden=guardaOverrides[k]!==undefined;
   html+=`<div class="modal-sec">guarda da amélia</div>
@@ -678,6 +689,25 @@ function openModal(k,d,dt,amelia){
 }
 function setGuardaOverride(k,val,d){guardaOverrides[k]=val;localStorage.setItem('guarda_overrides',JSON.stringify(guardaOverrides));if(window._fbSetOverride)window._fbSetOverride(k,val);renderCal();const parts=k.split('-');const dt=new Date(+parts[0],+parts[1]-1,+parts[2]);openModal(k,d,dt,isAmeliaDay(dt));}
 function resetGuarda(k,d){delete guardaOverrides[k];localStorage.setItem('guarda_overrides',JSON.stringify(guardaOverrides));if(window._fbRemoveOverride)window._fbRemoveOverride(k);renderCal();const parts=k.split('-');const dt=new Date(+parts[0],+parts[1]-1,+parts[2]);openModal(k,d,dt,isAmeliaDay(dt));}
+function verCard(snap){
+  if(typeof snap==='string') snap=JSON.parse(snap);
+  const cfg={corrida:{cor:'var(--run)',icon:'ti-run'},ciclismo:{cor:'var(--bike)',icon:'ti-bike'},musculacao:{cor:'var(--gym)',icon:'ti-barbell'}};
+  let html=`<div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+    <span style="font-size:11px;padding:2px 8px;border-radius:10px;background:var(--bg2);color:var(--text2);font-weight:600">${snap.badge||''}</span>
+    <span style="font-size:14px;font-weight:600">${snap.titulo}</span>
+  </div>`;
+  (snap.itens||[]).forEach(it=>{
+    html+=`<div style="padding:7px 0;border-bottom:0.5px solid var(--border)">
+      <div style="font-size:13px;font-weight:500">${it.nome}</div>
+      <div style="font-size:11px;color:var(--text2)">${it.info}</div>
+      ${it.obs?`<div style="font-size:10px;color:var(--text3);font-style:italic">${it.obs}</div>`:''}
+    </div>`;
+  });
+  document.getElementById('modalTitle').textContent='detalhes do treino';
+  document.getElementById('modalContent').innerHTML=html;
+  document.getElementById('overlay').classList.add('open');
+}
+
 function delPlan(k,i){if(data[k]){data[k].planejado.splice(i,1);save();renderCal();closeModal();}}
 function delReal(k,i){if(data[k]){data[k].realizado.splice(i,1);save();renderCal();closeModal();}}
 function closeModal(e){if(!e||e.target===document.getElementById('overlay'))document.getElementById('overlay').classList.remove('open');}
@@ -749,27 +779,46 @@ JSON SOMENTE, sem markdown, sem texto extra:
 {"cards":[{"titulo":"Rodagem Leve","badge":"Fácil","itens":[{"nome":"Aquecimento","info":"10 min caminhada rápida","obs":"FC zona 1"},{"nome":"Corrida contínua","info":"5km em pace fácil","obs":"pace sugerido: 7:00/km, FC zona 2"},{"nome":"Desaquecimento","info":"5 min caminhada","obs":"alongar panturrilha"}]}]}
 Regras: badge curto (Fácil/Moderado/Intenso/Longo/Recovery). info com distância ou duração. obs com pace alvo, zona de FC ou dica técnica. 3 a 6 itens por card. Use aspas duplas, sem acentos nas chaves.`,
 
-    bike:`Você é um coach especialista em ciclismo. Monte um plano semanal.
-Perfil: ${pt}
-Objetivo: "${objetivo||'sem objetivo'}"
-Histórico recente (ciclismo últimas 2 semanas): ${hist.length?hist.join('\n'):'nenhum'}
+    bike:`Voce e um coach especialista em ciclismo speed (bike de estrada). Monte um plano semanal personalizado.
+Perfil completo do atleta: ${pt}
+Objetivo desta semana: "${objetivo||'sem objetivo especifico'}"
+Historico recente (ciclismo ultimas 2 semanas): ${hist.length?hist.join('\n'):'nenhum registro'}
 
-Crie 3 a 5 cards de treino de ciclismo (endurance, intervalado, subida, recovery, etc).
+Crie 3 a 5 cards de treino de ciclismo speed. Use as zonas de FC do perfil para prescrever cada sessao.
+Tipos de treino: Base Z2, Intervalado, Subida, Endurance longo, Recovery ativo, Tempo/Limiar.
 
-JSON SOMENTE:
-{"cards":[{"titulo":"Base Aeróbica","badge":"Z2","itens":[{"nome":"Aquecimento","info":"15 min ritmo leve","obs":"cadência 80-90rpm, FC zona 1"},{"nome":"Pedalada base","info":"40km ritmo constante","obs":"FC zona 2, velocidade média 25km/h"},{"nome":"Volta à calma","info":"10 min suave","obs":"pedalar leve, respiração controlada"}]}]}
-Regras: badge curto (Z2/Intervalado/Endurance/Subida/Recovery). info com distância ou tempo. obs com cadência, velocidade alvo, zona de FC. 3 a 6 itens. Sem acentos nas chaves JSON.`,
+RESPONDA APENAS COM JSON VALIDO. Sem markdown, sem texto antes ou depois, sem comentarios.
+Formato exato (use apenas aspas duplas, sem acentos nas chaves):
+{"cards":[{"titulo":"Base Aerobica Z2","badge":"Z2","itens":[{"nome":"Aquecimento","info":"15 min leve","obs":"FC zona 1"},{"nome":"Rodagem base","info":"50km ritmo constante","obs":"FC zona 2, velocidade alvo 27km/h"},{"nome":"Volta a calma","info":"10 min suave","obs":"respiracao controlada"}]}]}
 
-    gym:`Você é um personal trainer. Monte fichas de academia completas.
-Perfil: ${pt}
-Objetivo: "${objetivo||'sem objetivo'}"
-Histórico recente (academia últimas 2 semanas): ${hist.length?hist.join('\n'):'nenhum'}
+Regras criticas:
+- Use APENAS aspas duplas no JSON
+- NUNCA use aspas simples, acentos ou cedilha nas CHAVES do JSON (apenas nos valores)
+- badge: Z2, Z3, Longo, Subida, Recovery, Limiar
+- info: distancia em km ou duracao em minutos
+- obs: zona de FC especifica do perfil, velocidade alvo, dica tecnica
+- 3 a 6 itens por card
+- adapte distancias ao nivel do atleta (perfil indica distancia habitual)`,
 
-Crie 2 a 4 fichas de musculação. Considere divisão adequada ao nível e não repita grupos musculares recentes.
+    gym:`Voce e um personal trainer especialista em musculacao. Monte fichas completas e personalizadas.
+Perfil completo do atleta: ${pt}
+Objetivo desta semana: "${objetivo||'sem objetivo especifico'}"
+Historico recente (academia ultimas 2 semanas): ${hist.length?hist.join('\n'):'nenhum registro'}
 
-JSON SOMENTE:
-{"cards":[{"titulo":"Treino A - Peito e Triceps","badge":"A","itens":[{"nome":"Supino Reto","info":"4x 8-12 reps","obs":"descanso 90s, cadencia 2-1-2"},{"nome":"Crucifixo Inclinado","info":"3x 10-12 reps","obs":"amplitude maxima, cotovelo leve"}]}]}
-Regras: badge letra (A/B/C/D) ou Push/Pull/Legs. info com series e reps. obs com dica tecnica. 5 a 8 itens. Sem acentos nas chaves JSON, apenas nos valores.`
+Crie 2 a 4 fichas de musculacao. Considere divisao adequada ao nivel, nao repita grupos musculares recentes.
+
+RESPONDA APENAS COM JSON VALIDO. Sem markdown, sem texto antes ou depois, sem comentarios.
+Formato exato (use apenas aspas duplas, sem acentos ou caracteres especiais nas chaves):
+{"cards":[{"titulo":"Treino A - Peito e Triceps","badge":"A","itens":[{"nome":"Supino Reto","info":"4x 8-12 reps","obs":"descanso 90s cadencia 2-1-2"},{"nome":"Crucifixo Inclinado","info":"3x 10-12 reps","obs":"amplitude maxima cotovelo levemente flexionado"}]}]}
+
+Regras criticas:
+- Use APENAS aspas duplas no JSON
+- NUNCA use aspas simples acentos ou cedilha nas CHAVES (apenas nos valores string)
+- badge: letra A B C D ou Push Pull Legs sem acento
+- info: series e reps ex "4x 8-12 reps"
+- obs: dica tecnica curta sem aspas internas
+- 5 a 8 itens por ficha
+- adapte ao nivel do atleta e objetivo informado`
   };
 
   try{
@@ -818,7 +867,11 @@ function addCardAoDia(day){
   if(!data[k].planejado)data[k].planejado=[];
   const tipo=modParaAdicionar==='run'?'corrida':modParaAdicionar==='bike'?'ciclismo':'musculacao';
   if(!data[k].planejado.find(p=>p.tipo===tipo)){
-    data[k].planejado.push({tipo,label:card.titulo.substring(0,14)});
+    data[k].planejado.push({
+      tipo,
+      label:card.titulo.substring(0,14),
+      cardSnapshot:{titulo:card.titulo,badge:card.badge,itens:card.itens}
+    });
   }
   save();renderCal();closeDiaModal();
   setCoachStatus(modParaAdicionar,`✓ "${card.titulo}" adicionado ao dia ${day}/${viewMonth+1}`,'ok');
