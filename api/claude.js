@@ -12,14 +12,14 @@ export default async function handler(req) {
   }
 
   if (req.method !== 'POST') {
-    return new Response(JSON.stringify({ error: 'método não permitido' }), {
+    return new Response(JSON.stringify({ error: 'metodo nao permitido' }), {
       status: 405, headers: { ...CORS, 'Content-Type': 'application/json' },
     });
   }
 
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) {
-    return new Response(JSON.stringify({ error: 'chave não configurada' }), {
+    return new Response(JSON.stringify({ error: 'chave nao configurada' }), {
       status: 500, headers: { ...CORS, 'Content-Type': 'application/json' },
     });
   }
@@ -35,7 +35,7 @@ export default async function handler(req) {
       },
       body: JSON.stringify({
         model: 'claude-sonnet-4-6',
-        max_tokens: 1000,
+        max_tokens: body.max_tokens || 4000,
         messages: body.messages,
       }),
     });
