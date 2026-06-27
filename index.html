@@ -731,7 +731,7 @@ async function gerarCards(mod){
     gym:'Voce e um personal trainer. Monte fichas de musculacao completas.\nPerfil completo: '+pt+'\nObjetivo: "'+(objetivo||'sem objetivo')+'".\nHistorico recente (academia ultimas 2 semanas): '+(hist.length?hist.join(' | '):'nenhum')+'.\nCrie 2 a 4 fichas de musculacao. Considere divisao adequada ao nivel, nao repita grupos recentes.\nRetorne SOMENTE JSON valido, sem markdown, sem texto fora do JSON:\n{"cards":[{"titulo":"Treino A Peito e Triceps","badge":"A","itens":[{"nome":"Supino Reto","info":"4x 8-12 reps","obs":"descanso 90s cadencia 2-1-2"},{"nome":"Crucifixo Inclinado","info":"3x 10-12 reps","obs":"amplitude maxima cotovelo leve"}]}]}\nRegras: badge letra A B C D ou Push Pull Legs. info com series e reps. obs com dica tecnica. 5 a 8 itens. Use apenas aspas duplas.'
   };
   try{
-    var resp=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:[{role:'user',content:prompts[mod]}]})});
+    var resp=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({max_tokens:4000,messages:[{role:'user',content:prompts[mod]}]})});
     var d=await resp.json();if(d.error)throw new Error(d.error.message);
     var txt=d.content.map(function(c){return c.text||'';}).join('');
     var res=parseJSON(txt);
